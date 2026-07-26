@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { createThemeContext } from '@/Context/context'
 import Loader from '@/components/Loader'
 import Nav from '@/components/Nav'
+import { Analytics } from '@vercel/analytics/react'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
@@ -52,6 +53,7 @@ function layOuts() {
     <div
       className={`${LightTheme ? 'bg-white Grind-black' : 'bg-black Grind-white'} inset-0 relative`}
     >
+      <Analytics />
       <Nav />
       <div
         ref={ContainerRef}

@@ -390,7 +390,7 @@ export const projectsData: ProjectsData = {
       links: [
         {
           label: 'Demo',
-          url: 'https://hms-dashboard-1.onrender.com/',
+          url: 'https://hms-dashbord-1.onrender.com/',
         },
         {
           label: 'Repo',
