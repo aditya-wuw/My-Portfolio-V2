@@ -11,7 +11,6 @@ import {
   SiMongodb,
   SiRadixui,
   SiReacthookform,
-  SiSap,
   SiSupabase,
   SiTauri,
   SiTypescript,
@@ -53,11 +52,11 @@ export const heroData: HeroData = {
     <span>
       building functional web apps/websites with TypeScript, React, Next and
       Supabase. Hosting using Vercel, Render and maintaining CI/CD using Vercel
-      CLI tools and Git with strict Type safety.
+      CLI tools and Git
     </span>
   ),
   about_ln3:
-    'I also occasionally draw 2D art, create music and do game development from time to time.',
+    'I also have strong video editing and social media skills to help build individuals online presence',
 }
 
 export const contactData: ContactData = {
@@ -107,11 +106,6 @@ export const skillsData: SkillsData = {
     {
       Name: 'Tailwind CSS',
       Comp: <RiTailwindCssFill className={icon_size} />,
-      color: 'group-hover:text-blue-400',
-    },
-    {
-      Name: 'GSAP',
-      Comp: <SiSap className={icon_size} />,
       color: 'group-hover:text-blue-400',
     },
     {
@@ -187,13 +181,13 @@ export const projectsData: ProjectsData = {
   title: 'Featured',
   items: [
     {
-      title: 'Copy Chan',
-      Link: 'Copy_History',
+      title: 'copy-chan',
+      Link: 'copy-chan',
       started: '1st Dec',
       ended: '23rd Dec 2025',
       DemoVideo: demos.copychandemo,
       Update:
-        "I'm improving my Rust skills and working through the current usage report to fix all outstanding issues. I'll be polishing the project for a full release soon—star the repo to stay updated!",
+        'copy-chan is now live and activly being used by me and my friends',
       contributors: [
         {
           label: 'aditya',
@@ -206,7 +200,7 @@ export const projectsData: ProjectsData = {
       additional_dec:
         'Copy Chan is a cross-platform desktop clipboard/history manager with an emoji and symbols picker, built with Tauri (Rust) and React + Vite. Primarily made and optimized for Linux.',
       dedicated_dec: {
-        Desc: 'A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories.',
+        Desc: 'A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories. With v1.0.805 copy-chan is 10x faster than windows native clipboard manager, new ASCII patterns and emojies',
         ProjectIdea:
           'Frustrated by the lack of smooth, native clipboard managers when transitioning layout OS workspaces to Linux, I decided to build an lightweight asset with an accessible emoji dashboard.',
         HowItWorks:
@@ -222,6 +216,10 @@ export const projectsData: ProjectsData = {
       ],
       links: [
         {
+          label: 'View',
+          url: 'https://copychan.smgcat.site',
+        },
+        {
           label: 'Repo',
           url: 'https://github.com/Smug-Cat-s-Den/Copy-Chan',
         },
@@ -229,7 +227,7 @@ export const projectsData: ProjectsData = {
     },
     {
       title: 'Koneko AI',
-      Link: 'Mogger_AI',
+      Link: 'koneko',
       status: '',
       started: '20th Dec 2025',
       ended: '10th Jan 2026',
@@ -262,7 +260,7 @@ export const projectsData: ProjectsData = {
       links: [
         {
           label: 'Demo',
-          url: 'https://mogger-mog-your-exams.vercel.app/',
+          url: 'https://koneko.smgcat.site',
         },
       ],
     },

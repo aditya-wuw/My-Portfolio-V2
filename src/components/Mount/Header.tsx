@@ -6,13 +6,13 @@ export default function Header() {
 
   return (
     <header
-      className={`select-none p-3 rounded-md relative h-[102%] overflow-hidden ${LightTheme ? 'bg-white text-black border border-black/30 ' : 'bg-black text-white border border-white/30 '} bottom-3 relative`}
+      className={`select-none p-3 rounded-md relative h-[102%] overflow-hidden ${LightTheme ? 'bg-white text-black border border-black/20 ' : 'bg-black text-white border border-white/15 '} bottom-3 relative`}
     >
       <div className="profile_wrapper flex gap-3">
         <div className="relative top-1">
           <div className="w-10 h-10 rounded-full overflow-hidden shadow-2xl">
             <img
-              src="/Images_Optimized/Profile/logo_new.png"
+              src="https://avatars.githubusercontent.com/u/166864125"
               loading="lazy"
               alt="Logo_nullfaced_dev.png"
               className="object-cover object-center mt-1 ml-0.3 scale-120"

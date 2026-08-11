@@ -23,9 +23,9 @@ function RouteComponent() {
     <div className="md:mt-5">
       <Link to="/">
         <button
-          className={`${!LightTheme ? 'bg-white text-black' : 'bg-black text-white'} p-1 px-3 text-xl font-light rounded-xl mb-3 cursor-pointer`}
+          className={`sticky top-2 z-10 drop-shadow-md drop-shadow-black/50 ${!LightTheme ? 'bg-linear-to-r from-white to-white/70 text-black' : 'bg-black/30 text-white'}  backdrop-blur-2xl p-1 px-2 text-xl font-light rounded-xl mb-3 cursor-pointer`}
         >
-          <MdArrowBackIos />
+          <MdArrowBackIos className='pl-1'/>
         </button>
       </Link>
       {projectsData.items.map((item, i) => (

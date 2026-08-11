@@ -29,7 +29,7 @@ const Nav = () => {
 
   return (
     <div
-      className={`sticky max-xl:mx-4 top-2 ${ShowNav ? 'translate-y-0' : '-translate-y-50 h-0 '}  left-2/8 z-50 max-h-20 backdrop-blur-xl p-2 rounded-md ${LightTheme ? 'bg-blue-500/15' : 'bg-gray-200/10'} transition-bg duration-400 ease-in-out max-w-[1400px] 2xl:max-w-[50vw]`}
+      className={`sticky max-xl:mx-4 top-2 border border-gray-300/10 ${ShowNav ? 'translate-y-0' : '-translate-y-50 h-0 '}  left-2/8 z-50 max-h-20 backdrop-blur-xl p-2 rounded-md ${LightTheme ? 'bg-blue-500/15' : 'bg-gray-200/10'} transition-bg duration-400 ease-in-out max-w-[1400px] 2xl:max-w-[50vw]`}
     >
       <div className="flex justify-between items-center mx-2">
         <h1

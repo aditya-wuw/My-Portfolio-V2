@@ -1,12 +1,12 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { Analytics } from '@vercel/analytics/react'
 import { useEffect, useRef, useState } from 'react'
-import { useGSAP } from '@gsap/react'
+// import { useGSAP } from '@gsap/react'
 import { ScrollSmoother, ScrollTrigger } from 'gsap/all'
 import gsap from 'gsap'
 import { createThemeContext } from '@/Context/context'
 import Loader from '@/components/Loader'
 import Nav from '@/components/Nav'
-import { Analytics } from '@vercel/analytics/react'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
@@ -23,23 +23,23 @@ function layOuts() {
     setloading(false)
   }, [])
 
-  useGSAP(
-    () => {
-      if (loading) return
-      const smoother = ScrollSmoother.create({
-        wrapper: '#smooth-wrapper',
-        content: '#smooth-content',
-        smooth: 1.2,
-        effects: true,
-        normalizeScroll: true,
-      })
-      ScrollTrigger.refresh()
-      return () => {
-        smoother.kill()
-      }
-    },
-    { scope: ContainerRef, dependencies: [loading] },
-  )
+  // useGSAP(
+  //   () => {
+  //     if (loading) return
+  //     const smoother = ScrollSmoother.create({
+  //       wrapper: '#smooth-wrapper',
+  //       content: '#smooth-content',
+  //       smooth: 1.2,
+  //       effects: true,
+  //       normalizeScroll: true,
+  //     })
+  //     ScrollTrigger.refresh()
+  //     return () => {
+  //       smoother.kill()
+  //     }
+  //   },
+  //   { scope: ContainerRef, dependencies: [loading] },
+  // )
 
   if (loading) {
     return (

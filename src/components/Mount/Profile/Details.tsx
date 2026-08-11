@@ -15,7 +15,7 @@ const Details = React.memo(() => {
   const { LightTheme } = createThemeContext()
   return (
     <div
-      className={`select-none rounded-sm h-[102%] p-3 relative overflow-hidden ${LightTheme ? 'bg-white text-black border border-black/30' : 'bg-black text-white border border-white/30'} bottom-3 relative`}
+      className={`select-none rounded-sm h-[102%] p-3 relative overflow-hidden ${LightTheme ? 'bg-white text-black border border-black/20' : 'bg-black text-white border border-white/15'} bottom-3 relative`}
     >
       <div className="absolute w-full h-full group">
         <span
@@ -69,7 +69,7 @@ const Details = React.memo(() => {
       <div className="mx-1">
         <section className="flex gap-1 items-center">
           <FaRunning className="w-4 h-4 hover:scale-115 scale-100 cursor-pointer" />
-          <h1>Going to - College</h1>
+          <h1>College - Final year</h1>
           <div>
             <Suspense>
               <Live status={details.college} />

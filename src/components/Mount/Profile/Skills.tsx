@@ -6,7 +6,7 @@ const Skills = React.memo(() => {
   const { LightTheme } = createThemeContext()
   return (
     <div
-      className={`rounded-xl select-none relative z-20 ${LightTheme ? 'bg-white text-black border border-black/30' : 'bg-black text-white border border-white/30'} w-full h-full`}
+      className={`rounded-xl select-none relative z-20 ${LightTheme ? 'bg-white text-black border border-black/20' : 'bg-black text-white border border-white/15'} w-full h-full`}
     >
       <div className="absolute overflow-hidden w-full h-full p-3 group">
         <span

@@ -163,6 +163,7 @@ const MusicEmbed = React.memo(() => {
 
   return (
     <div
+      id='Music'
       className={`w-full h-full select-none relative rounded-2xl  ${
         MusicData[last].bg === 'red'
           ? 'bg-red-500'
