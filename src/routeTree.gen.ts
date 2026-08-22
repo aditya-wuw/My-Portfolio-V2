@@ -9,29 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsPidRouteImport } from './routes/projects/$pid'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as NotesPageRouteImport } from './routes/Notes/$page'
+import { Route as ProjectsPidRouteImport } from './routes/projects/$pid'
 
-const SplatRoute = SplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsPidRoute = ProjectsPidRouteImport.update({
-  id: '/projects/$pid',
-  path: '/projects/$pid',
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotesPageRoute = NotesPageRouteImport.update({
   id: '/Notes/$page',
   path: '/Notes/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsPidRoute = ProjectsPidRouteImport.update({
+  id: '/projects/$pid',
+  path: '/projects/$pid',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -71,13 +71,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/$': {
-      id: '/$'
-      path: '/$'
-      fullPath: '/$'
-      preLoaderRoute: typeof SplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -85,11 +78,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/$pid': {
-      id: '/projects/$pid'
-      path: '/projects/$pid'
-      fullPath: '/projects/$pid'
-      preLoaderRoute: typeof ProjectsPidRouteImport
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/Notes/$page': {
@@ -97,6 +90,13 @@ declare module '@tanstack/react-router' {
       path: '/Notes/$page'
       fullPath: '/Notes/$page'
       preLoaderRoute: typeof NotesPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$pid': {
+      id: '/projects/$pid'
+      path: '/projects/$pid'
+      fullPath: '/projects/$pid'
+      preLoaderRoute: typeof ProjectsPidRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
