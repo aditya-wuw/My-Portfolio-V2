@@ -1,19 +1,19 @@
 import React from "react";
 import { motion } from "motion/react";
-import { FaExternalLinkAlt, FaPause } from "react-icons/fa";
+import { FaPause } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa6";
 import { RiArrowUpWideFill } from "react-icons/ri";
-import Music from "@/data/music.json";
-import { useAppContext } from "@/Context/context";
+import { useMusicContext } from "@/Context/MusicContext";
 
 const Playlist = () => {
-  const { showPlaylist, setShowPlaylist, musicPlayer, trackList } =
-    useAppContext();
+  const { showPlaylist, setShowPlaylist, HandlePlay, TrackPlayList } =
+    useMusicContext();
+
   return (
     <motion.div
       className={`
           text-black bg-white border-black/30 border-[0.2px]
-          dark:text-white dark:bg-black dark:border-white/30 dark:border-[0.2px]
+          dark:text-white dark:bg-black dark:border-white/15 dark:border-[0.2px]
       } w-full rounded-xl overflow-hidden select-none`}
       initial={false} // important so it doesn’t animate on first render
       animate={{
@@ -36,7 +36,7 @@ const Playlist = () => {
         </h1>
       </div>
       <div className="lg:p-1 lg:pb-3 lg:px-3 p-4 overflow-y-auto max-h-[50vh] scroll_bar_ scroll_bar_thumb group cursor-pointer">
-        {Music.map((track, i: number) => (
+        {TrackPlayList.map((track, i: number) => (
           <motion.section
             className={`flex gap-3 items-center relative z-20 group rounded-xl hover:bg-gray-800/20 dark:hover:bg-white/20 py-3 xl:px-5 px-1 justify-between`}
             key={i}
@@ -46,10 +46,10 @@ const Playlist = () => {
             <div className="flex items-center gap-3">
               <span
                 onClick={() => {
-                  musicPlayer.handleNext("play", i);
+                  HandlePlay(track.id);
                 }}
               >
-                {!trackList[i].isplaying ? (
+                {!TrackPlayList[i].isplaying ? (
                   <FaPlay className="hover:scale-125 transtion duration-300 ease-in-out" />
                 ) : (
                   <FaPause className="hover:scale-125 transtion duration-300 ease-in-out" />
@@ -57,13 +57,6 @@ const Playlist = () => {
               </span>
               <h1>{track.Title}</h1>
             </div>
-            {track.link && (
-              <div>
-                <a href={track.link} target="_blank">
-                  <FaExternalLinkAlt className="cursor-pointer scale-90 hover:scale-125 transtion duration-300 ease-in-out" />
-                </a>
-              </div>
-            )}
           </motion.section>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import { CiWarning } from "react-icons/ci";
-import { useAppContext } from "@/Context/context";
+import { useAppContext } from "@/Context/AppContext";
 
 const Service = () => {
   const { LightTheme } = useAppContext();

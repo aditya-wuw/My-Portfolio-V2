@@ -2,21 +2,18 @@ import { TbPointFilled } from "react-icons/tb";
 import { BsClipboard2Check } from "react-icons/bs";
 import { CgCalendar } from "react-icons/cg";
 import { Notes_blog } from "@/data/blogdata";
-import { useAppContext } from "@/Context/context";
 import { useRouter } from "next/navigation";
 
 const Notes = () => {
-  
-  const { LightTheme } = useAppContext();
   const Router = useRouter();
   const hadnleclick = (e: string) => {
     Router.push(`/Notes/${e}`);
   };
-  
+
   return (
     <div
       id="blogs"
-      className={`p-3 select-none ${LightTheme ? "bg-white text-black  rounded-xl" : "bg-black text-white rounded-xl"}`}
+      className={`p-3 select-none bg-white text-black dark:bg-black dark:text-white`}
     >
       <div className="mx-2">
         <h1 className="text-xl font-bold flex gap-1 items-center">
@@ -34,7 +31,7 @@ const Notes = () => {
                   <TbPointFilled className="mt-1" />
                 </div>
                 <section
-                  className={`mx-2 px-4 py-2 rounded-2xl cursor-pointer ${LightTheme ? "hover:bg-blue-200" : "hover:bg-blue-500"}`}
+                  className={`mx-2 px-4 py-2 rounded-2xl cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-500`}
                   onClick={() => hadnleclick(item.link)}
                 >
                   <h1 className="md:text-sm text-[14px] font-medium">

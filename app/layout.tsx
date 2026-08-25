@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ContextProviderWrap } from "@/Context/context";
+import { ContextProviderWrap } from "@/Context/AppContext";
 import Nav from "@/Components/Nav";
 import { ThemeProvider } from "next-themes";
+import { MusicContextProvider } from "@/Context/MusicContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +31,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full">
         <ContextProviderWrap>
-          <ThemeProvider attribute={"class"} defaultTheme="system">
-            <div className="w-full bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
-              <div className="max-w-4xl mx-auto px-4 pb-4 ">
-                <Nav />
-                {children}
+          <MusicContextProvider>
+            <ThemeProvider attribute={"class"} defaultTheme="system">
+              <div className="w-full bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
+                <div className="max-w-4xl mx-auto px-4 pb-4 ">
+                  <Nav />
+                  {children}
+                </div>
               </div>
-            </div>
-          </ThemeProvider>
+            </ThemeProvider>
+          </MusicContextProvider>
         </ContextProviderWrap>
       </body>
     </html>

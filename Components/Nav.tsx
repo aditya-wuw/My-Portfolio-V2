@@ -2,7 +2,7 @@
 import { MdLightMode } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { GoProjectSymlink } from "react-icons/go";
-import { useAppContext } from "@/Context/context";
+import { useAppContext } from "@/Context/AppContext";
 import { scrollToSection } from "@/utils/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -27,7 +27,7 @@ const Nav = () => {
 
   return (
     <div
-      className={`sticky max-xl:mx-4 top-2 border border-gray-300/10 ${ShowNav ? "translate-y-0" : "-translate-y-50 h-0 "}  left-2/8 z-50 max-h-20 backdrop-blur-xl p-2 rounded-md bg-blue-500/15  dark:bg-gray-200/10 transition-bg duration-400 ease-in-out max-w-350 2xl:max-w-[50vw]`}
+      className={`sticky top-2 border border-gray-300/10 ${ShowNav ? "translate-y-0" : "-translate-y-50 h-0 "}  left-2/8 z-50 max-h-20 backdrop-blur-xl p-2 rounded-md bg-blue-500/15  dark:bg-gray-200/10 transition-bg duration-400 ease-in-out max-w-350 2xl:max-w-[50vw]`}
     >
       <div className="flex justify-between items-center mx-2">
         <h1

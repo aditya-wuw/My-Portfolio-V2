@@ -7,93 +7,46 @@ import { PiSpeakerXFill } from "react-icons/pi";
 import { TiArrowLoop } from "react-icons/ti";
 import { RiPlayListFill } from "react-icons/ri";
 import MusicData from "@/data/music.json";
-import { useAppContext } from "@/Context/context";
+import { useAppContext } from "@/Context/AppContext";
+import { useMusicContext } from "@/Context/MusicContext";
 
-const MusicEmbed = () => {
+/**
+ * Utility Functions
+ */
+const FormateTime = (val: number): string => {
+  if (isNaN(val)) return "00:00";
+  const minute = Math.floor(val / 60);
+  const seconds = Math.floor(val % 60);
+  return `${String(minute).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+};
+
+const MusicPlayer = () => {
   const {
-    musicRef,
-    rotateControlRef,
-    isplaying,
-    setplaying,
-    ShowPlaylist,
+    MusicRef,
+    rotateDiskRef,
+    CurrentTrack,
+    showPlaylist,
     setShowPlaylist,
-    Last,
-    musicPlayer,
-  } = useAppContext();
-  
-  const [volume_Value, setVolumeValue] = useState(20);
+    HandlePlay,
+    HandleNavigation,
+    isPlaying,
+    setisPlaying,
+  } = useMusicContext();
+
+  const [Volume, setVolume] = useState(20);
   const [duration, setduration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const rotate = useMotionValue(0);
   const [ismute, setmute] = useState(false);
   const [ShowVolume, setShowVolume] = useState(false);
   const [Timeline, setTimeline] = useState<number | undefined>(0);
   const [isDraging, setDraging] = useState(false);
   const [AutoPlayON, setAutoPlayON] = useState(true);
+
+  /**
+   * UI elements
+   */
+  const rotate = useMotionValue(0);
   const [isBGLoadedHUH, setisBGLoadedHUH] = useState(false);
-
-  useEffect(() => {
-    const audio = new Audio(MusicData[last].music_src);
-    musicRef.current = audio;
-    return () => {
-      musicRef.current.pause();
-      musicRef.current.currentTime = 0;
-      (musicRef.current = null), setplaying(false);
-    };
-  }, []);
-
-  useEffect(() => {
-    setisBGLoadedHUH(false);
-  }, [last]);
-
-  useEffect(() => {
-    const audio = Music_ref.current;
-    if (!audio) return;
-    const CurrentDurationUpdate = () => setduration(audio.duration);
-    const CurrentTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const ended = () => {
-      if (isplaying && AutoPlayON) {
-        MusicPlayer.handle_next("forward");
-      } else {
-        Rotate_control_ref.current?.pause();
-        setplaying(false);
-      }
-    };
-    audio.addEventListener("loadedmetadata", CurrentDurationUpdate);
-    audio.addEventListener("timeupdate", CurrentTimeUpdate);
-    audio.addEventListener("ended", ended);
-    return () => {
-      audio.removeEventListener("loadedmetadata", CurrentDurationUpdate);
-      audio.removeEventListener("timeupdate", CurrentTimeUpdate);
-      audio.removeEventListener("ended", ended);
-    };
-  }, [currentTime, duration, last, isplaying]);
-
-  useEffect(() => {
-    const timeline: number | undefined =
-      currentTime === 0 ? 0 : (currentTime / duration) * 100;
-    setTimeline(timeline);
-  }, [currentTime]);
-
-  useEffect(() => {
-    const check_window = () => {
-      if (window.innerWidth <= 1024) {
-        setShowVolume(false);
-      }
-    };
-    check_window();
-    window.addEventListener("resize", check_window);
-    const audio = Music_ref.current;
-    if (!audio) return;
-    if (volume_Value == 0) {
-      audio.muted = true;
-      setmute(true);
-    } else {
-      setmute(false);
-      audio.muted = false;
-      audio.volume = volume_Value / 100;
-    }
-  }, [Music_ref, volume_Value]);
 
   useEffect(() => {
     const Rotate_control = animate(rotate, [0, 360], {
@@ -102,50 +55,26 @@ const MusicEmbed = () => {
       ease: "linear",
     });
     Rotate_control.pause();
-    Rotate_control_ref.current = Rotate_control;
-  }, [Rotate_control_ref]);
+    rotateDiskRef.current = Rotate_control;
+  }, [rotateDiskRef, rotate]);
 
-  function handleMute() {
-    setmute((prevMute) => {
-      const newMute = !prevMute;
-      if (Music_ref.current) {
-        if (newMute) {
-          localStorage.setItem("prev_vol", String(volume_Value) || "");
-          setVolumeValue(0);
-        } else {
-          const prev_vol: number =
-            Number(localStorage.getItem("prev_vol")) || 0.5;
-          setVolumeValue(prev_vol);
-        }
-      }
-      return newMute;
-    });
-  }
+  const HandleMute = () => {
+    console.warn("Muted");
+  };
 
-  function FormateTime(val: number): string {
-    if (isNaN(val)) return "00:00";
-    const minute = Math.floor(val / 60);
-    const seconds = Math.floor(val % 60);
-    return `${String(minute).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  }
-
-  function handleseek(Target: number) {
-    const audio = Music_ref.current;
+  function HandleSeek(Target: number) {
+    const audio = MusicRef.current;
     if (!audio) return;
-    if (isplaying) {
+    if (isPlaying) {
       audio.pause();
-      Rotate_control_ref.current?.pause();
+      rotateDiskRef.current?.pause();
       const newTime = duration * (Target / 100);
       audio.currentTime = newTime;
-      if (newTime >= duration - 0.2) {
-        setplaying(false);
-      }
 
       if (!isDraging) {
         setTimeout(() => {
           audio.play().catch((e: Error) => console.warn(e));
-          Rotate_control_ref.current?.play();
-          setplaying(true);
+          rotateDiskRef.current?.play();
         }, 100);
       }
     } else {
@@ -154,8 +83,9 @@ const MusicEmbed = () => {
   }
 
   const Volume_bar: React.CSSProperties = {
-    background: `linear-gradient(to right, white ${volume_Value}%,#C9C9C9 10%)`,
+    background: `linear-gradient(to right, white ${Volume}%,#C9C9C9 10%)`,
   };
+
   const seek_bar: React.CSSProperties = {
     background: `linear-gradient(to right, skyblue ${Timeline && Timeline + 1}%,#C9C9C9 5%)`,
   };
@@ -166,21 +96,12 @@ const MusicEmbed = () => {
   return (
     <div
       id="Music"
-      className={`w-full h-full select-none relative rounded-2xl  ${
-        MusicData[last].bg === "red"
-          ? "bg-red-500"
-          : MusicData[last].bg === "black"
-            ? "bg-black"
-            : MusicData[last].bg === "cyan"
-              ? "bg-cyan-500"
-              : MusicData[last].bg === "green"
-                ? "bg-green-500"
-                : MusicData[last].bg === "DarkBlue"
-                  ? "bg-blue-800"
-                  : MusicData[last].bg === "pink"
-                    ? "bg-pink-500"
-                    : "bg-blue-500/80"
-      } transition duration-200 ease-in-out`}
+      className={`w-full h-full select-none relative rounded-2xl bg-blue-500
+        ${
+          // add conditional background change
+          ""
+        }
+        transition duration-200 ease-in-out`}
     >
       <div className="w-full h-full p-2 overflow-hidden relative rounded-2xl">
         <motion.img
@@ -189,11 +110,11 @@ const MusicEmbed = () => {
               setisBGLoadedHUH(true);
             }, 30);
           }}
-          src={MusicData[last].banner}
+          src={CurrentTrack.banner}
           alt="bg-media-player"
           draggable="false"
           className={`bg_cover object-cover select-none max-sm:scale-110 absolute 2xl:-top-12  right-0 mask-r-from-50% z-1 mask-l-from-70%`}
-          key={last}
+          key={CurrentTrack.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: isBGLoadedHUH ? 1 : 0 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -214,7 +135,7 @@ const MusicEmbed = () => {
             <button
               aria-label="volume"
               className="volume"
-              onClick={() => handleMute()}
+              onClick={() => HandleMute()}
             >
               {ismute ? (
                 <PiSpeakerXFill className="xl:scale-160 max-xl:scale-120 hover:scale-170 transition duration-200 ease-in-out cursor-pointer text-white" />
@@ -231,8 +152,8 @@ const MusicEmbed = () => {
                 type="range"
                 min={0}
                 max={100}
-                value={volume_Value}
-                onChange={(e) => setVolumeValue(Number(e.target.value))}
+                value={Volume}
+                onChange={(e) => setVolume(Number(e.target.value))}
                 className={`appearance-none accent-white flex h-1 rounded-full outline-none cursor-pointer w-20 max-sm:w-17 ${ShowVolume ? "opacity-100" : "opacity-0"} transition-opacity duration-200 ease-in-out`}
                 style={Volume_bar}
               />
@@ -243,7 +164,7 @@ const MusicEmbed = () => {
               <motion.div className="w-52 overflow-hidden">
                 <motion.h2
                   className="whitespace-nowrap xl:text-lg text-md -translate-x-5 font-medium"
-                  key={MusicData[last].Title}
+                  key={CurrentTrack.Title}
                   initial={{ x: 50 }}
                   animate={{ x: -50 }}
                   transition={{
@@ -254,7 +175,7 @@ const MusicEmbed = () => {
                     repeatDelay: 1,
                   }}
                 >
-                  {MusicData[last].Title}
+                  {CurrentTrack.Title}
                 </motion.h2>
               </motion.div>
               <h1 className="xl:text-md text-sm">
@@ -275,7 +196,7 @@ const MusicEmbed = () => {
                 <section className="absolute -bottom-0.5 left-10 z-1">
                   <span
                     className="text-white cursor-pointer"
-                    onClick={() => setShowPlaylist(!ShowPlaylist)}
+                    onClick={() => setShowPlaylist(!showPlaylist)}
                   >
                     <RiPlayListFill className="max-lg:scale-100 scale-120 hover:scale-150 transtion duration-300 ease-in-out" />
                   </span>
@@ -294,7 +215,7 @@ const MusicEmbed = () => {
                   type="range"
                   name="timeline"
                   value={Timeline}
-                  onChange={(e) => handleseek(parseFloat(e.target.value))}
+                  onChange={(e) => HandleSeek(parseFloat(e.target.value))}
                   min={0}
                   max={100}
                   step={0.1}
@@ -311,19 +232,19 @@ const MusicEmbed = () => {
             >
               <li
                 className={`${player_control_style}`}
-                onClick={() => MusicPlayer.handle_next("back")}
+                onClick={() => HandleNavigation("Backwards")}
               >
                 <FaBackward />
               </li>
               <li
                 className={`${player_control_style}`}
-                onClick={() => MusicPlayer.handlePlaying()}
+                onClick={() => HandlePlay()}
               >
-                {isplaying ? <FaPause /> : <FaPlay />}
+                {isPlaying ? <FaPause /> : <FaPlay />}
               </li>
               <li
                 className={`${player_control_style}`}
-                onClick={() => MusicPlayer.handle_next("forward")}
+                onClick={() => HandleNavigation("Forward")}
               >
                 <FaForward />
               </li>
@@ -335,4 +256,4 @@ const MusicEmbed = () => {
   );
 };
 
-export default MusicEmbed;
+export default MusicPlayer;

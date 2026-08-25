@@ -4,8 +4,6 @@ import { TbSourceCode } from "react-icons/tb";
 import type { Variants } from "motion/react";
 import type { JSX } from "react";
 import { assets } from "@/Assets/assets";
-import { useAppContext } from "@/Context/context";
-
 const { ht } = assets;
 
 interface props {
@@ -19,7 +17,6 @@ interface props {
 
 const CallingCard = ({ User_color, Text_content }: props) => {
   const [flipped, setflipped] = useState(false);
-  const { LightTheme } = useAppContext();
   const fadeAnimation: Variants = {
     fade: (flipped: boolean) => ({
       opacity: flipped ? 1 : 0,
@@ -113,7 +110,7 @@ const CallingCard = ({ User_color, Text_content }: props) => {
           >
             <TbSourceCode size={18} color={"lightblue"} />
             <span
-              className={`font-sans font-medium absolute group-hover/source:opacity-100 opacity-0 duration-200 ease-in-out p-2 rounded-2xl -top-10 ${!LightTheme ? "bg-white text-black" : "bg-black text-white"}`}
+              className={`font-sans font-medium absolute group-hover/source:opacity-100 opacity-0 duration-200 ease-in-out p-2 rounded-2xl -top-10 dark:bg-white dark:text-black bg-black text-white`}
             >
               View source code
             </span>

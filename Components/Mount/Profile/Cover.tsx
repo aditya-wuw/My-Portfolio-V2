@@ -1,6 +1,6 @@
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef } from "react";
-import { useAppContext } from "@/Context/context";
+import { useAppContext } from "@/Context/AppContext";
 // import video from '/Video_bg/_fuji_loop.mp4'
 
 const video =

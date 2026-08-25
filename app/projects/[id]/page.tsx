@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { MdArrowBackIos } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import { projectsData } from "@/data/data";
-import { useAppContext } from "@/Context/context";
+import { useAppContext } from "@/Context/AppContext";
 import ProjectPageDetails from "@/Components/Mount/ProjectPageDetails";
 import Link from "next/link";
 import Image from "next/image";
