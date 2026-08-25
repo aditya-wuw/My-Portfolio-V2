@@ -1,0 +1,9 @@
+# .vercelignore
+tests/
+__tests__/
+docs/
+*.test.ts
+*.spec.tsx
+mock-data/
+README.md
+Components/Mount/Profile/MusicEmbed.tsx
