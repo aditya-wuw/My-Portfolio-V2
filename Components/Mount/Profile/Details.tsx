@@ -12,15 +12,15 @@ import { RiReactjsLine } from "react-icons/ri";
 import { TbCertificate } from "react-icons/tb";
 import { FaLocationPin } from "react-icons/fa6";
 import { contactData, details } from "@/data/data";
-import { createThemeContext } from "@/Context/context";
+// import { useAppContext } from "@/Context/context";
 
 const Live = React.lazy(() => import("@/Components/Animated/Live"));
 
 const Details = () => {
-  const { LightTheme } = createThemeContext();
+  // const { LightTheme } = useAppContext();
   return (
     <div
-      className={`select-none rounded-sm h-[102%] p-3 relative overflow-hidden ${LightTheme ? "bg-white text-black border border-black/20" : "bg-black text-white border border-white/15"} bottom-3 relative`}
+      className={`relative select-none rounded-sm h-[102%] p-3 overflow-hidden bg-white text-black border border-black/20 dark:bg-black dark:text-white dark:border dark:border-white/15 bottom-3`}
     >
       <div className="absolute w-full h-full group">
         <span
@@ -105,7 +105,7 @@ const Details = () => {
             >
               <span>
                 <span
-                  className={`absolute pointer-events-none w-15 text-xs bottom-5 -left-5 z-1 p-1 opacity-0 group-hover:opacity-100 rounded-xl text-center ${LightTheme ? "bg-black text-white" : "bg-white text-black"}`}
+                  className={`absolute pointer-events-none w-15 text-xs bottom-5 -left-5 z-1 p-1 opacity-0 group-hover:opacity-100 rounded-xl text-center bg-black text-white dark:bg-white dark:text-black"}`}
                 >
                   {item.label}
                 </span>

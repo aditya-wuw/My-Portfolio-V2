@@ -8,8 +8,6 @@ export interface Track {
 }
 
 export interface ContextType {
-  LightTheme: boolean;
-  setTheme: React.Dispatch<React.SetStateAction<boolean>>;
   musicRef: React.RefObject<HTMLAudioElement | null>;
   rotateControlRef: React.RefObject<AnimationPlaybackControls | null>;
   isPlaying: boolean;

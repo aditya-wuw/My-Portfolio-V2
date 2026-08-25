@@ -7,19 +7,20 @@ import { PiSpeakerXFill } from "react-icons/pi";
 import { TiArrowLoop } from "react-icons/ti";
 import { RiPlayListFill } from "react-icons/ri";
 import MusicData from "@/data/music.json";
-import { createThemeContext } from "@/Context/context";
+import { useAppContext } from "@/Context/context";
 
 const MusicEmbed = () => {
   const {
-    Music_ref,
-    Rotate_control_ref,
+    musicRef,
+    rotateControlRef,
     isplaying,
     setplaying,
     ShowPlaylist,
     setShowPlaylist,
-    last,
-    MusicPlayer,
-  } = createThemeContext();
+    Last,
+    musicPlayer,
+  } = useAppContext();
+  
   const [volume_Value, setVolumeValue] = useState(20);
   const [duration, setduration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -33,13 +34,14 @@ const MusicEmbed = () => {
 
   useEffect(() => {
     const audio = new Audio(MusicData[last].music_src);
-    Music_ref.current = audio;
+    musicRef.current = audio;
     return () => {
-      Music_ref.current.pause();
-      Music_ref.current.currentTime = 0;
-      (Music_ref.current = null), setplaying(false);
+      musicRef.current.pause();
+      musicRef.current.currentTime = 0;
+      (musicRef.current = null), setplaying(false);
     };
   }, []);
+
   useEffect(() => {
     setisBGLoadedHUH(false);
   }, [last]);
@@ -299,7 +301,7 @@ const MusicEmbed = () => {
                   onInput={() => setDraging(true)}
                   onMouseUp={() => setDraging(false)}
                   onTouchEnd={() => setDraging(false)}
-                  className={`Seek_help w-[90%] appearance-none cursor-pointer accent-white hover:accent-gray-300 rounded-full ${isDraging ? "h-2" : "h-[3px]"} transition-h duration-200 ease-in-out`}
+                  className={`Seek_help w-[90%] appearance-none cursor-pointer accent-white hover:accent-gray-300 rounded-full ${isDraging ? "h-2" : "h-0.75"} transition-h duration-200 ease-in-out`}
                   style={seek_bar}
                 />
               </label>

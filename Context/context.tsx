@@ -19,14 +19,6 @@ export const ContextProviderWrap = ({
 }: {
   children: React.ReactNode;
 }) => {
-  // 2. Lazy initializer avoids cascading renders & reads storage cleanly on client
-  const [LightTheme, setTheme] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "Light";
-    }
-    return true;
-  });
-
   const musicRef = useRef<HTMLAudioElement | null>(null);
   const rotateControlRef = useRef<AnimationPlaybackControls | null>(null);
 
@@ -99,8 +91,6 @@ export const ContextProviderWrap = ({
   // 4. Memoize context value to avoid re-rendering entire app tree
   const contextValue = useMemo<ContextType>(
     () => ({
-      LightTheme,
-      setTheme,
       musicRef,
       rotateControlRef,
       isPlaying,
@@ -118,7 +108,6 @@ export const ContextProviderWrap = ({
       },
     }),
     [
-      LightTheme,
       isPlaying,
       inView,
       showPlaylist,

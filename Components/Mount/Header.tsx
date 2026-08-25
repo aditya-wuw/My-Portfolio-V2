@@ -1,13 +1,10 @@
-import { useAppContext } from "@/Context/context";
 import { heroData } from "@/data/data";
 import Image from "next/image";
 
 export default function Header() {
-  const { LightTheme } = useAppContext();
-
   return (
     <header
-      className={`select-none p-3 rounded-md relative h-[102%] overflow-hidden ${LightTheme ? "bg-white text-black border border-black/20 " : "bg-black text-white border border-white/15 "} bottom-3 relative`}
+      className={`select-none p-3 rounded-md relative h-[102%] overflow-hidden bg-white text-black border border-black/20  dark:bg-black dark:text-white dark:border dark:border-white/15 "} bottom-3 relative`}
     >
       <div className="profile_wrapper flex gap-3">
         <div className="relative top-1">

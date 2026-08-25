@@ -1,12 +1,9 @@
-import React from "react";
-import { createThemeContext } from "@/Context/context";
 import { skillsData } from "@/data/data";
 
 const Skills = () => {
-  const { LightTheme } = createThemeContext();
   return (
     <div
-      className={`rounded-xl select-none relative z-20 ${LightTheme ? "bg-white text-black border border-black/20" : "bg-black text-white border border-white/15"} w-full h-full`}
+      className={`rounded-xl select-none relative z-20 bg-white text-black border border-black/20  dark:bg-black dark:text-white dark:border dark:border-white/15 w-full h-full`}
     >
       <div className="absolute overflow-hidden w-full h-full p-3 group">
         <span
@@ -23,7 +20,7 @@ const Skills = () => {
             className="relative group  hover:scale-105 scale-100 cursor-pointer"
           >
             <span
-              className={`absolute -top-10 left-1/2 -translate-x-1/2  opacity-0 group-hover:opacity-100 p-2 text-xs whitespace-nowrap pointer-events-none rounded-2xl ${!LightTheme ? "bg-white text-black" : "bg-black text-white"}`}
+              className={`absolute -top-10 left-1/2 -translate-x-1/2  opacity-0 group-hover:opacity-100 p-2 text-xs whitespace-nowrap pointer-events-none rounded-2xl bg-white text-black dark:bg-black dark:text-white`}
             >
               {item.Name}
             </span>

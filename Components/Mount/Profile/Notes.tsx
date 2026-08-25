@@ -2,12 +2,12 @@ import { TbPointFilled } from "react-icons/tb";
 import { BsClipboard2Check } from "react-icons/bs";
 import { CgCalendar } from "react-icons/cg";
 import { Notes_blog } from "@/data/blogdata";
-import { createThemeContext } from "@/Context/context";
+import { useAppContext } from "@/Context/context";
 import { useRouter } from "next/navigation";
 
 const Notes = () => {
   
-  const { LightTheme } = createThemeContext();
+  const { LightTheme } = useAppContext();
   const Router = useRouter();
   const hadnleclick = (e: string) => {
     Router.push(`/Notes/${e}`);

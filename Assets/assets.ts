@@ -8,7 +8,7 @@ import ow from "./ow.png"
 import smgcat from "./smgcat.png"
 import copychan from "./copychan.png"
 import Kokeno from "./Koneko.png"
-import msplayer from "/Images_Optimized/Cover/05.jpg"
+// import msplayer from "/Images_Optimized/Cover/05.jpg"
 
 // demo videos
 // import copychandemo from "./demos/Copychandemo.mp4"
@@ -26,7 +26,8 @@ export const assets = {
   ht,
   ow,
   smgcat,
-  copychan, Kokeno, msplayer
+  copychan, Kokeno,
+  // msplayer
 } as const
 
 

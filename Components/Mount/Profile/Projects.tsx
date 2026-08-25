@@ -1,14 +1,12 @@
 import { MdGridView } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
-import { createThemeContext } from "@/Context/context";
 import { projectsData } from "@/data/data";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Projects = () => {
-  const { LightTheme } = createThemeContext();
   const Route = useRouter();
 
   function Navigate(link: string) {
@@ -16,25 +14,7 @@ const Projects = () => {
   }
 
   const [islist, setislist] = useState(false);
-  const [disabled, setdisabled] = useState(false);
   const [duration, setduration] = useState(0);
-
-  // const check_WindowSize = () => {
-  //   const isTabletOrDesktop = window.innerWidth > 1024;
-  //   setislist(isTabletOrDesktop);
-  //   setdisabled(!isTabletOrDesktop);
-  //   if (disabled) {
-  //     setduration(1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   // check_WindowSize();
-  //   window.addEventListener("resize", check_WindowSize);
-  //   return () => {
-  //     window.removeEventListener("resize", check_WindowSize);
-  //   };
-  // }, []);
 
   const handleClick = () => {
     setduration(0.13);
@@ -42,11 +22,10 @@ const Projects = () => {
   };
 
   return (
-    <div
-      id="Projects"
-      className={`select-none  ${LightTheme ? "bg-linear-to-l from-neutral-500 text-black " : "bg-linear-to-r from-neutral-500 text-white"}`}
-    >
-      <div className={`p-2 ${LightTheme ? "bg-white" : "bg-black text-white"}`}>
+    <div id="Projects">
+      <div
+        className={`p-2 select-none rounded-md bg-white text-black dark:bg-black dark:text-white`}
+      >
         <div>
           <div className="flex justify-between w-full mx-1 px-2">
             <span>
@@ -56,7 +35,7 @@ const Projects = () => {
               </p>
             </span>
             <button
-              className={`${disabled && "hidden"} scale-115 cursor-pointer hover:scale-120 transition-scale duration-200 ease-in-out`}
+              className={`lg:block hidden scale-115 cursor-pointer hover:scale-120 transition-scale duration-200 ease-in-out`}
               onClick={handleClick}
             >
               {islist ? <MdGridView /> : <FaList />}
@@ -64,11 +43,11 @@ const Projects = () => {
           </div>
         </div>
         <section
-          className={`project_section mt-4 gap-3 grid place-items-center h-full ${!islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
+          className={`project_section mt-4 gap-3 grid place-items-center h-full ${islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
         >
           {projectsData.items.map((item, i) => (
             <motion.div
-              className={`project_comp relative ${LightTheme ? "bg-white" : "bg-black"} min-h-55 max-h-60 w-full h-55  overflow-hidden rounded-xl`}
+              className={`project_comp relative bg-white dark:bg-black min-h-55 max-h-60 w-full h-55  overflow-hidden rounded-xl`}
               key={i}
               layout
               whileInView={{
@@ -90,7 +69,7 @@ const Projects = () => {
                     <Image
                       src={item.image}
                       alt={item.title}
-                      loading="lazy"
+                      loading="eager"
                       className="object-cover object-center cursor-pointer hover:scale-105 scale-100 transition duration-300 ease-in-out w-full h-full"
                     />
                   )}
@@ -110,7 +89,7 @@ const Projects = () => {
                   )}
                 </h1>
                 <span>{item.description}</span>
-                {!islist && !disabled && (
+                {islist  && (
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

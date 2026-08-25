@@ -1,40 +1,39 @@
-import { useState } from 'react'
-import { motion } from 'motion/react'
-import { TbSourceCode } from 'react-icons/tb'
-import type { Variants } from 'motion/react'
-import type { JSX } from 'react'
-import { assets } from '@/Assets/assets'
-import { createThemeContext } from '@/Context/context'
+import { useState } from "react";
+import { motion } from "motion/react";
+import { TbSourceCode } from "react-icons/tb";
+import type { Variants } from "motion/react";
+import type { JSX } from "react";
+import { assets } from "@/Assets/assets";
+import { useAppContext } from "@/Context/context";
 
-const { ht } = assets
+const { ht } = assets;
 
 interface props {
-  User_color: string
+  User_color: string;
   Text_content: {
-    title: string
-    content: string
-    by: string
-  }
+    title: string;
+    content: string;
+    by: string;
+  };
 }
 
 const CallingCard = ({ User_color, Text_content }: props) => {
-  const [flipped, setflipped] = useState(false)
-  const { LightTheme } = createThemeContext()
+  const [flipped, setflipped] = useState(false);
+  const { LightTheme } = useAppContext();
   const fadeAnimation: Variants = {
-    
     fade: (flipped: boolean) => ({
       opacity: flipped ? 1 : 0,
-      transition: { duration: 0.2, ease: 'easeInOut' },
+      transition: { duration: 0.2, ease: "easeInOut" },
     }),
-  }
+  };
 
   const hueCycle: Variants = {
     cycle: {
       filter: [
-        'hue-rotate(190deg)',
-        'hue-rotate(270deg)',
-        'hue-rotate(200deg)',
-        'hue-rotate(190deg)', // Return to start for seamless loop
+        "hue-rotate(190deg)",
+        "hue-rotate(270deg)",
+        "hue-rotate(200deg)",
+        "hue-rotate(190deg)", // Return to start for seamless loop
       ],
 
       x: [1, -1, 1, 0],
@@ -44,35 +43,35 @@ const CallingCard = ({ User_color, Text_content }: props) => {
           duration: 0.6,
           repeat: Infinity,
         },
-        x: { duration: 0.2, repeat: Infinity, ease: 'linear' },
-        y: { duration: 0.2, repeat: Infinity, ease: 'linear' },
+        x: { duration: 0.2, repeat: Infinity, ease: "linear" },
+        y: { duration: 0.2, repeat: Infinity, ease: "linear" },
       },
     },
-  }
+  };
 
   const sizes: Array<string> = [
-    'lg:w-190 lg:h-190 w-85 h-85',
-    'lg:w-170 lg:h-170 w-75 h-75',
-    'lg:w-150 lg:h-150 w-65 h-65',
-    'lg:w-130 lg:h-130 w-55 h-50',
-    'lg:w-100 lg:h-100 w-45 h-45',
-    'lg:w-80 lg:h-80 w-30 h-30',
-  ]
+    "lg:w-190 lg:h-190 w-85 h-85",
+    "lg:w-170 lg:h-170 w-75 h-75",
+    "lg:w-150 lg:h-150 w-65 h-65",
+    "lg:w-130 lg:h-130 w-55 h-50",
+    "lg:w-100 lg:h-100 w-45 h-45",
+    "lg:w-80 lg:h-80 w-30 h-30",
+  ];
 
-  let content: JSX.Element | null = null
+  let content: JSX.Element | null = null;
 
-  const color: string = User_color
-  const Text = Text_content
+  const color: string = User_color;
+  const Text = Text_content;
 
   for (let i = sizes.length - 1; i >= 0; i--) {
     content = (
       <div
         key={i}
-        className={`rounded-full flex justify-center items-center absolute ${i % 2 === 0 ? color : 'bg-black'} ${sizes[i]} z-[${i}]`}
+        className={`rounded-full flex justify-center items-center absolute ${i % 2 === 0 ? color : "bg-black"} ${sizes[i]} z-[${i}]`}
       >
         {content}
       </div>
-    )
+    );
   }
 
   const FrontFace: JSX.Element = (
@@ -80,7 +79,7 @@ const CallingCard = ({ User_color, Text_content }: props) => {
       className="lg:w-120 lg:h-75 w-80 h-50 relative flex justify-center items-center bg-black overflow-hidden select-none rounded-2xl group"
       custom={!flipped}
       variants={fadeAnimation}
-      animate={'fade'}
+      animate={"fade"}
     >
       <span className="P5titlefont rotate-15 absolute top-5 left-5 text-4xl text-white z-20 group-hover:opacity-100 opacity-0 max-lg:opacity-100 transition duration-200 ease-in-out">
         Tap ?
@@ -94,14 +93,14 @@ const CallingCard = ({ User_color, Text_content }: props) => {
         animate="cycle"
       />
     </motion.div>
-  )
+  );
 
   const backface: JSX.Element = (
     <motion.div
       className="lg:w-120 lg:h-75 w-80 h-50 relative flex justify-center items-center bg-black overflow-hidden select-none rounded-2xl"
       custom={flipped}
       variants={fadeAnimation}
-      animate={'fade'}
+      animate={"fade"}
     >
       {content}
       <section className="absolute P5titlefont text-white text-center mx-3">
@@ -112,9 +111,9 @@ const CallingCard = ({ User_color, Text_content }: props) => {
             target="_blank"
             href="https://github.com/aditya-wuw/Null-V2-Portfolio-/blob/master/src/components/Animated/CallingCard.tsx"
           >
-            <TbSourceCode size={18} color={'lightblue'} />
+            <TbSourceCode size={18} color={"lightblue"} />
             <span
-              className={`font-sans font-medium absolute group-hover/source:opacity-100 opacity-0 duration-200 ease-in-out p-2 rounded-2xl -top-10 ${!LightTheme ? 'bg-white text-black' : 'bg-black text-white'}`}
+              className={`font-sans font-medium absolute group-hover/source:opacity-100 opacity-0 duration-200 ease-in-out p-2 rounded-2xl -top-10 ${!LightTheme ? "bg-white text-black" : "bg-black text-white"}`}
             >
               View source code
             </span>
@@ -126,16 +125,16 @@ const CallingCard = ({ User_color, Text_content }: props) => {
         </div>
       </section>
     </motion.div>
-  )
+  );
 
   return (
     <div>
       <motion.div
         className="mx-2 flex flex-col gap-2 relative cursor-pointer"
-        style={{ transformStyle: 'preserve-3d' }}
+        style={{ transformStyle: "preserve-3d" }}
         animate={{ rotateX: flipped ? 180 : 0 }}
         whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         onClick={() => setflipped(!flipped)}
       >
         <div className="backface-hidden">{FrontFace}</div>
@@ -146,7 +145,7 @@ const CallingCard = ({ User_color, Text_content }: props) => {
         }
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default CallingCard
+export default CallingCard;

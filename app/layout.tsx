@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Context_Provider_wrap } from "@/Context/context";
+import { ContextProviderWrap } from "@/Context/context";
+import Nav from "@/Components/Nav";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +24,22 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <Context_Provider_wrap>
-        <body className="min-h-full flex flex-col">{children}</body>
-      </Context_Provider_wrap>
+      <body className="min-h-full">
+        <ContextProviderWrap>
+          <ThemeProvider attribute={"class"} defaultTheme="system">
+            <div className="w-full bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
+              <div className="max-w-4xl mx-auto px-4 pb-4 ">
+                <Nav />
+                {children}
+              </div>
+            </div>
+          </ThemeProvider>
+        </ContextProviderWrap>
+      </body>
     </html>
   );
 }

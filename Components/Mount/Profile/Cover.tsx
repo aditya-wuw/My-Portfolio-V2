@@ -1,18 +1,18 @@
 import { motion, useInView } from "motion/react";
-import React, { useEffect, useRef } from "react";
-import { createThemeContext } from "@/Context/context";
+import { useEffect, useRef } from "react";
+import { useAppContext } from "@/Context/context";
 // import video from '/Video_bg/_fuji_loop.mp4'
 
 const video =
   "https://ik.imagekit.io/3sfckuehxk/_fuji_loop.mp4?updatedAt=1783435507739";
 const Cover = () => {
-  const { LightTheme, setisinView } = createThemeContext();
+  const { setIsInView } = useAppContext();
   const AMinView = useRef<HTMLDivElement | null>(null);
   const videoref = useRef<HTMLVideoElement>(null);
   const isInView = useInView(AMinView);
   useEffect(() => {
-    setisinView(isInView);
-  }, [isInView, videoref, setisinView]);
+    setIsInView(isInView);
+  }, [isInView, videoref, setIsInView]);
 
   return (
     <motion.div
@@ -21,9 +21,9 @@ const Cover = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeIn" }}
     >
-      <div className="relative">
+      <div className="relative" id="About">
         <h1
-          className={`mask-l-from-70% lg:p-15 max-sm:p-5 absolute z-2 -rotate-2 italic top-0 lg:-right-15 -right-2 text-8xl max-lg:text-8xl max-lg:top-15 max-sm:text-6xl max-sm:top-6 max-sm:-right-5 backdrop-blur-[3px] font-extrabold ${LightTheme ? "text-white/60" : "text-black/80"}`}
+          className={`mask-l-from-70% lg:p-15 max-sm:p-5 absolute z-2 -rotate-2 italic top-0 lg:-right-15 -right-2 text-8xl max-lg:text-8xl max-lg:top-15 max-sm:text-6xl max-sm:top-6 max-sm:-right-5 backdrop-blur-[3px] font-extrabold text-white/60" dark:text-black/80`}
         >
           アディ
         </h1>
@@ -37,7 +37,7 @@ const Cover = () => {
           loop
           playsInline
           rel="preload"
-          preload="auto"
+          // preload="auto"
         />
       </div>
     </motion.div>
