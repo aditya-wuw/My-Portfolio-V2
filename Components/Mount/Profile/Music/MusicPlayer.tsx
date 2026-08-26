@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FaBackward, FaForward, FaPause, FaPlay } from "react-icons/fa";
 import { FaCompactDisc } from "react-icons/fa6";
 import { animate, motion, useMotionValue } from "motion/react";
@@ -6,19 +6,8 @@ import { HiMiniSpeakerWave } from "react-icons/hi2";
 import { PiSpeakerXFill } from "react-icons/pi";
 import { TiArrowLoop } from "react-icons/ti";
 import { RiPlayListFill } from "react-icons/ri";
-import MusicData from "@/data/music.json";
-import { useAppContext } from "@/Context/AppContext";
 import { useMusicContext } from "@/Context/MusicContext";
-
-/**
- * Utility Functions
- */
-const FormateTime = (val: number): string => {
-  if (isNaN(val)) return "00:00";
-  const minute = Math.floor(val / 60);
-  const seconds = Math.floor(val % 60);
-  return `${String(minute).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-};
+import { FormateTime } from "@/utils/utils";
 
 const MusicPlayer = () => {
   const {
@@ -33,90 +22,166 @@ const MusicPlayer = () => {
     setisPlaying,
   } = useMusicContext();
 
-  const [Volume, setVolume] = useState(20);
+  /**
+   * States
+   */
+  const [ShowVolume, setShowVolume] = useState(false);
+  const [isDraging, setDraging] = useState(false);
   const [duration, setduration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [ismute, setmute] = useState(false);
-  const [ShowVolume, setShowVolume] = useState(false);
-  const [Timeline, setTimeline] = useState<number | undefined>(0);
-  const [isDraging, setDraging] = useState(false);
-  const [AutoPlayON, setAutoPlayON] = useState(true);
+  const [Timeline, setTimeline] = useState(0);
 
   /**
-   * UI elements
+   * Component Initial load functions
    */
-  const rotate = useMotionValue(0);
-  const [isBGLoadedHUH, setisBGLoadedHUH] = useState(false);
+  const SetInitial = useCallback(async () => {
+    const Audio = MusicRef.current;
+    if (Audio) {
+      setduration(Audio.duration);
+    }
+  }, [MusicRef]);
 
   useEffect(() => {
-    const Rotate_control = animate(rotate, [0, 360], {
+    SetInitial();
+  }, [SetInitial]);
+
+  /**
+   * Settings
+   */
+  const [Volume, setVolume] = useState(20);
+  const [AutoPlayON, setAutoPlayON] = useState(true);
+  const [isMute, setMute] = useState(() => {
+    try {
+      const saved = localStorage.getItem("isMute");
+      return saved !== null ? JSON.parse(saved) : false;
+    } catch {
+      return false;
+    }
+  });
+
+  /**
+   * UI Disk Rotation elements
+   */
+  const rotate = useMotionValue(0);
+  useEffect(() => {
+    const RotateControl = animate(rotate, [0, 360], {
       duration: 1,
       repeat: Infinity,
       ease: "linear",
     });
-    Rotate_control.pause();
-    rotateDiskRef.current = Rotate_control;
-  }, [rotateDiskRef, rotate]);
+    if (!isPlaying) return RotateControl.pause();
+    rotateDiskRef.current = RotateControl;
+  }, [rotateDiskRef, rotate, isPlaying]);
+
+  /**
+   * Event Check: If user Dragging stop playing music
+   */
+  useEffect(() => {
+    const Audio = MusicRef.current;
+    if (!Audio) return;
+
+    if (isDraging) {
+      Audio.pause();
+      rotateDiskRef.current?.pause();
+    } else {
+      if (isPlaying) {
+        Audio.play();
+        rotateDiskRef.current?.play();
+      }
+    }
+  }, [isDraging, MusicRef, rotateDiskRef, isPlaying]);
+
+  /**
+   * Handle Music player functions
+   */
+
+  const HandleVolume = (Target: number) => {
+    const Audio = MusicRef.current;
+    if (!Audio) return console.error("Failed to get audio node reference");
+    if (Target < 1) {
+      setMute(true);
+      setVolume(0);
+      Audio.muted = true;
+    } else {
+      Audio.muted = false;
+      setMute(false);
+      Audio.volume = Target / 100;
+      setVolume(Target);
+    }
+  };
 
   const HandleMute = () => {
-    console.warn("Muted");
+    const Audio = MusicRef.current;
+    if (!Audio) return;
+    const mute = !isMute;
+    Audio.muted = mute;
+    setMute(mute);
+    localStorage.setItem("isMute", `${mute}`);
   };
 
   function HandleSeek(Target: number) {
-    const audio = MusicRef.current;
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-      rotateDiskRef.current?.pause();
-      const newTime = duration * (Target / 100);
-      audio.currentTime = newTime;
-
-      if (!isDraging) {
-        setTimeout(() => {
-          audio.play().catch((e: Error) => console.warn(e));
-          rotateDiskRef.current?.play();
-        }, 100);
-      }
-    } else {
-      audio.currentTime = duration * (Target / 100);
-    }
+    const Audio = MusicRef.current;
+    if (!Audio) return;
+    Audio.currentTime = Target;
+    setTimeline(Audio.currentTime);
   }
 
-  const Volume_bar: React.CSSProperties = {
+  const HandleOnEnd = () => {
+    setisPlaying(!isPlaying);
+  };
+
+  //styles
+  const VolumeBar: React.CSSProperties = {
     background: `linear-gradient(to right, white ${Volume}%,#C9C9C9 10%)`,
   };
 
-  const seek_bar: React.CSSProperties = {
-    background: `linear-gradient(to right, skyblue ${Timeline && Timeline + 1}%,#C9C9C9 5%)`,
+  const Progress = (Timeline / duration) * 100;
+  const SeekBar: React.CSSProperties = {
+    background: `linear-gradient(to right, skyblue ${Progress + 1}%,#C9C9C9 5%)`,
   };
 
-  const player_control_style =
+  const PlayerControlStyle =
     "cursor-pointer hover:scale-130 scale-140 transiton duration-200 ease-in-out ";
 
   return (
     <div
       id="Music"
-      className={`w-full h-full select-none relative rounded-2xl bg-blue-500
+      className={`w-full h-full select-none relative rounded-2xl
         ${
-          // add conditional background change
-          ""
+          CurrentTrack.bg === "black"
+            ? `bg-${CurrentTrack.bg}`
+            : CurrentTrack.bg
+              ? `bg-${CurrentTrack.bg}-500`
+              : // add conditional background change
+                "bg-blue-500"
         }
         transition duration-200 ease-in-out`}
     >
+      {/* Audio enghine */}
+      <audio
+        key={CurrentTrack.id}
+        src={CurrentTrack.music_src}
+        ref={MusicRef}
+        preload="metadata"
+        onLoadedMetadata={(e) => setduration(e.currentTarget.duration)}
+        onTimeUpdate={(e) => {
+          if (!isDraging) {
+            setCurrentTime(e.currentTarget.currentTime);
+            setTimeline(e.currentTarget.currentTime);
+          }
+        }}
+        onEnded={() => HandleOnEnd()}
+      />
+      {/*----------------*/}
       <div className="w-full h-full p-2 overflow-hidden relative rounded-2xl">
         <motion.img
-          onLoad={() => {
-            setTimeout(() => {
-              setisBGLoadedHUH(true);
-            }, 30);
-          }}
           src={CurrentTrack.banner}
           alt="bg-media-player"
           draggable="false"
-          className={`bg_cover object-cover select-none max-sm:scale-110 absolute 2xl:-top-12  right-0 mask-r-from-50% z-1 mask-l-from-70%`}
+          className={`bg_cover object-cover select-none max-sm:scale-110 absolute 2xl:-top-5  right-0 mask-r-from-50% z-1 mask-l-from-70%`}
           key={CurrentTrack.id}
           initial={{ opacity: 0 }}
-          animate={{ opacity: isBGLoadedHUH ? 1 : 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
         />
         <motion.div
@@ -137,7 +202,7 @@ const MusicPlayer = () => {
               className="volume"
               onClick={() => HandleMute()}
             >
-              {ismute ? (
+              {isMute ? (
                 <PiSpeakerXFill className="xl:scale-160 max-xl:scale-120 hover:scale-170 transition duration-200 ease-in-out cursor-pointer text-white" />
               ) : (
                 <HiMiniSpeakerWave
@@ -153,9 +218,9 @@ const MusicPlayer = () => {
                 min={0}
                 max={100}
                 value={Volume}
-                onChange={(e) => setVolume(Number(e.target.value))}
+                onChange={(e) => HandleVolume(Number(e.target.value))}
                 className={`appearance-none accent-white flex h-1 rounded-full outline-none cursor-pointer w-20 max-sm:w-17 ${ShowVolume ? "opacity-100" : "opacity-0"} transition-opacity duration-200 ease-in-out`}
-                style={Volume_bar}
+                style={VolumeBar}
               />
             </label>
           </section>
@@ -182,7 +247,7 @@ const MusicPlayer = () => {
                 <section>
                   <span
                     onClick={() => setAutoPlayON(!AutoPlayON)}
-                    title="Autoplay playlist or nah?"
+                    title="Autoplay playlist"
                     className="cursor-pointer"
                   >
                     <span className="absolute z-10 left-0 flex items-center  hover:scale-125 scale-100 trnsition-scale duration-300 ease-in-out">
@@ -217,13 +282,13 @@ const MusicPlayer = () => {
                   value={Timeline}
                   onChange={(e) => HandleSeek(parseFloat(e.target.value))}
                   min={0}
-                  max={100}
+                  max={duration || 100}
                   step={0.1}
                   onInput={() => setDraging(true)}
                   onMouseUp={() => setDraging(false)}
                   onTouchEnd={() => setDraging(false)}
                   className={`Seek_help w-[90%] appearance-none cursor-pointer accent-white hover:accent-gray-300 rounded-full ${isDraging ? "h-2" : "h-0.75"} transition-h duration-200 ease-in-out`}
-                  style={seek_bar}
+                  style={SeekBar}
                 />
               </label>
             </div>
@@ -231,19 +296,19 @@ const MusicPlayer = () => {
               className={`flex gap-6 text-white items-center w-fit max-md:scale-90`}
             >
               <li
-                className={`${player_control_style}`}
+                className={`${PlayerControlStyle}`}
                 onClick={() => HandleNavigation("Backwards")}
               >
                 <FaBackward />
               </li>
               <li
-                className={`${player_control_style}`}
+                className={`${PlayerControlStyle}`}
                 onClick={() => HandlePlay()}
               >
                 {isPlaying ? <FaPause /> : <FaPlay />}
               </li>
               <li
-                className={`${player_control_style}`}
+                className={`${PlayerControlStyle}`}
                 onClick={() => HandleNavigation("Forward")}
               >
                 <FaForward />

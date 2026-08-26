@@ -13,7 +13,7 @@
     "music_src": "Musics/Try Again - Original.wav",
     "banner": "/Images_Optimized/Cover/02.jpg",
     "isplaying": false,
-    "bg": "cyan"
+    "bg": "blue"
   },
   {
     "id": "music3",
@@ -46,7 +46,7 @@
     "music_src": "Musics/daljit_kundi-astral-realms-amp-ziyal-ionosphere-463441.mp3",
     "banner": "/Images_Optimized/Cover/03.jpg",
     "isplaying": false,
-    "bg": "DarkBlue"
+    "bg": "red"
   },
   {
     "id": "music7",

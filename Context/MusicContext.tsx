@@ -4,6 +4,7 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -22,42 +23,54 @@ export const MusicContextProvider = ({
   /**
    Music Player
   */
-  const TrackPlayList = MusicData as Track[];
+  //states
   const [showPlaylist, setShowPlaylist] = useState(false);
-  const MusicRef = useRef<HTMLAudioElement | null>(null);
   const [PlayIndex, setPlayIndex] = useState(0);
-  const rotateDiskRef = useRef<AnimationPlaybackControls | null>(null);
-  const CurrentTrack = TrackPlayList[PlayIndex];
   const [isPlaying, setisPlaying] = useState(false);
 
-  const HandlePlay = (id?: string) => {
-    if (!MusicRef.current) return console.error("Failed to play music");
-    if (!id) return MusicRef.current.play();
-  };
+  //refs
+  const TrackPlayList = MusicData as Track[];
+  const MusicRef = useRef<HTMLAudioElement | null>(null);
+  const rotateDiskRef = useRef<AnimationPlaybackControls | null>(null);
+  const CurrentTrack = TrackPlayList[PlayIndex];
+
+  //music functions
+  const HandlePlay = useCallback(
+    (id?: string) => {
+      if (!MusicRef.current) return console.error("Failed to play music");
+      if (!id) {
+        setisPlaying(!isPlaying);
+        // MusicRef.current.play();
+        return isPlaying ? MusicRef.current.pause() : MusicRef.current.play();
+      }
+    },
+    [isPlaying],
+  );
 
   const HandleNavigation = useCallback(
     (Direction: "Forward" | "Backwards") => {
       switch (Direction) {
         case "Forward": {
-          console.warn("going forward");
+          // console.warn("going forward", PlayIndex);
           const curr = PlayIndex + 1;
 
-          if (curr > TrackPlayList.length) {
+          if (curr === TrackPlayList.length) {
             setPlayIndex(0);
+            break;
           }
-
+          // console.log(curr, `Total track ${TrackPlayList.length}`);
           setPlayIndex(curr);
           break;
         }
         case "Backwards": {
-          console.warn("going backwards");
           const curr = PlayIndex - 1;
 
-          if (TrackPlayList.length > curr) {
-            setPlayIndex(TrackPlayList.length);
+          if (curr === -1) {
+            setPlayIndex(TrackPlayList.length - 1);
+            break;
           }
-
           setPlayIndex(curr);
+          // console.warn("going backwards", curr);
           break;
         }
         default:
@@ -80,7 +93,14 @@ export const MusicContextProvider = ({
       isPlaying,
       setisPlaying,
     }),
-    [showPlaylist, CurrentTrack, HandleNavigation, TrackPlayList, isPlaying],
+    [
+      showPlaylist,
+      CurrentTrack,
+      HandleNavigation,
+      TrackPlayList,
+      isPlaying,
+      HandlePlay,
+    ],
   );
 
   return (
