@@ -8,6 +8,8 @@ import { TiArrowLoop } from "react-icons/ti";
 import { RiPlayListFill } from "react-icons/ri";
 import { useMusicContext } from "@/Context/MusicContext";
 import { FormateTime } from "@/utils/utils";
+import Image from "next/image";
+const MotionImage = motion.create(Image);
 
 const MusicPlayer = () => {
   const {
@@ -125,7 +127,8 @@ const MusicPlayer = () => {
   }
 
   const HandleOnEnd = () => {
-    setisPlaying(!isPlaying);
+    if (!AutoPlayON) return setisPlaying(!isPlaying);
+    HandleNavigation("Forward");
   };
 
   //styles
@@ -178,7 +181,7 @@ const MusicPlayer = () => {
       />
       {/*----------------*/}
       <div className="w-full h-full p-2 overflow-hidden relative rounded-2xl">
-        <motion.img
+        <MotionImage
           src={CurrentTrack.banner}
           alt="bg-media-player"
           draggable="false"
@@ -186,6 +189,9 @@ const MusicPlayer = () => {
           key={CurrentTrack.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          width={600}
+          height={300}
+          loading="eager"
           transition={{ duration: 0.2, ease: "easeInOut" }}
         />
         <motion.div

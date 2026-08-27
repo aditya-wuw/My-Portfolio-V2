@@ -16,6 +16,10 @@
   @apply transition duration-300 ease-initial;
 }
 
+@utility fade-in-all {
+  @apply transition-all duration-300 ease-in-out;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
@@ -44,7 +48,7 @@ body {
 
 ::-webkit-scrollbar {
   width: 3px;
-  background-color: gray;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

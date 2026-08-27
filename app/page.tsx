@@ -21,7 +21,7 @@ const MusicPlayer = dynamic(
 export default function Home() {
   return (
     <div className="flex flex-col gap-3 pt-2 items-center justify-center font-sans dark:bg-black/50 bg-white/10">
-      <section className="w-full xl:h-40 h-25 my-2 overflow-hidden rounded-xl bg-white dark:bg-black">
+      <section className="w-full md:h-37 max-sm:h-23 my-2 overflow-hidden rounded-xl bg-white dark:bg-black">
         <Cover />
       </section>
       <section className="flex flex-col 2xl:flex-row gap-2 w-full">
@@ -33,11 +33,11 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full">
-        <div className="flex flex-col xl:flex-row gap-2">
-          <div className="xl:w-3/6 w-full h-1/2">
+        <div className="flex flex-col md:flex-row gap-2">
+          <div className="md:w-3/6 w-full h-1/2">
             <Skills />
           </div>
-          <div className="xl:w-4/6 w-full h-32">
+          <div className="md:w-4/6 w-full h-32">
             <MusicPlayer />
           </div>
         </div>

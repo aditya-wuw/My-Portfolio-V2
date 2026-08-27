@@ -13,7 +13,7 @@
     "music_src": "Musics/Try Again - Original.wav",
     "banner": "/Images_Optimized/Cover/02.jpg",
     "isplaying": false,
-    "bg": "bg-blue-500"
+    "bg": "bg-cyan-700"
   },
   {
     "id": "music3",
@@ -21,7 +21,7 @@
     "music_src": "Musics/lvymusic-dnb-liquid-141072.mp3",
     "banner": "/Images_Optimized/Cover/05.jpg",
     "isplaying": false,
-    "bg": "bg-cyan-500"
+    "bg": "bg-blue-600"
   },
   {
     "id": "music4",

@@ -32,8 +32,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full">
         <ContextProviderWrap>
           <MusicContextProvider>
-            <ThemeProvider attribute={"class"} defaultTheme="system">
-              <div className="w-full bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
+            <ThemeProvider attribute={"class"} defaultTheme="dark">
+              <div className="w-full min-h-screen  bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
                 <div className="max-w-4xl mx-auto px-4 pb-4 ">
                   <Nav />
                   {children}

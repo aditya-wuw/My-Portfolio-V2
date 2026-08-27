@@ -23,7 +23,7 @@ const Cover = () => {
     >
       <div className="relative" id="About">
         <h1
-          className={`mask-l-from-70% lg:p-15 max-sm:p-5 absolute z-2 -rotate-2 italic top-0 lg:-right-15 -right-2 text-8xl max-lg:text-8xl max-lg:top-15 max-sm:text-6xl max-sm:top-6 max-sm:-right-5 backdrop-blur-[3px] font-extrabold text-white/60" dark:text-black/80`}
+          className={`mask-l-from-70% lg:p-15 max-sm:p-5 absolute z-2 -rotate-2 italic top-1 lg:-right-15 -right-2 text-8xl max-lg:text-8xl max-lg:top-15 max-sm:text-6xl max-sm:top-6 max-sm:-right-5 backdrop-blur-[3px] font-extrabold text-white/60" dark:text-black/90`}
         >
           アディ
         </h1>

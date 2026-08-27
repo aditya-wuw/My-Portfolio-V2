@@ -49,9 +49,13 @@ export const MusicContextProvider = ({
   useEffect(() => {
     (async () => {
       if (!MusicRef.current) return;
-      MusicRef.current.pause();
-      MusicRef.current.src = CurrentTrack.music_src;
-      if (!isPlaying) return;
+      if (!isPlaying) return MusicRef.current.pause();
+      if (
+        MusicRef.current.src.split("Musics/")[1] !==
+        CurrentTrack.music_src.replaceAll(" ", "%20").split("Musics/")[1]
+      ) {
+        MusicRef.current.src = CurrentTrack.music_src;
+      }
       await MusicRef.current
         .play()
         .then(() => setisPlaying(true))
@@ -80,36 +84,15 @@ export const MusicContextProvider = ({
 
   const HandleNavigation = useCallback(
     (Direction: "Forward" | "Backwards") => {
-      switch (Direction) {
-        case "Forward": {
-          const curr = PlayIndex + 1;
-          if (curr === TrackPlayList.length) {
-            setPlayIndex(0);
-            break;
-          }
-          setPlayIndex(curr);
-          const Target = TrackPlayList[curr];
-          setCurrentTrack(Target);
-          UpdatePlaylist(Target.id);
-          // console.log(curr, `Total track ${TrackPlayList.length}`);
-          break;
-        }
-        case "Backwards": {
-          const curr = PlayIndex - 1;
-          if (curr === -1) {
-            setPlayIndex(TrackPlayList.length - 1);
-            break;
-          }
-          const Target = TrackPlayList[curr];
-          setPlayIndex(curr);
-          setCurrentTrack(Target);
-          UpdatePlaylist(Target.id);
-          // console.warn("going backwards", curr);
-          break;
-        }
-        default:
-          console.error("no option available");
-      }
+      const TotalTrack = TrackPlayList.length;
+      const nextTrack =
+        Direction === "Forward"
+          ? (PlayIndex + 1) % TotalTrack
+          : (PlayIndex - 1 + TotalTrack) % TotalTrack;
+      const Target = TrackPlayList[nextTrack];
+      setPlayIndex(nextTrack);
+      setCurrentTrack(Target);
+      UpdatePlaylist(Target.id);
     },
     [PlayIndex, TrackPlayList, UpdatePlaylist],
   );
