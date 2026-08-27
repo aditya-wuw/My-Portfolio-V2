@@ -257,7 +257,7 @@ const MusicPlayer = () => {
                 <section>
                   <span
                     onClick={() => setAutoPlayON(!AutoPlayON)}
-                    title="Autoplay playlist"
+                    title="AutoPlay"
                     className="cursor-pointer"
                   >
                     <span className="absolute z-10 left-0 flex items-center  hover:scale-125 scale-100 trnsition-scale duration-300 ease-in-out">

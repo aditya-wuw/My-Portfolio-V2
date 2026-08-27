@@ -6,9 +6,9 @@ import { MdArrowBackIos } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import { projectsData } from "@/data/data";
 import { useAppContext } from "@/Context/AppContext";
-import ProjectPageDetails from "@/Components/Mount/ProjectPageDetails";
 import Link from "next/link";
 import Image from "next/image";
+import MarkdownReader from "@/Components/Mount/MarkdownReader";
 
 export default function Page() {
   const { id } = useParams();
@@ -43,7 +43,7 @@ export default function Page() {
                 <div className="h-55 max-[482px]:h-35 w-full overflow-hidden rounded-2xl relative">
                   <Image
                     draggable={false}
-                    src={item.image}
+                    src={String(item.image)}
                     width={2000}
                     height={1000}
                     loading="eager"
@@ -70,11 +70,7 @@ export default function Page() {
                 </div>
               )}
               <div className="text-md max-lg:text-sm">
-                <ProjectPageDetails
-                  Desc={item.dedicated_dec.Desc}
-                  ProjectIdea={item.dedicated_dec.ProjectIdea}
-                  HowItWorks={item.dedicated_dec.HowItWorks}
-                />
+                <MarkdownReader content={item.content} />
               </div>
               {item.Update && (
                 <div className="px-5">

@@ -67,8 +67,10 @@ const Projects = () => {
                 >
                   {item.image && (
                     <Image
-                      src={item.image}
+                      src={item.image as string}
                       alt={item.title}
+                      width={200}
+                      height={200}
                       loading="eager"
                       className="object-cover object-center cursor-pointer hover:scale-105 scale-100 transition duration-300 ease-in-out w-full h-full"
                     />
@@ -89,7 +91,7 @@ const Projects = () => {
                   )}
                 </h1>
                 <span>{item.description}</span>
-                {islist  && (
+                {islist && (
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

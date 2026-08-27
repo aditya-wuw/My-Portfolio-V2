@@ -198,21 +198,10 @@ export const projectsData: ProjectsData = {
         "I needed a Windows-like clipboard manager as I switched to Linux, so I made my own setup.",
       additional_dec:
         "Copy Chan is a cross-platform desktop clipboard/history manager with an emoji and symbols picker, built with Tauri (Rust) and React + Vite. Primarily made and optimized for Linux.",
-      dedicated_dec: {
-        Desc: "A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories. With v1.0.805 copy-chan is 10x faster than windows native clipboard manager, new ASCII patterns and emojies",
-        ProjectIdea:
-          "Frustrated by the lack of smooth, native clipboard managers when transitioning layout OS workspaces to Linux, I decided to build an lightweight asset with an accessible emoji dashboard.",
-        HowItWorks:
-          "Using Tauri and Rust, the app spawns a global system listener thread that intercepts system clipboard changes, stores them in an efficient local layout, and displays them via a lightweight React frontend.",
-      },
+      content:
+        "A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories. With v1.0.805 copy-chan is 10x faster than windows native clipboard manager, new ASCII patterns and emojies\n\n# Project Idea\nFrustrated by the lack of smooth, native clipboard managers when transitioning layout OS workspaces to Linux, I decided to build an lightweight asset with an accessible emoji dashboard.\n\n# How It Works\nUsing Tauri and Rust, the app spawns a global system listener thread that intercepts system clipboard changes, stores them in an efficient local layout, and displays them via a lightweight React frontend.",
       image: assets.copychan,
-      tags: [
-        <DiReact size={18} key="react" />,
-        <FaRust size={18} key="rust" />,
-        <SiTauri size={18} key="tauri" />,
-        <RiTailwindCssFill size={18} key="tw" />,
-        "solo",
-      ],
+      tags: ["React", "Rust", "Tauri", "Tailwind CSS", "Solo"],
       links: [
         {
           label: "View",
@@ -242,20 +231,10 @@ export const projectsData: ProjectsData = {
         "AI-powered web app that generates personalized mock tests and notes to help students prepare effectively for exams.",
       additional_dec:
         "Send a prompt and start preparing as it creates a virtual mock test simulation for you.",
-      dedicated_dec: {
-        Desc: "An intelligent automated education suite designed to transform unstructured textbooks into mock testing engines.",
-        ProjectIdea:
-          "Traditional studying methods feel passive. Koneko AI aims to turn study materials into dynamic testing sandboxes to boost active memory recall.",
-        HowItWorks:
-          "Users pass their course subjects or notes, which are parsed and sent to an AI orchestration layer. The application then streams structural multi-choice questions back and structures mock analytics with Supabase handling progress data.",
-      },
+      content:
+        "An intelligent automated education suite designed to transform unstructured textbooks into mock testing engines.\n\n# Project Idea\nTraditional studying methods feel passive. Koneko AI aims to turn study materials into dynamic testing sandboxes to boost active memory recall.\n\n# How It Works\nUsers pass their course subjects or notes, which are parsed and sent to an AI orchestration layer. The application then streams structural multi-choice questions back and structures mock analytics with Supabase handling progress data.",
       image: assets.Kokeno,
-      tags: [
-        "NEXT",
-        <RiTailwindCssFill size={18} key="tw" />,
-        <SiSupabase className="h-4 w-4" key="sb" />,
-        "Solo",
-      ],
+      tags: ["Next.js", "Tailwind CSS", "Supabase", "Solo"],
       links: [
         {
           label: "Demo",
@@ -279,13 +258,8 @@ export const projectsData: ProjectsData = {
         "This is the online brand alias I maintain to release my open-source apps or products. The name comes from a motivation of some self-centered cats building something cool, haha.",
       additional_dec:
         "My vision is very ambitious, but I am currently narrowing it down to something more achievable.",
-      dedicated_dec: {
-        Desc: "Smug Cat's Den serves as my digital umbrella studio and playground for personal open-source projects, tools, and branding experiments.",
-        ProjectIdea:
-          "The concept stems from creating a distinct developer persona—something memorable, playful, and completely unhinged like cats building code—to host production-ready apps.",
-        HowItWorks:
-          "It handles multi-project routing and deployment configurations across specific subdomains while serving as the primary hub for my software releases.",
-      },
+      content:
+        "Smug Cat's Den serves as my digital umbrella studio and playground for personal open-source projects, tools, and branding experiments.\n\n# Project Idea\nThe concept stems from creating a distinct developer persona—something memorable, playful, and completely unhinged like cats building code—to host production-ready apps.\n\n# How It Works\nIt handles multi-project routing and deployment configurations across specific subdomains while serving as the primary hub for my software releases.",
       image: assets.smgcat,
       tags: ["brand", "alias"],
       links: [
@@ -311,18 +285,10 @@ export const projectsData: ProjectsData = {
         "Fully hand-coded the logic of the displayed music player right next to the skills tab.",
       additional_dec:
         "Initially used to showcase my favorite music, but I removed them due to copyright issues. I have also been learning to produce music since the start of 2026, so the music player may showcase some of my own tracks in the future.",
-      dedicated_dec: {
-        Desc: "A custom-built, highly interactive custom web audio layout built natively within a portfolio context.",
-        ProjectIdea:
-          "Instead of relying on clunky third-party iframe embed codes that degrade site load speeds, I hand-coded an interactive HTML5 audio engine node.",
-        HowItWorks:
-          "Utilizes React state hooks tied to DOM audio nodes to handle play status, track queuing, duration calculation, and seamless timeline scrubbing.",
-      },
+      content:
+        "A custom-built, highly interactive custom web audio layout built natively within a portfolio context.\n\n# Project Idea\nInstead of relying on clunky third-party iframe embed codes that degrade site load speeds, I hand-coded an interactive HTML5 audio engine node.\n\n# How It Works\nUtilizes React state hooks tied to DOM audio nodes to handle play status, track queuing, duration calculation, and seamless timeline scrubbing.",
       image: assets.msplayer,
-      tags: [
-        <DiReact size={18} key="react" />,
-        <RiTailwindCssFill size={18} key="tw" />,
-      ],
+      tags: ["React", "Tailwind CSS"],
       links: [
         {
           label: "Repo",
@@ -337,15 +303,10 @@ export const projectsData: ProjectsData = {
         "FireShip bot is a Discord bot designed to keep users up to date with the latest videos.",
       additional_dec:
         "Fireship is awesome, so I made this bot to stay instantly updated with channel uploads.",
-      dedicated_dec: {
-        Desc: "FireShipBot is an automation tool built to fetch the latest videos from the Fireship YouTube channel and send instant updates to a Discord server.",
-        ProjectIdea:
-          "As a fan of Fireship’s short, fast-paced tech videos, I wanted a clean way to get notified when a new one dropped without cluttering my personal YouTube subscription feeds.",
-        HowItWorks:
-          "The bot runs on a 24-hour cron schedule built on Node.js. It hits the YouTube Data API to check for new video keys, compares them with the last cached entry, and automatically broadcasts embedded updates to configured webhooks.",
-      },
+      content:
+        "FireShipBot is an automation tool built to fetch the latest videos from the Fireship YouTube channel and send instant updates to a Discord server.\n\n# Project Idea\nAs a fan of Fireship’s short, fast-paced tech videos, I wanted a clean way to get notified when a new one dropped without cluttering my personal YouTube subscription feeds.\n\n# How It Works\nThe bot runs on a 24-hour cron schedule built on Node.js. It hits the YouTube Data API to check for new video keys, compares them with the last cached entry, and automatically broadcasts embedded updates to configured webhooks.",
       image: assets.Fireship,
-      tags: [<FaNodeJs size={18} key="node" />, "Express", "YTV3"],
+      tags: ["Node.js", "Express", "YouTube Data API v3"],
       links: [
         {
           label: "none",
@@ -366,24 +327,12 @@ export const projectsData: ProjectsData = {
       additional_dec:
         "A robust full-stack dashboard built during a hackathon challenge.",
       DemoVideo: demos.HMSdemo,
-      dedicated_dec: {
-        Desc: "HMS Dashboard is a full-stack healthcare platform engineered to handle core operations including analytical tracking and patient registration workflows.",
-        ProjectIdea:
-          "Conceived during a rapid hackathon timeframe, this system addresses workflow congestion in clinics by digitizing tracking protocols.",
-        HowItWorks:
-          "The UI maps relational operational queues through React components. Database logic coordinates secure CRUD updates handling doctor profiles, calendar bookings, and analytical summaries.",
-      },
+      content:
+        "HMS Dashboard is a full-stack healthcare platform engineered to handle core operations including analytical tracking and patient registration workflows.\n\n# Project Idea\nConceived during a rapid hackathon timeframe, this system addresses workflow congestion in clinics by digitizing tracking protocols.\n\n# How It Works\nThe UI maps relational operational queues through React components. Database logic coordinates secure CRUD updates handling doctor profiles, calendar bookings, and analytical summaries.",
       Update:
         "I recently migrated the database to SQL from Mongo as I no longer use it",
       image: assets.screenshot5,
-      tags: [
-        <RiReactjsFill size={18} key="react" />,
-        "Express",
-        <span className="flex items-center gap-1" key="mongo">
-          <BiLogoPostgresql size={18} />
-          <h1>Neon</h1>
-        </span>,
-      ],
+      tags: ["React", "Express", "PostgreSQL", "Neon"],
       links: [
         {
           label: "Demo",
