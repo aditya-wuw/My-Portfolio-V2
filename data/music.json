@@ -13,7 +13,7 @@
     "music_src": "Musics/Try Again - Original.wav",
     "banner": "/Images_Optimized/Cover/02.jpg",
     "isplaying": false,
-    "bg": "blue"
+    "bg": "bg-blue-500"
   },
   {
     "id": "music3",
@@ -21,7 +21,7 @@
     "music_src": "Musics/lvymusic-dnb-liquid-141072.mp3",
     "banner": "/Images_Optimized/Cover/05.jpg",
     "isplaying": false,
-    "bg": "blue"
+    "bg": "bg-cyan-500"
   },
   {
     "id": "music4",
@@ -37,8 +37,7 @@
     "music_src": "Musics/aka4aerk-aerk-title-86-418636.mp3",
     "banner": "/Images_Optimized/Cover/01.jpg",
     "isplaying": false,
-    "bg": "black",
-    "link": ""
+    "bg": "black"
   },
   {
     "id": "music6",
@@ -46,7 +45,7 @@
     "music_src": "Musics/daljit_kundi-astral-realms-amp-ziyal-ionosphere-463441.mp3",
     "banner": "/Images_Optimized/Cover/03.jpg",
     "isplaying": false,
-    "bg": "red"
+    "bg": "bg-pink-500"
   },
   {
     "id": "music7",
@@ -54,6 +53,6 @@
     "music_src": "Musics/fronbondi_skegs-beat-where-are-you-liquid-dnb-beat-439768.mp3",
     "banner": "/Images_Optimized/Cover/04.jpg",
     "isplaying": false,
-    "bg": "blue"
+    "bg": "bg-cyan-600"
   }
 ]

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { motion } from "motion/react";
 import { FaPause } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa6";

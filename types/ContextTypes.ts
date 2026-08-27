@@ -6,7 +6,7 @@ export interface Track {
   Title: string;
   music_src: string;
   banner: string;
-  isplaying: false;
+  isplaying: boolean;
   bg: string;
 }
 
@@ -21,7 +21,9 @@ export interface MusicContextType {
   showPlaylist: boolean;
   setShowPlaylist: React.Dispatch<React.SetStateAction<boolean>>;
   CurrentTrack: Track;
+  setCurrentTrack: React.Dispatch<React.SetStateAction<Track>>;
   TrackPlayList: Track[];
+  setTrackPlayList: React.Dispatch<React.SetStateAction<Track[]>>;
   HandlePlay: (id?: string) => void;
   HandleNavigation: (Direction: "Forward" | "Backwards") => void;
   isPlaying: boolean;

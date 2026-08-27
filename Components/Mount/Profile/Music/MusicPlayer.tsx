@@ -28,22 +28,7 @@ const MusicPlayer = () => {
   const [ShowVolume, setShowVolume] = useState(false);
   const [isDraging, setDraging] = useState(false);
   const [duration, setduration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
   const [Timeline, setTimeline] = useState(0);
-
-  /**
-   * Component Initial load functions
-   */
-  const SetInitial = useCallback(async () => {
-    const Audio = MusicRef.current;
-    if (Audio) {
-      setduration(Audio.duration);
-    }
-  }, [MusicRef]);
-
-  useEffect(() => {
-    SetInitial();
-  }, [SetInitial]);
 
   /**
    * Settings
@@ -58,6 +43,21 @@ const MusicPlayer = () => {
       return false;
     }
   });
+
+  /**
+   * Component Initial load functions
+   */
+  const SetInitial = useCallback(async () => {
+    const Audio = MusicRef.current;
+    if (Audio && CurrentTrack) {
+      Audio.volume = Volume / 100;
+      setduration(Audio.duration);
+    }
+  }, [MusicRef, CurrentTrack, Volume]);
+
+  useEffect(() => {
+    SetInitial();
+  }, [SetInitial]);
 
   /**
    * UI Disk Rotation elements
@@ -94,7 +94,6 @@ const MusicPlayer = () => {
   /**
    * Handle Music player functions
    */
-
   const HandleVolume = (Target: number) => {
     const Audio = MusicRef.current;
     if (!Audio) return console.error("Failed to get audio node reference");
@@ -114,7 +113,6 @@ const MusicPlayer = () => {
     const Audio = MusicRef.current;
     if (!Audio) return;
     const mute = !isMute;
-    Audio.muted = mute;
     setMute(mute);
     localStorage.setItem("isMute", `${mute}`);
   };
@@ -123,7 +121,7 @@ const MusicPlayer = () => {
     const Audio = MusicRef.current;
     if (!Audio) return;
     Audio.currentTime = Target;
-    setTimeline(Audio.currentTime);
+    setTimeline(Target);
   }
 
   const HandleOnEnd = () => {
@@ -143,6 +141,7 @@ const MusicPlayer = () => {
   const PlayerControlStyle =
     "cursor-pointer hover:scale-130 scale-140 transiton duration-200 ease-in-out ";
 
+  //main component
   return (
     <div
       id="Music"
@@ -151,22 +150,27 @@ const MusicPlayer = () => {
           CurrentTrack.bg === "black"
             ? `bg-${CurrentTrack.bg}`
             : CurrentTrack.bg
-              ? `bg-${CurrentTrack.bg}-500`
-              : // add conditional background change
-                "bg-blue-500"
+              ? `${CurrentTrack.bg}`
+              : "bg-blue-500"
         }
         transition duration-200 ease-in-out`}
     >
       {/* Audio enghine */}
       <audio
         key={CurrentTrack.id}
+        muted={isMute}
         src={CurrentTrack.music_src}
         ref={MusicRef}
         preload="metadata"
-        onLoadedMetadata={(e) => setduration(e.currentTarget.duration)}
+        onLoadStart={() => {
+          setTimeline(0);
+        }}
+        onLoadedMetadata={(e) => {
+          e.currentTarget.volume = Volume / 100;
+          setduration(e.currentTarget.duration);
+        }}
         onTimeUpdate={(e) => {
           if (!isDraging) {
-            setCurrentTime(e.currentTarget.currentTime);
             setTimeline(e.currentTarget.currentTime);
           }
         }}
@@ -267,7 +271,7 @@ const MusicPlayer = () => {
                   </span>
                 </section>
                 <span>
-                  {FormateTime(currentTime)} / {FormateTime(duration)}
+                  {FormateTime(Timeline)} / {FormateTime(duration)}
                 </span>
               </h1>
             </div>
@@ -287,7 +291,7 @@ const MusicPlayer = () => {
                   onInput={() => setDraging(true)}
                   onMouseUp={() => setDraging(false)}
                   onTouchEnd={() => setDraging(false)}
-                  className={`Seek_help w-[90%] appearance-none cursor-pointer accent-white hover:accent-gray-300 rounded-full ${isDraging ? "h-2" : "h-0.75"} transition-h duration-200 ease-in-out`}
+                  className={`Seek_help w-[90%] appearance-none cursor-pointer accent-blue-300 hover:accent-cyan-300 rounded-full ${isDraging ? "h-2" : "h-0.75"} pop-in`}
                   style={SeekBar}
                 />
               </label>
