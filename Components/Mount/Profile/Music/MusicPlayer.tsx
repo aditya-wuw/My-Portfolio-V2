@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useEffect, useState } from "react";
 import { FaBackward, FaForward, FaPause, FaPlay } from "react-icons/fa";
 import { FaCompactDisc } from "react-icons/fa6";
@@ -45,6 +46,16 @@ const MusicPlayer = () => {
       return false;
     }
   });
+
+  //reset on load
+  useEffect(() => {
+    if (MusicRef.current) {
+      MusicRef.current.src = CurrentTrack.music_src;
+      MusicRef.current.currentTime = 0;
+      setisPlaying(false);
+      setduration(MusicRef.current.duration);
+    }
+  }, [MusicRef, setisPlaying, CurrentTrack]);
 
   /**
    * Component Initial load functions

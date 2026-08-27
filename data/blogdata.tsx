@@ -1,41 +1,68 @@
-import { assets } from '../Assets/assets'
+import { assets } from "../public/Assets/assets";
 
+/* eslint-disable */
 export const Notes_blog = [
   {
-    title: 'Tech Otaku Building Dreams',
-    link: 'the_journy_has_began',
+    title: "Tech Otaku Building Dreams",
+    link: "the_journy_has_began",
     banner: assets.ow,
     description: (
       <article className="flex flex-col gap-4">
         <article>
           I've finally made the decision to work on something I've been wanting
           to work on for years. A video game project. <br />
-          In the past I've created some 2d games before when I was in High school
-          but never thought of making a commercial Release let alone a 3D game.
-          It's my 1st time making a 3D game and I'm really enjoying the process.{' '}
+          In the past I've created some 2d games before when I was in High
+          school but never thought of making a commercial Release let alone a 3D
+          game. It's my 1st time making a 3D game and I'm really enjoying the
+          process. <br />I didn't know how to draw so I spend 1000 hours with a
+          pencil and paper (<i>I still don't know</i>), I didn't know how to
+          make VFX or 3D models either so I'm putting in the hours to learn them
+          now. I think this is where I'll fail because the Ideas I normally get
+          is not something small, it's big and tbh it's too big for a single
+          person to handle
+          <br />(
+          <i>Oh god why can't I have a normal idea that I can do myself</i>).
+          <br /> Well I guess I'll have to be that single person who's willing
+          to fail. I don't know why I have an obsession with failure, I'm not
+          scared of learning. Part of me want to scream (
+          <i>Screaming right now</i>). I also have an obession with the word
+          "Null", aparently this is what my potential company name will
+          be."Teach Otaku" sounds familiar who did you copy Ummm... I don't
+          know. I find these words quite inspiring because I didn't know what
+          should the tagline of my imaginary company be. Well if it fails then
+          I'll not have to remove the name because it's already Null <br />
+          <br />I think I'm not the only one in this, I do have a 3D artist
+          friend who might help me In this process which I'm looking forward to.
+          In the meantime I'll fill in the gaps and continue to be a better
+          thinker... I guess. I don't know why half of the words I write are
+          what I'm thinking right now, what ? Did I just write what I was
+          thinking, I do lack creativity <i>sigh</i> <br />I plan to release a
+          gameplay demo and a trailer at the end of this year, currently the
+          game consists of just cubes and cylinders, so stay tuned or keep an
+          eye out on{" "}
+          <a
+            href="https://www.youtube.com/@NullTeams"
+            target="_blank"
+            className="text-blue-500"
+          >
+            this channel
+          </a>{" "}
+          <i>
+            (maybe someday there will be a video there... ugh maybe who knows)
+          </i>{" "}
           <br />
-          I didn't know how to draw so I spend 1000 hours with a pencil and
-          paper (<i>I still don't know</i>), I didn't know how to make VFX or 3D models either so I'm
-          putting in the hours to learn them now. I
-          think this is where I'll fail because the Ideas I normally get is not
-          something small, it's big and tbh it's too big for a single person to
-          handle<br/>(<i>Oh god why can't I have a normal idea that I can do myself</i>).
-
-          <br /> Well I guess I'll have to be that single person who's willing to fail. I don't know why I have an obsession with failure, I'm not scared of learning. Part of me want to scream (<i>Screaming right now</i>). I also have an obession with the word "Null", aparently this is what my potential company name will be."Teach Otaku" sounds familiar who did you copy Ummm... I don't know. I find these words quite inspiring because I didn't know what should the tagline of my imaginary company be. 
-          Well if it fails then I'll not have to remove the name because it's already Null <br/><br/>
-          I think I'm not the only one in this, I do have a 3D artist friend who might help me In this process which I'm looking forward to. In the meantime I'll fill in the gaps and continue to be a better thinker... I guess. I don't know why half of the words I write are what I'm thinking right now, what ? Did I just write what I was thinking, I do lack creativity <i>sigh</i> <br/>
-          I plan to release a gameplay demo and a trailer at the end of this year, currently the game consists of just cubes and cylinders, so stay tuned or keep an eye out on <a href="https://www.youtube.com/@NullTeams" target='_blank' className='text-blue-500'>this channel</a> <i>(maybe someday there will be a video there... ugh maybe who knows)</i> <br/><br/>
+          <br />
           Well, I think that's enough for LinkedIn worthy post right there.
         </article>
       </article>
     ),
-    date: '13th Mar 2026',
+    date: "13th Mar 2026",
     posted: true,
     edited: false,
   },
   {
-    title: 'Creating a Minecraft Server for my Friends',
-    link: 'Minecraft_Server_blog',
+    title: "Creating a Minecraft Server for my Friends",
+    link: "Minecraft_Server_blog",
     banner: assets.minecraft_,
     description: (
       <article className="flex flex-col gap-4">
@@ -43,7 +70,7 @@ export const Notes_blog = [
           I was playing Minecraft with my friends, we enjoy building creative
           things and let's just say our epic creations deserve better than a
           random server crash, less simulation distance so that our farms takes
-          a holiday trip with Jet2holidays or my pal Steve's TNT obsession{' '}
+          a holiday trip with Jet2holidays or my pal Steve's TNT obsession{" "}
           <i className="text-blue-500">
             (please don't summon wither I beg you)
           </i>
@@ -71,13 +98,13 @@ export const Notes_blog = [
         </article>
       </article>
     ),
-    date: '19th Oct 2025',
+    date: "19th Oct 2025",
     posted: true,
     edited: true,
   },
   {
-    title: 'My perspective of using AI',
-    link: 'about_ai',
+    title: "My perspective of using AI",
+    link: "about_ai",
     banner: assets.vro,
     description: (
       <article className="flex flex-col gap-4">
@@ -110,8 +137,8 @@ export const Notes_blog = [
         </article>
       </article>
     ),
-    date: '25th Aug 2025',
+    date: "25th Aug 2025",
     posted: true,
     edited: false,
   },
-]
+];

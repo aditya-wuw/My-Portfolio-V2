@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { TbSourceCode } from "react-icons/tb";
 import type { Variants } from "motion/react";
 import type { JSX } from "react";
-import { assets } from "@/Assets/assets";
+import { assets } from "@/public/Assets/assets";
 const { ht } = assets;
 
 interface props {

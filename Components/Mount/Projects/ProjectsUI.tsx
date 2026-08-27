@@ -1,3 +1,4 @@
+"use client";
 import { MdGridView } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
 import { useState } from "react";
@@ -5,8 +6,13 @@ import { motion } from "motion/react";
 import { projectsData } from "@/data/data";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { ProjectCardsType } from "@/types/ProjectTypes";
 
-const Projects = () => {
+interface props {
+  Projects: ProjectCardsType[];
+}
+
+const ProjectsUI = ({ Projects }: props) => {
   const Route = useRouter();
 
   function Navigate(link: string) {
@@ -21,6 +27,7 @@ const Projects = () => {
     setislist((prev) => !prev);
   };
 
+  if (!Projects) return;
   return (
     <div id="Projects">
       <div
@@ -45,7 +52,7 @@ const Projects = () => {
         <section
           className={`project_section mt-4 gap-3 grid place-items-center h-full ${islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
         >
-          {projectsData.items.map((item, i) => (
+          {Projects.map((item, i) => (
             <motion.div
               className={`project_comp relative bg-white dark:bg-black min-h-55 max-h-60 w-full h-55  overflow-hidden rounded-xl`}
               key={i}
@@ -84,20 +91,15 @@ const Projects = () => {
               >
                 <h1 className="text-md font-bold flex items-center gap-3">
                   {item.title}{" "}
-                  {item.status && (
-                    <span className="text-xs text-center align-center text-red-100 bg-red-400 rounded-xl p-1 px-2 cursor-help">
-                      {item.status}
-                    </span>
-                  )}
                 </h1>
-                <span>{item.description}</span>
+                <span>{item.Description}</span>
                 {islist && (
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: "easeInOut" }}
                   >
-                    {item.additional_dec}
+                    {item.AdditionalDescription}
                   </motion.span>
                 )}
               </div>
@@ -136,4 +138,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsUI;

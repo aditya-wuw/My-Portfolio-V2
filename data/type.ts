@@ -46,17 +46,6 @@ export interface SkillsData {
   items: Array<SkillItem>;
 }
 
-export interface Contributor {
-  label: string;
-  profileUrl: string;
-  link: string;
-}
-
-export interface ProjectLink {
-  label: string | JSX.Element;
-  url: string;
-}
-
 export interface ProjectsData {
   title: string;
   items: Array<ProjectItem>;
@@ -79,14 +68,15 @@ export interface ProjectItem {
   Link: string;
   started?: string;
   ended?: string;
-  status?: string;
   DemoVideo?: string;
-  contributors?: Array<Contributor>;
-  description: string;
-  additional_dec?: string | null;
-  Update?: string;
-  content: string;
   image: string | null | ImageData | StaticImageData;
-  tags: Array<string | JSX.Element>;
-  links: Array<ProjectLink>;
+  Description: string;
+  AdditionalDescription?: string | null;
+  content: string;
+  tags: string[];
+  links: ProjectLink[];
+}
+export interface ProjectLink {
+  label: string | JSX.Element;
+  url: string;
 }

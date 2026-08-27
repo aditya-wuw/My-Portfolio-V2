@@ -1,3 +1,4 @@
+"use client";
 import { skillsData } from "@/data/data";
 
 const Skills = () => {

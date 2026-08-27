@@ -17,11 +17,10 @@ import {
 } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
 // import { GrGithub } from 'react-icons/gr'
-import { DiLinux, DiPhotoshop, DiReact } from "react-icons/di";
+import { DiLinux, DiPhotoshop } from "react-icons/di";
 // import { CgVercel } from 'react-icons/cg'
 import { IoLogoVercel } from "react-icons/io5";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { assets, demos } from "../Assets/assets";
+import { assets, demos } from "../public/Assets/assets";
 import type {
   ContactData,
   DetailsData,
@@ -185,18 +184,9 @@ export const projectsData: ProjectsData = {
       started: "1st Dec",
       ended: "23rd Dec 2025",
       DemoVideo: demos.copychandemo,
-      Update:
-        "copy-chan is now live and activly being used by me and my friends",
-      contributors: [
-        {
-          label: "aditya",
-          profileUrl: "/Images_Optimized/Profile/logo_new.png",
-          link: "https://github.com/aditya-wuw",
-        },
-      ],
-      description:
+      Description:
         "I needed a Windows-like clipboard manager as I switched to Linux, so I made my own setup.",
-      additional_dec:
+      AdditionalDescription:
         "Copy Chan is a cross-platform desktop clipboard/history manager with an emoji and symbols picker, built with Tauri (Rust) and React + Vite. Primarily made and optimized for Linux.",
       content:
         "A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories. With v1.0.805 copy-chan is 10x faster than windows native clipboard manager, new ASCII patterns and emojies\n\n# Project Idea\nFrustrated by the lack of smooth, native clipboard managers when transitioning layout OS workspaces to Linux, I decided to build an lightweight asset with an accessible emoji dashboard.\n\n# How It Works\nUsing Tauri and Rust, the app spawns a global system listener thread that intercepts system clipboard changes, stores them in an efficient local layout, and displays them via a lightweight React frontend.",
@@ -216,20 +206,12 @@ export const projectsData: ProjectsData = {
     {
       title: "Koneko AI",
       Link: "koneko",
-      status: "",
       started: "20th Dec 2025",
       ended: "10th Jan 2026",
       DemoVideo: demos.Koneko,
-      contributors: [
-        {
-          label: "aditya",
-          profileUrl: "/Images_Optimized/Profile/logo_new.png",
-          link: "https://github.com/aditya-wuw",
-        },
-      ],
-      description:
+      Description:
         "AI-powered web app that generates personalized mock tests and notes to help students prepare effectively for exams.",
-      additional_dec:
+      AdditionalDescription:
         "Send a prompt and start preparing as it creates a virtual mock test simulation for you.",
       content:
         "An intelligent automated education suite designed to transform unstructured textbooks into mock testing engines.\n\n# Project Idea\nTraditional studying methods feel passive. Koneko AI aims to turn study materials into dynamic testing sandboxes to boost active memory recall.\n\n# How It Works\nUsers pass their course subjects or notes, which are parsed and sent to an AI orchestration layer. The application then streams structural multi-choice questions back and structures mock analytics with Supabase handling progress data.",
@@ -247,16 +229,9 @@ export const projectsData: ProjectsData = {
       Link: "smugcat",
       started: "2nd Feb 2026",
       ended: "Today",
-      contributors: [
-        {
-          label: "aditya",
-          profileUrl: "/Images_Optimized/Profile/logo_new.png",
-          link: "https://github.com/aditya-wuw",
-        },
-      ],
-      description:
+      Description:
         "This is the online brand alias I maintain to release my open-source apps or products. The name comes from a motivation of some self-centered cats building something cool, haha.",
-      additional_dec:
+      AdditionalDescription:
         "My vision is very ambitious, but I am currently narrowing it down to something more achievable.",
       content:
         "Smug Cat's Den serves as my digital umbrella studio and playground for personal open-source projects, tools, and branding experiments.\n\n# Project Idea\nThe concept stems from creating a distinct developer persona—something memorable, playful, and completely unhinged like cats building code—to host production-ready apps.\n\n# How It Works\nIt handles multi-project routing and deployment configurations across specific subdomains while serving as the primary hub for my software releases.",
@@ -274,16 +249,9 @@ export const projectsData: ProjectsData = {
       Link: "Player",
       started: "1st Feb",
       ended: "8th Feb 2025",
-      contributors: [
-        {
-          label: "aditya",
-          profileUrl: "/Images_Optimized/Profile/logo_new.png",
-          link: "https://github.com/aditya-wuw",
-        },
-      ],
-      description:
+      Description:
         "Fully hand-coded the logic of the displayed music player right next to the skills tab.",
-      additional_dec:
+      AdditionalDescription:
         "Initially used to showcase my favorite music, but I removed them due to copyright issues. I have also been learning to produce music since the start of 2026, so the music player may showcase some of my own tracks in the future.",
       content:
         "A custom-built, highly interactive custom web audio layout built natively within a portfolio context.\n\n# Project Idea\nInstead of relying on clunky third-party iframe embed codes that degrade site load speeds, I hand-coded an interactive HTML5 audio engine node.\n\n# How It Works\nUtilizes React state hooks tied to DOM audio nodes to handle play status, track queuing, duration calculation, and seamless timeline scrubbing.",
@@ -299,9 +267,9 @@ export const projectsData: ProjectsData = {
     {
       title: "FireShip Discord bot",
       Link: "FireShip_Discord_bot",
-      description:
+      Description:
         "FireShip bot is a Discord bot designed to keep users up to date with the latest videos.",
-      additional_dec:
+      AdditionalDescription:
         "Fireship is awesome, so I made this bot to stay instantly updated with channel uploads.",
       content:
         "FireShipBot is an automation tool built to fetch the latest videos from the Fireship YouTube channel and send instant updates to a Discord server.\n\n# Project Idea\nAs a fan of Fireship’s short, fast-paced tech videos, I wanted a clean way to get notified when a new one dropped without cluttering my personal YouTube subscription feeds.\n\n# How It Works\nThe bot runs on a 24-hour cron schedule built on Node.js. It hits the YouTube Data API to check for new video keys, compares them with the last cached entry, and automatically broadcasts embedded updates to configured webhooks.",
@@ -321,16 +289,13 @@ export const projectsData: ProjectsData = {
     {
       title: "HMS-dashboard",
       Link: "HMS_dashboard",
-      status: "",
-      description:
+      Description:
         "Tasked with building an Admin Hospital Management System Dashboard. This is a full-stack project demo.",
-      additional_dec:
+      AdditionalDescription:
         "A robust full-stack dashboard built during a hackathon challenge.",
       DemoVideo: demos.HMSdemo,
       content:
-        "HMS Dashboard is a full-stack healthcare platform engineered to handle core operations including analytical tracking and patient registration workflows.\n\n# Project Idea\nConceived during a rapid hackathon timeframe, this system addresses workflow congestion in clinics by digitizing tracking protocols.\n\n# How It Works\nThe UI maps relational operational queues through React components. Database logic coordinates secure CRUD updates handling doctor profiles, calendar bookings, and analytical summaries.",
-      Update:
-        "I recently migrated the database to SQL from Mongo as I no longer use it",
+        "HMS Dashboard is a full-stack healthcare platform engineered to handle core operations including analytical tracking and patient registration workflows.\n\n# Project Idea\nConceived during a rapid hackathon timeframe, this system addresses workflow congestion in clinics by digitizing tracking protocols.\n\n# How It Works\nThe UI maps relational operational queues through React components. Database logic coordinates secure CRUD updates handling doctor profiles, calendar bookings, and analytical summaries.\n\n # Update\nI recently migrated the database to SQL from Mongo as I no longer use it",
       image: assets.screenshot5,
       tags: ["React", "Express", "PostgreSQL", "Neon"],
       links: [

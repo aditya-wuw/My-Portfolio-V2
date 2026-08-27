@@ -1,3 +1,4 @@
+"use client"
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef } from "react";
 import { useAppContext } from "@/Context/AppContext";

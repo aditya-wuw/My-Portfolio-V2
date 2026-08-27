@@ -31,7 +31,7 @@ export const assets = {
   smgcat,
   copychan,
   Kokeno,
-  msplayer
+  msplayer,
 } as const;
 
 export const demos = {

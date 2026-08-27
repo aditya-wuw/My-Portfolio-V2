@@ -1,22 +1,14 @@
-"use client";
+// "use client";
 import Footer from "@/Components/footer";
 import Header from "@/Components/Mount/Header";
 import Cover from "@/Components/Mount/Profile/Cover";
 import Details from "@/Components/Mount/Profile/Details";
+import MusicPlayer from "@/Components/Mount/Profile/Music/MusicPlayer";
 import Playlist from "@/Components/Mount/Profile/Music/Playlist";
-// import MusicEmbed from "@/Components/Mount/Profile/MusicEmbed";
-import Projects from "@/Components/Mount/Profile/Projects";
+import Projects from "@/Components/Mount/Projects/Projects";
 import Skills from "@/Components/Mount/Profile/Skills";
-import dynamic from "next/dynamic";
-const MusicPlayer = dynamic(
-  () => import("@/Components/Mount/Profile/Music/MusicPlayer"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="bg-white dark:bg-black w-full h-full rounded-2xl flex justify-center items-center" />
-    ),
-  },
-);
+import { Suspense } from "react";
+import Loader from "@/Components/Loader";
 
 export default function Home() {
   return (
@@ -46,7 +38,15 @@ export default function Home() {
         </div>
       </section>
       <section className="rounded-2xl">
-        <Projects />
+        <Suspense
+          fallback={
+            <div className="h-60 flex justify-center items-center">
+              <Loader />
+            </div>
+          }
+        >
+          <Projects />
+        </Suspense>
       </section>
       <section className="xl:w-1/2">
         <Footer />
