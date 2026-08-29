@@ -15,10 +15,10 @@ const Playlist = () => {
       className={`
           text-black bg-white border-black/20 border-[0.2px]
           dark:text-white dark:bg-black dark:border-white/15 dark:border-[0.2px]
-      } w-full rounded-xl overflow-hidden select-none`}
+      } w-full h-full rounded-xl overflow-hidden select-none`}
       initial={false} // important so it doesn’t animate on first render
       animate={{
-        maxHeight: showPlaylist ? "55vh" : "0vh",
+        maxHeight: showPlaylist ? "100vh" : 0,
         opacity: showPlaylist ? 1 : 0,
       }}
       transition={{ duration: 0.4, ease: "circInOut" }}
@@ -37,18 +37,18 @@ const Playlist = () => {
           />
         </h1>
       </div>
-      <div className="lg:p-1 lg:pb-3 lg:px-3 p-4 overflow-y-auto max-lg:h-65 scroll_bar_ scroll_bar_thumb group cursor-pointer">
-        {TrackPlayList.map((track, i: number) => (
+      <div className="lg:p-1 lg:pb-3 lg:px-3 p-4 scroll_bar_ scroll_bar_thumb group cursor-pointer">
+        {TrackPlayList.map((track, index) => (
           <motion.section
             className={`opacity-70 flex gap-3 items-center relative z-20 group rounded-xl ${track.isplaying && "opacity-100 dark:bg-white/10 bg-gray-400/20"} hover:bg-gray-800/20 dark:hover:bg-white/20 py-3 xl:px-5 px-1 justify-between fade-in-all`}
-            key={i}
+            key={track.id}
             whileInView={{ y: [-20, 0] }}
-            transition={{ duration: (1 + i) / 16 }}
+            transition={{ duration: (1 + index) / 16 }}
           >
             <div className="flex items-center gap-3">
               <span
                 onClick={() => {
-                  HandlePlay(track.id);
+                  HandlePlay(track.id, index);
                 }}
               >
                 {!track.isplaying ? (

@@ -24,8 +24,8 @@ export const MusicContextProvider = ({
    Music Player
   */
   //states
-  const [showPlaylist, setShowPlaylist] = useState(false);
   const [PlayIndex, setPlayIndex] = useState(0);
+  const [showPlaylist, setShowPlaylist] = useState(false);
   const [isPlaying, setisPlaying] = useState(false);
 
   //refs
@@ -59,18 +59,24 @@ export const MusicContextProvider = ({
       await MusicRef.current
         .play()
         .then(() => setisPlaying(true))
-        .catch((e) => console.error(`Playback error, Error: ${e}`));
+        .catch((e) => {
+          if (e instanceof DOMException && e.name === "AbortError") {
+            return;
+          }
+          console.error(`Playback error, Error: ${e}`);
+        });
     })();
   }, [CurrentTrack, isPlaying]);
 
   const HandlePlay = useCallback(
-    (id?: string) => {
+    (id?: string, index?: number) => {
       if (!MusicRef.current) return console.error("Failed to play music");
       // console.log(`logged id : ${id}`);
       // play specific track if ID is given
       if (id) {
         const Target = TrackPlayList.find((i) => i.id === id);
         if (!Target) return console.error("target music not found");
+        setPlayIndex(index);
         UpdatePlaylist(id);
         return setCurrentTrack(Target);
       }
@@ -84,6 +90,7 @@ export const MusicContextProvider = ({
 
   const HandleNavigation = useCallback(
     (Direction: "Forward" | "Backwards") => {
+      // const PlayIndex = 0;
       const TotalTrack = TrackPlayList.length;
       const nextTrack =
         Direction === "Forward"

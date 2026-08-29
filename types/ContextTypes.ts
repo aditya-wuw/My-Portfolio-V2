@@ -24,7 +24,7 @@ export interface MusicContextType {
   setCurrentTrack: React.Dispatch<React.SetStateAction<Track>>;
   TrackPlayList: Track[];
   setTrackPlayList: React.Dispatch<React.SetStateAction<Track[]>>;
-  HandlePlay: (id?: string) => void;
+  HandlePlay: (id?: string, index?: number) => void;
   HandleNavigation: (Direction: "Forward" | "Backwards") => void;
   isPlaying: boolean;
   setisPlaying: React.Dispatch<React.SetStateAction<boolean>>;

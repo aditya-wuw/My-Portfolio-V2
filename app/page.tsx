@@ -33,7 +33,7 @@ export default function Home() {
             <MusicPlayer />
           </div>
         </div>
-        <div className="pt-2">
+        <div className="pt-2 h-full">
           <Playlist />
         </div>
       </section>

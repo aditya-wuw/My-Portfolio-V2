@@ -48,29 +48,36 @@ const MusicPlayer = () => {
   });
 
   //reset on load
-  useEffect(() => {
-    if (MusicRef.current) {
-      MusicRef.current.src = CurrentTrack.music_src;
-      MusicRef.current.currentTime = 0;
-      setisPlaying(false);
-      setduration(MusicRef.current.duration);
-    }
-  }, [MusicRef, setisPlaying, CurrentTrack]);
+  // useEffect(() => {
+  //   if (MusicRef.current) {
+  //     MusicRef.current.src = CurrentTrack.music_src;
+  //     MusicRef.current.currentTime = 0;
+  //     setisPlaying(false);
+  //     setduration(MusicRef.current.duration);
+  //   }
+  // }, [MusicRef, setisPlaying, CurrentTrack]);
 
   /**
    * Component Initial load functions
    */
+
+  // on component unmount stop playing
+  useEffect(() => {
+    return () => setisPlaying(false);
+  }, [setisPlaying]);
+
   const SetInitial = useCallback(async () => {
     const Audio = MusicRef.current;
     if (Audio && CurrentTrack) {
       Audio.volume = Volume / 100;
+      Audio.src = CurrentTrack.music_src;
       setduration(Audio.duration);
     }
   }, [MusicRef, CurrentTrack, Volume]);
 
   useEffect(() => {
     SetInitial();
-  }, [SetInitial]);
+  }, [SetInitial, setisPlaying]);
 
   /**
    * UI Disk Rotation elements
@@ -98,7 +105,7 @@ const MusicPlayer = () => {
       rotateDiskRef.current?.pause();
     } else {
       if (isPlaying) {
-        Audio.play();
+        Audio.play().catch((e) => console.error(e));
         rotateDiskRef.current?.play();
       }
     }
