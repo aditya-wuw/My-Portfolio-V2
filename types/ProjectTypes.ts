@@ -1,4 +1,5 @@
 export interface ProjectData {
+  orderIndex: number;
   title: string;
   Link: string;
   started?: string;

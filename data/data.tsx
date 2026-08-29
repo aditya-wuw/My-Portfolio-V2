@@ -86,7 +86,7 @@ export const details: DetailsData = {
 
 // const icon_size = "w-5 h-5 md:w-7 md:h-7";
 const icon_size =
-  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";
+  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";  
 
 export const skillsData: SkillsData = {
   title: "Skills",
