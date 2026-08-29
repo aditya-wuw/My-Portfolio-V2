@@ -37,10 +37,10 @@ export default function Home() {
           <Playlist />
         </div>
       </section>
-      <section className="rounded-2xl">
+      <section className="rounded-2xl w-full">
         <Suspense
           fallback={
-            <div className="h-60 flex justify-center items-center">
+            <div className="w-full h-60 flex justify-center items-center dark:bg-black bg-white rounded-2xl">
               <Loader />
             </div>
           }

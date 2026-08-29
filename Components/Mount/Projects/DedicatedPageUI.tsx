@@ -29,7 +29,7 @@ export default function DedicatedPageUI({ ProjectData }: props) {
         </button>
       </Link>
       <motion.div
-        className={`bg-white text-black dark:bg-black dark:text-white flex gap-5 flex-col rounded-2xl px-5 py-2`}
+        className={`bg-white text-black dark:bg-black dark:text-white flex gap-5 flex-col rounded-2xl px-4 py-2`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: "easeIn" }}

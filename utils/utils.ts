@@ -23,3 +23,11 @@ export const FormateTime = (val: number): string => {
   return `${String(minute).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 };
 
+export const getFormatedDate = (d: Date) => {
+  const FormatedDate = new Intl.DateTimeFormat("in", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(d);
+  return FormatedDate;
+};
