@@ -15,17 +15,18 @@ const Skills = () => {
         </span>
       </div>
       <div className="flex flex-wrap gap-2 mx-2 p-3">
-        {skillsData.items.map((item, i) => (
+        {Object.entries(skillsData.items).map(([name, UI]) => (
           <div
-            key={i}
+            key={name}
+            id="skills"
             className="relative group  hover:scale-105 scale-100 cursor-pointer"
           >
             <span
               className={`absolute -top-10 left-1/2 -translate-x-1/2  opacity-0 group-hover:opacity-100 p-2 text-xs whitespace-nowrap pointer-events-none rounded-2xl bg-white text-black dark:bg-black dark:text-white`}
             >
-              {item.Name}
+              {UI.label}
             </span>
-            <span className={`${item.color}`}>{item.Comp}</span>
+            <span className={`${UI.color}`}>{UI.Comp}</span>
           </div>
         ))}
       </div>

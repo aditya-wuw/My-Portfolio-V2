@@ -3,10 +3,10 @@ import { MdGridView } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
 import { useState } from "react";
 import { motion } from "motion/react";
-import { projectsData } from "@/data/data";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ProjectCardsType } from "@/types/ProjectTypes";
+import { skillsData } from "@/data/data";
 
 interface props {
   Projects: ProjectCardsType[];
@@ -36,7 +36,7 @@ const ProjectsUI = ({ Projects }: props) => {
         <div>
           <div className="flex justify-between w-full mx-1 px-2">
             <span>
-              <h1 className="font-bold text-xl">{projectsData.title}</h1>
+              <h1 className="font-bold text-xl">Featured</h1>
               <p className="text-sm">
                 Click the Title or Description to expand or view Video demo
               </p>
@@ -120,14 +120,22 @@ const ProjectsUI = ({ Projects }: props) => {
                   )}
                 </div>
                 <div className="flex gap-2 text-xs items-center">
-                  {item.tags.map((p, index) => (
-                    <div
-                      key={index}
-                      className={`p-1 rounded-md text-white bg-blue-700`}
-                    >
-                      {p}
-                    </div>
-                  ))}
+                  {item.tags.map((p, index) => {
+                    const Key = p
+                      .trim()
+                      .toLocaleLowerCase()
+                      .replaceAll(/[ .]/g, "");
+                    // console.log(Key);
+                    const UITags = skillsData.items[Key];
+                    return (
+                      <div
+                        key={index}
+                        className={`p-1 rounded-md text-white bg-blue-700`}
+                      >
+                        {UITags ? UITags.Comp : p}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

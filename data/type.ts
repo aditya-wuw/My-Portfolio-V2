@@ -36,14 +36,14 @@ export interface DetailsData {
 }
 
 export interface SkillItem {
-  Name: string;
+  label: string;
   Comp: JSX.Element;
   color?: string;
 }
 
 export interface SkillsData {
   title: string;
-  items: Array<SkillItem>;
+  items: Record<string, SkillItem>;
 }
 
 export interface ProjectsData {

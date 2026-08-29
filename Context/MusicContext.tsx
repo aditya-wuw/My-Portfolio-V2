@@ -75,7 +75,10 @@ export const MusicContextProvider = ({
       // play specific track if ID is given
       if (id) {
         const Target = TrackPlayList.find((i) => i.id === id);
-        if (!Target) return console.error("target music not found");
+        if (!Target || !index)
+          return console.error(
+            "target music not found or correct index wasn't not provided",
+          );
         setPlayIndex(index);
         UpdatePlaylist(id);
         return setCurrentTrack(Target);

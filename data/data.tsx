@@ -7,7 +7,9 @@ import {
   RiVideoOnAiFill,
 } from "react-icons/ri";
 import {
+  SiExpress,
   SiMongodb,
+  SiPostgresql,
   SiRadixui,
   SiReacthookform,
   SiSupabase,
@@ -16,20 +18,17 @@ import {
   SiZod,
 } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
-// import { GrGithub } from 'react-icons/gr'
-import { DiLinux, DiPhotoshop } from "react-icons/di";
-// import { CgVercel } from 'react-icons/cg'
+import { DiLinux, DiPhotoshop, DiPostgresql } from "react-icons/di";
 import { IoLogoVercel } from "react-icons/io5";
-import { assets, demos } from "../public/Assets/assets";
 import type {
   ContactData,
   DetailsData,
   HeroData,
   NavLink,
-  ProjectsData,
   SkillsData,
   TextContentData,
 } from "./type";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 export const navLinks: Array<NavLink> = [
   { id: "skills", label: "Skills" },
@@ -85,232 +84,121 @@ export const details: DetailsData = {
   ),
 };
 
-const icon_size = "w-5 h-5 md:w-7 md:h-7";
+// const icon_size = "w-5 h-5 md:w-7 md:h-7";
+const icon_size =
+  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";
 
 export const skillsData: SkillsData = {
   title: "Skills",
-  items: [
-    { Name: "Next.js", Comp: <RiNextjsFill className={icon_size} /> },
-    {
-      Name: "React",
+  items: {
+    nextjs: {
+      label: "Next.js",
+      Comp: <RiNextjsFill className={icon_size} />,
+      color: "",
+    },
+    react: {
+      label: "React",
       Comp: <FaReact className={icon_size} />,
       color: "group-hover:text-blue-300",
     },
-    {
-      Name: "TypeScript",
+    typescript: {
+      label: "TypeScript",
       Comp: <SiTypescript className={icon_size} />,
       color: "group-hover:text-blue-600",
     },
-    {
-      Name: "Tailwind CSS",
+    tailwindcss: {
+      label: "Tailwind CSS",
       Comp: <RiTailwindCssFill className={icon_size} />,
       color: "group-hover:text-blue-400",
     },
-    {
-      Name: "Vercel",
+    vercel: {
+      label: "Vercel",
       Comp: <IoLogoVercel className={icon_size} />,
+      color: "",
     },
-    {
-      Name: "Supabase",
+    supabase: {
+      label: "Supabase",
       Comp: <SiSupabase className={icon_size} />,
       color: "group-hover:text-green-700",
     },
-    {
-      Name: "Zod",
-      Comp: <SiZod className={icon_size} />,
-      color: "group-hover:text-blue-800",
+    postgresql: {
+      label: "PostgreSQL",
+      Comp: <BiLogoPostgresql className={icon_size} />,
+      color: "group-hover:text-green-700",
     },
-    {
-      Name: "React Form Hooks",
-      Comp: <SiReacthookform className={icon_size} />,
-      color: "group-hover:text-red-500",
-    },
-    {
-      Name: "Radix UI",
-      Comp: <SiRadixui className={icon_size} />,
-      color: "group-hover:text-black-500",
-    },
-    {
-      Name: "Node.js",
-      Comp: <FaNodeJs className={icon_size} />,
-      color: "group-hover:text-green-500",
-    },
-    {
-      Name: "SQL",
+    sql: {
+      label: "SQL",
       Comp: <PiFileSql className={icon_size} />,
       color: "group-hover:text-sky-700",
     },
-    {
-      Name: "MongoDB",
+    zod: {
+      label: "Zod",
+      Comp: <SiZod className={icon_size} />,
+      color: "group-hover:text-blue-800",
+    },
+    reacthookform: {
+      label: "React Hook Form",
+      Comp: <SiReacthookform className={icon_size} />,
+      color: "group-hover:text-red-500",
+    },
+    radixui: {
+      label: "Radix UI",
+      Comp: <SiRadixui className={icon_size} />,
+      color: "group-hover:text-neutral-800",
+    },
+    nodejs: {
+      label: "Node.js",
+      Comp: <FaNodeJs className={icon_size} />,
+      color: "group-hover:text-green-500",
+    },
+    express: {
+      label: "Express.js",
+      Comp: <SiExpress className={icon_size} />,
+      color: "group-hover:text-green-500",
+    },
+    mongodb: {
+      label: "MongoDB",
       Comp: <SiMongodb className={icon_size} />,
       color: "group-hover:text-green-700",
     },
-    {
-      Name: "Python",
+    python: {
+      label: "Python",
       Comp: <FaPython className={icon_size} />,
       color: "group-hover:text-sky-700",
     },
-    { Name: "Figma", Comp: <FaFigma className={icon_size} /> },
-    {
-      Name: "Affinity",
+    figma: {
+      label: "Figma",
+      Comp: <FaFigma className={icon_size} />,
+      color: "",
+    },
+    affinity: {
+      label: "Affinity",
       Comp: <DiPhotoshop className={icon_size} />,
       color: "group-hover:text-blue-800",
     },
-    {
-      Name: "Linux",
+    linux: {
+      label: "Linux",
       Comp: <DiLinux className={icon_size} />,
       color: "group-hover:text-orange-800",
     },
-    {
-      Name: "Rust",
+    rust: {
+      label: "Rust",
       Comp: <FaRust className={icon_size} />,
       color: "group-hover:text-orange-500",
     },
-    {
-      Name: "Tauri",
+    tauri: {
+      label: "Tauri",
       Comp: <SiTauri className={icon_size} />,
       color: "group-hover:text-yellow-800",
     },
-    { Name: "Video Editing", Comp: <RiVideoOnAiFill className={icon_size} /> },
-  ],
+    "video editing": {
+      label: "Video Editing",
+      Comp: <RiVideoOnAiFill className={icon_size} />,
+      color: "",
+    },
+  },
 };
 
-export const projectsData: ProjectsData = {
-  title: "Featured",
-  items: [
-    {
-      title: "copy-chan",
-      Link: "copy-chan",
-      started: "1st Dec",
-      ended: "23rd Dec 2025",
-      DemoVideo: demos.copychandemo,
-      Description:
-        "I needed a Windows-like clipboard manager as I switched to Linux, so I made my own setup.",
-      AdditionalDescription:
-        "Copy Chan is a cross-platform desktop clipboard/history manager with an emoji and symbols picker, built with Tauri (Rust) and React + Vite. Primarily made and optimized for Linux.",
-      content:
-        "A lightning-fast native desktop utility built to bridge the gap between Windows and Linux clipboard histories. With v1.0.805 copy-chan is 10x faster than windows native clipboard manager, new ASCII patterns and emojies\n\n# Project Idea\nFrustrated by the lack of smooth, native clipboard managers when transitioning layout OS workspaces to Linux, I decided to build an lightweight asset with an accessible emoji dashboard.\n\n# How It Works\nUsing Tauri and Rust, the app spawns a global system listener thread that intercepts system clipboard changes, stores them in an efficient local layout, and displays them via a lightweight React frontend.",
-      image: assets.copychan,
-      tags: ["React", "Rust", "Tauri", "Tailwind CSS", "Solo"],
-      links: [
-        {
-          label: "View",
-          url: "https://copychan.smgcat.site",
-        },
-        {
-          label: "Repo",
-          url: "https://github.com/Smug-Cat-s-Den/Copy-Chan",
-        },
-      ],
-    },
-    {
-      title: "Koneko AI",
-      Link: "koneko",
-      started: "20th Dec 2025",
-      ended: "10th Jan 2026",
-      DemoVideo: demos.Koneko,
-      Description:
-        "AI-powered web app that generates personalized mock tests and notes to help students prepare effectively for exams.",
-      AdditionalDescription:
-        "Send a prompt and start preparing as it creates a virtual mock test simulation for you.",
-      content:
-        "An intelligent automated education suite designed to transform unstructured textbooks into mock testing engines.\n\n# Project Idea\nTraditional studying methods feel passive. Koneko AI aims to turn study materials into dynamic testing sandboxes to boost active memory recall.\n\n# How It Works\nUsers pass their course subjects or notes, which are parsed and sent to an AI orchestration layer. The application then streams structural multi-choice questions back and structures mock analytics with Supabase handling progress data.",
-      image: assets.Kokeno,
-      tags: ["Next.js", "Tailwind CSS", "Supabase", "Solo"],
-      links: [
-        {
-          label: "Demo",
-          url: "https://koneko.smgcat.site",
-        },
-      ],
-    },
-    {
-      title: "Smug Cat's Den",
-      Link: "smugcat",
-      started: "2nd Feb 2026",
-      ended: "Today",
-      Description:
-        "This is the online brand alias I maintain to release my open-source apps or products. The name comes from a motivation of some self-centered cats building something cool, haha.",
-      AdditionalDescription:
-        "My vision is very ambitious, but I am currently narrowing it down to something more achievable.",
-      content:
-        "Smug Cat's Den serves as my digital umbrella studio and playground for personal open-source projects, tools, and branding experiments.\n\n# Project Idea\nThe concept stems from creating a distinct developer persona—something memorable, playful, and completely unhinged like cats building code—to host production-ready apps.\n\n# How It Works\nIt handles multi-project routing and deployment configurations across specific subdomains while serving as the primary hub for my software releases.",
-      image: assets.smgcat,
-      tags: ["brand", "alias"],
-      links: [
-        {
-          label: "View",
-          url: "https://home.smgcat.site/",
-        },
-      ],
-    },
-    {
-      title: "Music Player Component",
-      Link: "Player",
-      started: "1st Feb",
-      ended: "8th Feb 2025",
-      Description:
-        "Fully hand-coded the logic of the displayed music player right next to the skills tab.",
-      AdditionalDescription:
-        "Initially used to showcase my favorite music, but I removed them due to copyright issues. I have also been learning to produce music since the start of 2026, so the music player may showcase some of my own tracks in the future.",
-      content:
-        "A custom-built, highly interactive custom web audio layout built natively within a portfolio context.\n\n# Project Idea\nInstead of relying on clunky third-party iframe embed codes that degrade site load speeds, I hand-coded an interactive HTML5 audio engine node.\n\n# How It Works\nUtilizes React state hooks tied to DOM audio nodes to handle play status, track queuing, duration calculation, and seamless timeline scrubbing.",
-      image: assets.msplayer,
-      tags: ["React", "Tailwind CSS"],
-      links: [
-        {
-          label: "Repo",
-          url: "https://github.com/aditya-wuw/Null-V2-Portfolio-/blob/master/src/components/Mount/Profile/MusicEmbed.tsx",
-        },
-      ],
-    },
-    {
-      title: "FireShip Discord bot",
-      Link: "FireShip_Discord_bot",
-      Description:
-        "FireShip bot is a Discord bot designed to keep users up to date with the latest videos.",
-      AdditionalDescription:
-        "Fireship is awesome, so I made this bot to stay instantly updated with channel uploads.",
-      content:
-        "FireShipBot is an automation tool built to fetch the latest videos from the Fireship YouTube channel and send instant updates to a Discord server.\n\n# Project Idea\nAs a fan of Fireship’s short, fast-paced tech videos, I wanted a clean way to get notified when a new one dropped without cluttering my personal YouTube subscription feeds.\n\n# How It Works\nThe bot runs on a 24-hour cron schedule built on Node.js. It hits the YouTube Data API to check for new video keys, compares them with the last cached entry, and automatically broadcasts embedded updates to configured webhooks.",
-      image: assets.Fireship,
-      tags: ["Node.js", "Express", "YouTube Data API v3"],
-      links: [
-        {
-          label: "none",
-          url: "none",
-        },
-        {
-          label: "Repo",
-          url: "https://github.com/aditya-wuw/FireShipBot",
-        },
-      ],
-    },
-    {
-      title: "HMS-dashboard",
-      Link: "HMS_dashboard",
-      Description:
-        "Tasked with building an Admin Hospital Management System Dashboard. This is a full-stack project demo.",
-      AdditionalDescription:
-        "A robust full-stack dashboard built during a hackathon challenge.",
-      DemoVideo: demos.HMSdemo,
-      content:
-        "HMS Dashboard is a full-stack healthcare platform engineered to handle core operations including analytical tracking and patient registration workflows.\n\n# Project Idea\nConceived during a rapid hackathon timeframe, this system addresses workflow congestion in clinics by digitizing tracking protocols.\n\n# How It Works\nThe UI maps relational operational queues through React components. Database logic coordinates secure CRUD updates handling doctor profiles, calendar bookings, and analytical summaries.\n\n # Update\nI recently migrated the database to SQL from Mongo as I no longer use it",
-      image: assets.screenshot5,
-      tags: ["React", "Express", "PostgreSQL", "Neon"],
-      links: [
-        {
-          label: "Demo",
-          url: "https://hms-dashbord-1.onrender.com/",
-        },
-        {
-          label: "Repo",
-          url: "https://github.com/aditya-wuw/HMS-Dashbord",
-        },
-      ],
-    },
-  ],
-};
 export const TextContent: TextContentData = {
   title: "Thank you for Visiting",
   content: ":3",
