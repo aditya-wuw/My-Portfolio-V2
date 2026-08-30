@@ -71,14 +71,13 @@ export const MusicContextProvider = ({
   const HandlePlay = useCallback(
     (id?: string, index?: number) => {
       if (!MusicRef.current) return console.error("Failed to play music");
-      // console.log(`logged id : ${id}`);
       // play specific track if ID is given
       if (id) {
+        // console.log(`logged id : ${id}`);
+        // console.log(`logged index : ${index}`);
         const Target = TrackPlayList.find((i) => i.id === id);
-        if (!Target || !index)
-          return console.error(
-            "target music not found or correct index wasn't not provided",
-          );
+        if (!Target) return console.error("target music not found");
+        if (index == undefined) return console.error("no index was provided");
         setPlayIndex(index);
         UpdatePlaylist(id);
         return setCurrentTrack(Target);

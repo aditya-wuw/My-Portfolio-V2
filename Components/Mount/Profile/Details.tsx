@@ -8,7 +8,7 @@ import {
 import { MdAttachEmail } from "react-icons/md";
 // import { PiReadCvLogoBold } from 'react-icons/pi'
 import { GrTechnology } from "react-icons/gr";
-import React, { Suspense } from "react";
+import React from "react";
 import { RiReactjsLine } from "react-icons/ri";
 import { TbCertificate } from "react-icons/tb";
 import { FaLocationPin } from "react-icons/fa6";
@@ -77,9 +77,7 @@ const Details = () => {
           <FaRunning className="w-4 h-4 hover:scale-115 scale-100 cursor-pointer" />
           <h1>College - Final year</h1>
           <div>
-            <Suspense>
-              <Live status={details.college} />
-            </Suspense>
+            <Live status={details.college} />
           </div>
         </section>
         {details.employment.length > 0 && (
@@ -106,7 +104,7 @@ const Details = () => {
             >
               <span>
                 <span
-                  className={`absolute pointer-events-none w-15 text-xs bottom-5 -left-5 z-1 p-1 opacity-0 group-hover:opacity-100 rounded-xl text-center bg-black text-white dark:bg-white dark:text-black"}`}
+                  className={`absolute pointer-events-none w-15 text-xs bottom-5 -left-5 z-1 p-1 opacity-0 group-hover:opacity-100 rounded-xl text-center bg-black text-white dark:bg-white dark:text-black "}`}
                 >
                   {item.label}
                 </span>
