@@ -78,7 +78,7 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
                   ease: "easeInOut",
                 }}
               >
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 max-md:text-xs">
                   <CircleCheckBigIcon size={20} duration={1} color="#11ff00" />{" "}
                   {state.error
                     ? state.message
@@ -159,7 +159,7 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
           </label>
           <button
             type="submit"
-            className={`${isPending ? "bg-blue-600/40" : "bg-blue-600/80"} hover:bg-blue-600 text-white rounded-xl mt-1 py-2 flex-center gap-2 pop-in shadow-inner shadow-blue-300`}
+            className={`${isPending ? "bg-blue-600/70" : "bg-blue-600/80"} hover:bg-blue-600 text-white rounded-xl mt-1 py-2 flex-center gap-2 pop-in shadow-inner shadow-blue-300`}
             disabled={isPending}
           >
             <SendIcon

@@ -8,6 +8,7 @@ const getProjects = async () => {
       headers: {
         apikey: process.env.SUPABASE_ANONE_KEY || "",
       },
+      cache: "no-store",
     });
     if (!res.ok) {
       const errorMessage = await res.json();

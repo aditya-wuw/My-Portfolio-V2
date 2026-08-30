@@ -1,5 +1,6 @@
 import BlogPage from "@/Components/Mount/BlogFeed/BlogPage";
 import { BlogPageData } from "@/types/BlogTypes";
+import { redirect } from "next/navigation";
 
 interface props {
   params: Promise<{
@@ -34,15 +35,16 @@ interface props {
 const getBlogData = async (id: string) => {
   const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_blogs?id=eq.${id}&select=id,title,content,banner,published,updated`;
   const res = await fetch(ProjectURL, {
+    cache: "no-store",
     headers: {
       apikey: process.env.SUPABASE_ANONE_KEY || "",
     },
-    // next: { revalidate: 3600 },
   });
   // const BlogData = TestData;
   const Response = await res.json();
   const BlogData = Response[0] as BlogPageData;
-  // console.log(ProjectData);
+  if (BlogData == undefined) return redirect("/404");
+  // console.log(BlogData);
   return BlogData;
 };
 

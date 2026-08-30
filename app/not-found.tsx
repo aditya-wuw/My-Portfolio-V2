@@ -13,7 +13,7 @@ export default function notfound() {
           height={200}
           alt="asdasda"
           loading="eager"
-          className="rounded-xl mix-blend-difference"
+          className="rounded-xl"
         />
 
         <Link href={"/"} className="text-blue-500 underline">

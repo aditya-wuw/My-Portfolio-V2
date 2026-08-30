@@ -63,21 +63,28 @@ const MusicPlayer = () => {
 
   // on component unmount stop playing
   useEffect(() => {
-    return () => setisPlaying(false);
+    return () => {
+      setisPlaying(false);
+    };
   }, [setisPlaying]);
 
-  const SetInitial = useCallback(async () => {
+  const SetDurationAndVolume = useCallback(async () => {
     const Audio = MusicRef.current;
     if (Audio && CurrentTrack) {
       Audio.volume = Volume / 100;
-      Audio.src = CurrentTrack.music_src;
       setduration(Audio.duration);
     }
   }, [MusicRef, CurrentTrack, Volume]);
 
   useEffect(() => {
-    SetInitial();
-  }, [SetInitial, setisPlaying]);
+    SetDurationAndVolume();
+  }, [SetDurationAndVolume, setisPlaying]);
+
+  useEffect(() => {
+    const Audio = MusicRef.current;
+    if (!Audio) return;
+    Audio.src = CurrentTrack.music_src;
+  }, [CurrentTrack, MusicRef]);
 
   /**
    * UI Disk Rotation elements

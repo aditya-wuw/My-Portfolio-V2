@@ -58,7 +58,7 @@ export const SubmitAction = async (
         true,
       );
     }
-    console.log("Here are the submited data :", contact);
+    // console.log("submited", contact);
     return returnFormState(true, "Form submited");
   } catch (e) {
     console.error(`failed to submit form, error:${e}`);

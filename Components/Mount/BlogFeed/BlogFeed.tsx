@@ -8,6 +8,7 @@ const getBlogFeeds = async () => {
       headers: {
         apikey: process.env.SUPABASE_ANONE_KEY || "",
       },
+      next: { revalidate: 60 },
     });
     if (!res.ok) {
       const errorMessage = await res.json();

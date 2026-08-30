@@ -15,7 +15,7 @@ const getProjectData = async (id: string) => {
       headers: {
         apikey: process.env.SUPABASE_ANONE_KEY || "",
       },
-      // next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     });
     const Response = await res.json();
     const ProjectData = Response[0] as ProjectData;

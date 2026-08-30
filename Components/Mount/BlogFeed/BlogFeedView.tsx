@@ -44,8 +44,8 @@ const BlogFeedView = ({ Feeds }: BlogFeed) => {
         </h1>
         <div className="mt-3 relative w-full h-full">
           <div className="h-full absolute border-l top-2 left-2" />
-          <TbPointFilled className="absolute left-0 top-1" />
-          <div className="h-49 w-full translate-y-2 overflow-y-auto scroll_bar_thumb scroll_bar_">
+          <TbPointFilled className="absolute left-0 top-0" />
+          <div className="h-85 w-full translate-y-2 overflow-y-auto scroll_bar_thumb scroll_bar_">
             {Feeds.sort(
               (a, b) =>
                 new Date(b.published).getTime() -
@@ -53,10 +53,10 @@ const BlogFeedView = ({ Feeds }: BlogFeed) => {
             ).map((Feed) => (
               <div key={Feed.id} className="flex gap-2 mb-5">
                 <div>
-                  <TbPointFilled className="-translate-y-1" />
+                  <TbPointFilled className="-translate-y-2" />
                 </div>
                 <section
-                  className={`mx-2 px-4 py-2 rounded-2xl cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-500`}
+                  className={`mx-2 px-4 py-2 rounded-2xl cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-700`}
                   onClick={() => GoToBlog(Feed.id)}
                 >
                   <h1 className="md:text-sm text-[14px] font-bold">
