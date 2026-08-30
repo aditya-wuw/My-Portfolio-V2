@@ -45,9 +45,17 @@ export default function BlogPage({ Blog }: BlogProps) {
         <div className="inset-0 w-full">
           <MarkdownReader content={Blog.content} />
         </div>
-        <div className="my-2 ">
-          <h1 className="text-sm">Published on</h1>
-          <h1 className="text-md">{`${getFormatedDate(new Date(Blog.published))}`}</h1>
+        <div className="my-2 flex flex-col gap-2">
+          <div>
+            <span className="text-sm">Published • </span>
+            <span className="text-md">{`${getFormatedDate(new Date(Blog.published))}`}</span>
+          </div>
+          {Blog.updated && (
+            <div>
+              <span className="text-sm">Last updated • </span>
+              <span className="text-md">{`${getFormatedDate(new Date(Blog.updated))}`}</span>
+            </div>
+          )}
         </div>
       </motion.div>
     </div>

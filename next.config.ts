@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       new URL("https://avatars.githubusercontent.com/**"),
       new URL("https://ik.imagekit.io/**"),
+      new URL("https://images.unsplash.com/**"),
     ],
   },
 };

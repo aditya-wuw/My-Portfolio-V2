@@ -46,7 +46,11 @@ const BlogFeedView = ({ Feeds }: BlogFeed) => {
           <div className="h-full absolute border-l top-2 left-2" />
           <TbPointFilled className="absolute left-0 top-1" />
           <div className="h-49 w-full translate-y-2 overflow-y-auto scroll_bar_thumb scroll_bar_">
-            {Feeds.map((Feed) => (
+            {Feeds.sort(
+              (a, b) =>
+                new Date(b.published).getTime() -
+                new Date(a.published).getTime(),
+            ).map((Feed) => (
               <div key={Feed.id} className="flex gap-2 mb-5">
                 <div>
                   <TbPointFilled className="-translate-y-1" />
@@ -63,7 +67,7 @@ const BlogFeedView = ({ Feeds }: BlogFeed) => {
                   </p>
                   <h1 className="pt-2 flex items-center gap-1 md:text-sm text-xs">
                     <CgCalendar />
-                    {getFormatedDate(new Date(Feed.published))}
+                    {`${getFormatedDate(new Date(Feed.published))}`}
                   </h1>
                 </section>
               </div>
