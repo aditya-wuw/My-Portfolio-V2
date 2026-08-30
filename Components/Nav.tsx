@@ -7,6 +7,7 @@ import { scrollToSection } from "@/utils/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { BiSolidNotepad } from "react-icons/bi";
 
 const Nav = () => {
   const { inView } = useAppContext();
@@ -17,7 +18,7 @@ const Nav = () => {
   const navlist = [
     { id: "About", logo: <IoPerson size={15} /> },
     { id: "Projects", logo: <GoProjectSymlink size={15} /> },
-    // { id: 'blogs', logo: <LuLogs size={15} /> },
+    { id: "Journal", logo: <BiSolidNotepad size={15} /> },
   ];
 
   const { resolvedTheme, setTheme } = useTheme();

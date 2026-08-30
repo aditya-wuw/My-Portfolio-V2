@@ -1,5 +1,5 @@
 import { ProjectCardsType } from "@/types/ProjectTypes";
-import ProjectsUI from "./ProjectsUI";
+import ProjectsView from "./ProjectsView";
 
 const getProjects = async () => {
   const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_projects?select=orderIndex,title,Link,started,ended,image,Description,AdditionalDescription,tags,links`;
@@ -26,5 +26,5 @@ const getProjects = async () => {
 
 export default async function Projects() {
   const Projects = await getProjects();
-  return <ProjectsUI Projects={Projects} />;
+  return <ProjectsView Projects={Projects} />;
 }

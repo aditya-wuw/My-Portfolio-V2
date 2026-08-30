@@ -9,7 +9,6 @@ import {
 import {
   SiExpress,
   SiMongodb,
-  SiPostgresql,
   SiRadixui,
   SiReacthookform,
   SiSupabase,
@@ -18,7 +17,7 @@ import {
   SiZod,
 } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
-import { DiLinux, DiPhotoshop, DiPostgresql } from "react-icons/di";
+import { DiLinux, DiPhotoshop } from "react-icons/di";
 import { IoLogoVercel } from "react-icons/io5";
 import type {
   ContactData,

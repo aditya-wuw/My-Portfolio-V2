@@ -5,8 +5,8 @@ interface BlogData {
   content: string;
   banner: string;
   published: Date;
-  isUpdated?: boolean;
+  updated?: Date;
 }
 
-export type BlogShortData = Omit<BlogData, "content" | "banner" | "isUpdated">;
+export type BlogFeedData = Omit<BlogData, "content" | "banner" | "isUpdated">;
 export type BlogPageData = Omit<BlogData, "shortDescription">;

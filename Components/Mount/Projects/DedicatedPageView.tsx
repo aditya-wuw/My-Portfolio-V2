@@ -12,7 +12,7 @@ interface props {
   ProjectData: ProjectData;
 }
 
-export default function DedicatedPageUI({ ProjectData }: props) {
+export default function DedicatedPageView({ ProjectData }: props) {
   const { setIsInView } = useAppContext();
 
   useEffect(() => {

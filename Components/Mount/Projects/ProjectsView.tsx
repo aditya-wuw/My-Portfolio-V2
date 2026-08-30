@@ -12,7 +12,7 @@ interface props {
   Projects: ProjectCardsType[];
 }
 
-const ProjectsUI = ({ Projects }: props) => {
+const ProjectsView = ({ Projects }: props) => {
   const Route = useRouter();
 
   function Navigate(link: string) {
@@ -148,4 +148,4 @@ const ProjectsUI = ({ Projects }: props) => {
   );
 };
 
-export default ProjectsUI;
+export default ProjectsView;

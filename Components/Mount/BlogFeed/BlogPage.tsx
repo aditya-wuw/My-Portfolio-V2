@@ -4,14 +4,14 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { MdArrowBackIos } from "react-icons/md";
-import MarkdownReader from "./MarkdownReader";
+import MarkdownReader from "../MarkdownReader";
 import { getFormatedDate } from "@/utils/utils";
 
 interface BlogProps {
   Blog: BlogPageData;
 }
 
-export default function Blog({ Blog }: BlogProps) {
+export default function BlogPage({ Blog }: BlogProps) {
   return (
     <div className="md:mt-5">
       <Link href="/">
@@ -47,7 +47,7 @@ export default function Blog({ Blog }: BlogProps) {
         </div>
         <div className="my-2 ">
           <h1 className="text-sm">Published on</h1>
-          <h1 className="text-md">{`${getFormatedDate(Blog.published)}`}</h1>
+          <h1 className="text-md">{`${getFormatedDate(new Date(Blog.published))}`}</h1>
         </div>
       </motion.div>
     </div>

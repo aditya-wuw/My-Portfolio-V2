@@ -1,4 +1,4 @@
-import Blog from "@/Components/Mount/Blog";
+import BlogPage from "@/Components/Mount/BlogFeed/BlogPage";
 import { BlogPageData } from "@/types/BlogTypes";
 
 interface props {
@@ -28,11 +28,11 @@ const TestData: BlogPageData = {
   `,
   banner: "/Assets/ow.png",
   published: new Date(),
-  isUpdated: false,
+  updated: undefined,
 };
 
 const getBlogData = async (id: string) => {
-  // const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_blogs?id=eq.${id}&select=id,title,content,banner,published`;
+  // const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_blogs?id=eq.${id}&select=id,title,content,banner,published,updated`;
   // const res = await fetch(ProjectURL, {
   //   headers: {
   //     apikey: process.env.SUPABASE_ANONE_KEY || "",
@@ -49,5 +49,5 @@ const getBlogData = async (id: string) => {
 export default async function Page({ params }: props) {
   const { id } = await params;
   const BlogData = await getBlogData(id);
-  return <Blog Blog={BlogData} />;
+  return <BlogPage Blog={BlogData} />;
 }

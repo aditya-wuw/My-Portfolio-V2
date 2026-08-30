@@ -24,10 +24,11 @@ export const FormateTime = (val: number): string => {
 };
 
 export const getFormatedDate = (d: Date) => {
-  const FormatedDate = new Intl.DateTimeFormat("in", {
+  const FormatedDate = new Intl.DateTimeFormat("en-IN", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
+    timeZone: "Asia/kolkata"
   }).format(d);
   return FormatedDate;
 };

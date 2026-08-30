@@ -1,4 +1,4 @@
-import DedicatedPageUI from "@/Components/Mount/Projects/DedicatedPageUI";
+import DedicatedPageView from "@/Components/Mount/Projects/DedicatedPageView";
 import { ProjectData } from "@/types/ProjectTypes";
 import Link from "next/link";
 
@@ -38,5 +38,5 @@ export default async function Page({ params }: props) {
         </Link>
       </div>
     );
-  return <DedicatedPageUI ProjectData={ProjectData} />;
+  return <DedicatedPageView ProjectData={ProjectData} />;
 }

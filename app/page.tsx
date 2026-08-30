@@ -9,6 +9,7 @@ import Projects from "@/Components/Mount/Projects/Projects";
 import Skills from "@/Components/Mount/Profile/Skills";
 import { Suspense } from "react";
 import Loader from "@/Components/Loader";
+import BlogFeed from "@/Components/Mount/BlogFeed/BlogFeed";
 
 export default function Home() {
   return (
@@ -47,6 +48,20 @@ export default function Home() {
         >
           <Projects />
         </Suspense>
+      </section>
+      <section className="flex max-md:flex-col w-full max-md:h-fit h-80 gap-5 p-2">
+        <div className="md:w-3/6 h-full">
+          <Suspense
+            fallback={
+              <div className="w-full h-60 flex justify-center items-center dark:bg-black bg-white rounded-2xl">
+                <Loader />
+              </div>
+            }
+          >
+            <BlogFeed />
+          </Suspense>
+        </div>
+        {/*<div className="md:w-3/6 h-full bg-green-500"></div>*/}
       </section>
       <section className="xl:w-1/2">
         <Footer />

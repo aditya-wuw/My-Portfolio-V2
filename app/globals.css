@@ -25,6 +25,10 @@
   @apply transition-all duration-300 ease-in-out;
 }
 
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
