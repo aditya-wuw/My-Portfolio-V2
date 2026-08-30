@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true, // testing and migration only remove later
+    // ignoreBuildErrors: true, // testing and migration only remove later
   },
   images: {
     remotePatterns: [
