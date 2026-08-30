@@ -3,7 +3,7 @@ import { TbPointFilled } from "react-icons/tb";
 import { CgCalendar } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { BlogFeedData } from "@/types/BlogTypes";
-import { getFormatedDate } from "@/utils/utils";
+import { getFormatedDate } from "@/Utils/utils";
 import { PiCoffeeDuotone } from "react-icons/pi";
 import { BiSolidNotepad } from "react-icons/bi";
 
@@ -19,7 +19,7 @@ const BlogFeedView = ({ Feeds }: BlogFeed) => {
 
   if (Feeds.length === 0)
     return (
-      <div className="px-4 w-full h-full bg-white text-black dark:bg-black dark:text-white/75 rounded-2xl border dark:border-white/10 border-black/10">
+      <div className="px-4 w-full h-full max-md:h-60  bg-white text-black dark:bg-black dark:text-white/75 rounded-2xl border dark:border-white/10 border-black/10">
         <h1 className="h-1/6 text-xl font-semibold flex items-center gap-1">
           <BiSolidNotepad />
           <span>Journal</span>

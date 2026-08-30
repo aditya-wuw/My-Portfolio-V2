@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdArrowBackIos } from "react-icons/md";
 import MarkdownReader from "../MarkdownReader";
-import { getFormatedDate } from "@/utils/utils";
+import { getFormatedDate } from "@/Utils/utils";
 
 interface BlogProps {
   Blog: BlogPageData;

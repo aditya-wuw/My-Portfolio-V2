@@ -8,7 +8,7 @@ import { PiSpeakerXFill } from "react-icons/pi";
 import { TiArrowLoop } from "react-icons/ti";
 import { RiPlayListFill } from "react-icons/ri";
 import { useMusicContext } from "@/Context/MusicContext";
-import { FormateTime } from "@/utils/utils";
+import { FormateTime } from "@/Utils/utils";
 import Image from "next/image";
 const MotionImage = motion.create(Image);
 

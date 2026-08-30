@@ -3,7 +3,7 @@ import { MdLightMode } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { GoProjectSymlink } from "react-icons/go";
 import { useAppContext } from "@/Context/AppContext";
-import { scrollToSection } from "@/utils/utils";
+import { scrollToSection } from "@/Utils/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
