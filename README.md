@@ -1,18 +1,20 @@
 # Null V2 Portfolio
 
-Some core performance tweeking is beeing planned and tested will be implemented soon <br>
+Migrated React codebase to Next.js
 
-Welcome to **Null V2 Portfolio**!<br>( 0\_\_\_\_0 )<br>
+**Hellow welcome**!<br>( 0\_\_\_\_0 )<br>
 
 This project is a modern and customizable portfolio designed to showcase my work, skills, and contact information effectively.
 
 ## Features
 
-- Sleek and responsive design
-- Easy to edit content and personalize
-- Clean code structure for customization
-- Modular components for scalability
-- Built with best practices in mind
+- [x] Sleek and responsive design
+- [x] Easy to edit content and personalize
+- [x] Clean code structure for customization
+- [x] Modular components for scalability
+- [x] Built with best practices in mind
+- [x] Contact form
+- [x] Blog posts
 
 ## License
 

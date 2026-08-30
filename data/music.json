@@ -1,0 +1,58 @@
+[
+  {
+    "id": "music1",
+    "Title": "Outer layer of Space - Adi",
+    "music_src": "https://ik.imagekit.io/3sfckuehxk/music%20/Outer%20Space.mp3",
+    "banner": "https://ik.imagekit.io/3sfckuehxk/music%20/felix-mittermeier-milky-way-2695569.jpg",
+    "isplaying": false,
+    "bg": "black"
+  },
+  {
+    "id": "music2",
+    "Title": "Try Again - Adi",
+    "music_src": "Musics/Try Again - Original.wav",
+    "banner": "/Images_Optimized/Cover/02.jpg",
+    "isplaying": false,
+    "bg": "bg-cyan-700"
+  },
+  {
+    "id": "music3",
+    "Title": "lvymusic dnb - lucid",
+    "music_src": "Musics/lvymusic-dnb-liquid-141072.mp3",
+    "banner": "/Images_Optimized/Cover/05.jpg",
+    "isplaying": false,
+    "bg": "bg-blue-600"
+  },
+  {
+    "id": "music4",
+    "Title": "Musinova neon sky - just escape",
+    "music_src": "Musics/musinova-neon-sky-liquid-jungle-breakbeat-drum-and-bass-no-vocal-samples-356501.mp3",
+    "banner": "/Images_Optimized/Cover/06.jpg",
+    "isplaying": false,
+    "bg": "black"
+  },
+  {
+    "id": "music5",
+    "Title": "Aka4aerk- aerk",
+    "music_src": "Musics/aka4aerk-aerk-title-86-418636.mp3",
+    "banner": "/Images_Optimized/Cover/01.jpg",
+    "isplaying": false,
+    "bg": "black"
+  },
+  {
+    "id": "music6",
+    "Title": "Astral Realms - ionosphere",
+    "music_src": "Musics/daljit_kundi-astral-realms-amp-ziyal-ionosphere-463441.mp3",
+    "banner": "/Images_Optimized/Cover/03.jpg",
+    "isplaying": false,
+    "bg": "bg-pink-500"
+  },
+  {
+    "id": "music7",
+    "Title": "fronbondi skegs beat - where are you",
+    "music_src": "Musics/fronbondi_skegs-beat-where-are-you-liquid-dnb-beat-439768.mp3",
+    "banner": "/Images_Optimized/Cover/04.jpg",
+    "isplaying": false,
+    "bg": "bg-cyan-600"
+  }
+]
