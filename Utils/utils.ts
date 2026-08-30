@@ -1,8 +1,6 @@
 // utils.ts
 // import { ScrollSmoother } from 'gsap/all'
 
-import { audio } from "motion/react-client";
-
 export const scrollToSection = (targetId: string) => {
   // 2. Safely trigger the smoother instance
   const target = document.getElementById(targetId);
@@ -12,10 +10,6 @@ export const scrollToSection = (targetId: string) => {
       behavior: "smooth",
     });
   }
-  // const smoother = ScrollSmoother.get();
-  // if (smoother) {
-  //   smoother.scrollTo(target, true, "top top");
-  // }
 };
 
 export const FormateTime = (val: number): string => {
