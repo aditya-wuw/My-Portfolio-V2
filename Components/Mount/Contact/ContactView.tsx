@@ -70,7 +70,7 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
             {state.success ? (
               <motion.div
                 key="success"
-                className={`h-full bg-green-500 text-white/90 px-2 rounded-xl text-sm flex justify-between items-center gap-1`}
+                className={`h-full bg-green-700 text-white/90 px-2 rounded-xl text-sm flex justify-between items-center gap-1`}
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 100 }}
                 transition={{

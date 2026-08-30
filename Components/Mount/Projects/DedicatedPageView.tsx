@@ -46,7 +46,7 @@ export default function DedicatedPageView({ ProjectData }: props) {
               height={1000}
               loading="eager"
               alt="project cover Image"
-              className="object-cover absolute 2xl:-top-45 xl:-top-15"
+              className="object-cover absolute -top-20"
             />
           </div>
         )}
@@ -72,18 +72,19 @@ export default function DedicatedPageView({ ProjectData }: props) {
         </div>
 
         <div className="flex gap-3 items-center justify-end mb-3">
-          {ProjectData.links.map(
-            (Linkitem, LinkIndex) =>
-              Linkitem.label !== "none" && (
-                <a
-                  key={LinkIndex}
-                  className={`p-2 text-sm ${typeof Linkitem.label === "string" && Linkitem.label !== "none" && "p-1 bg-blue-500 rounded-md text-white"}`}
-                  href={Linkitem.url}
-                >
-                  {Linkitem.label}
-                </a>
-              ),
-          )}
+          {ProjectData.links &&
+            ProjectData.links.map(
+              (Linkitem, LinkIndex) =>
+                Linkitem.label !== "none" && (
+                  <a
+                    key={LinkIndex}
+                    className={`p-2 text-sm ${typeof Linkitem.label === "string" && Linkitem.label !== "none" && "p-1 bg-blue-500 rounded-md text-white"}`}
+                    href={Linkitem.url}
+                  >
+                    {Linkitem.label}
+                  </a>
+                ),
+            )}
         </div>
       </motion.div>
     </div>

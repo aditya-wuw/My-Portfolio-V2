@@ -1,4 +1,11 @@
-import { FaFigma, FaNodeJs, FaPython, FaReact, FaRust } from "react-icons/fa";
+import {
+  FaDocker,
+  FaFigma,
+  FaNodeJs,
+  FaPython,
+  FaReact,
+  FaRust,
+} from "react-icons/fa";
 import {
   RiNextjsFill,
   RiReactjsFill,
@@ -17,7 +24,7 @@ import {
   SiZod,
 } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
-import { DiLinux, DiPhotoshop } from "react-icons/di";
+import { DiDocker, DiLinux, DiPhotoshop } from "react-icons/di";
 import { IoLogoVercel } from "react-icons/io5";
 import type {
   ContactData,
@@ -85,7 +92,7 @@ export const details: DetailsData = {
 
 // const icon_size = "w-5 h-5 md:w-7 md:h-7";
 const icon_size =
-  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";  
+  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";
 
 export const skillsData: SkillsData = {
   title: "Skills",
@@ -179,6 +186,11 @@ export const skillsData: SkillsData = {
       label: "Linux",
       Comp: <DiLinux className={icon_size} />,
       color: "group-hover:text-orange-800",
+    },
+    docker: {
+      label: "Docker",
+      Comp: <FaDocker className={icon_size} />,
+      color: "group-hover:text-blue-500",
     },
     rust: {
       label: "Rust",

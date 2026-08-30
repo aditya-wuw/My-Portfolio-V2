@@ -3,7 +3,7 @@ import { MdEmail } from "react-icons/md";
 import { contactData } from "@/data/data";
 
 const Footer = () => {
-  const lastupdated = "11th Aug 2026";
+  const lastupdated = "30th Aug 2026";
 
   return (
     <div
