@@ -57,14 +57,14 @@ export default function News() {
     <AnimatePresence mode="wait">
       {!newsSeen ? (
         <motion.div
-          className="absolute w-full h-full bg-black/50 backdrop-blur-md z-100 flex-center select-none"
+          className="absolute w-full h-full bg-black/60 backdrop-blur-lg z-100 flex-center select-none"
           key={"pop-up"}
-          initial={{ y: -10, opacity: 30 }}
+          initial={{ y: -1, opacity: 0 }}
           animate={{ y: 0, opacity: 100 }}
-          exit={{ y: 10, opacity: 0 }}
+          exit={{ y: 1, opacity: 0 }}
           transition={{ ease: "circInOut", duration: 0.8, delay: 0.6 }}
         >
-          <div className="mx-2 px-2 border dark:border-white/15 border-black/10 bg-white dark:bg-black dark:text-white text-black drop-shadow-sm rounded-2xl overflow-hidden">
+          <div className="mx-2 px-2 border dark:border-white/5 border-black/10 bg-white dark:bg-black dark:text-white text-black drop-shadow-sm rounded-2xl overflow-hidden">
             <div className="p-2 w-full h-100 xl:h-115 xl:w-140 flex flex-col gap-0 justify-between">
               <div className="h-7/8 w-full">
                 <div className="flex items-center justify-between p-2 mb-2">
@@ -92,7 +92,7 @@ export default function News() {
                     alt="banners"
                     width={1280}
                     height={720}
-                    className="object-cover w-full h-9/8 outline-none rounded-2xl"
+                    className="object-cover w-full h-9/8 outline-none rounded-2xl shadow-xl mask-x-from-60% mask-y-from-50%"
                     draggable={false}
                     loading="eager"
                   />
@@ -161,7 +161,7 @@ export default function News() {
                         animate={{ x: 0, opacity: 100 }}
                         exit={{ x: -10, opacity: 0 }}
                         transition={{ ease: "circInOut", duration: 0.8 }}
-                        className="w-6 h-6 bg-blue-600 dark:hover:bg-blue-400 hover:bg-blue-600 ease-in-out duration-200 rounded-full p-3 flex-center"
+                        className="w-6 h-6 bg-blue-600 text-white dark:hover:bg-blue-400 hover:bg-blue-600 ease-in-out duration-200 rounded-full p-3 flex-center"
                         onClick={() => handleClose()}
                       >
                         <Check size={20} />
