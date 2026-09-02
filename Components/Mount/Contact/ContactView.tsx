@@ -134,26 +134,26 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
             />
           </label>
           <label htmlFor="email" className="mt-2 flex flex-col">
-            email
+            Email
             <input
               required
               id="email"
               name="email"
               pattern=".*@.*"
               title="Enter a valid email"
-              type="text"
+              type="email"
               placeholder="yukimakoto@example.com"
               className="outline-none dark:bg-white/10 bg-black/10 p-2 mt-2  rounded-md"
             />
           </label>
           <label htmlFor="message" className="mt-2 flex flex-col gap-2">
-            message
+            Message
             <textarea
               required
               id="message"
               maxLength={200}
               name="message"
-              placeholder="with in 200 characters"
+              placeholder="within 200 characters"
               className="resize-none outline-none h-20 w-full p-2 dark:bg-white/10 bg-black/10 scrollbar-none rounded-md"
             />
           </label>
