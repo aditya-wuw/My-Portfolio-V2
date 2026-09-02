@@ -2,11 +2,12 @@
 import { MdGridView } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ProjectCardsType } from "@/types/ProjectTypes";
 import { skillsData } from "@/data/data";
+import { scrollToSection } from "@/Utils/utils";
 
 interface props {
   Projects: ProjectCardsType[];
@@ -19,15 +20,20 @@ const ProjectsView = ({ Projects }: props) => {
     Route.push(`/projects/${link}`);
   }
 
+  const MaxVisibleProjects = 4;
+  const ProjectsLength = Projects.length;
   const [islist, setislist] = useState(false);
   const [duration, setduration] = useState(0);
 
-  const handleClick = () => {
+  const handleClick = (key: string) => {
     setduration(0.13);
+    if (!islist) {
+      scrollToSection(key);
+    }
     setislist((prev) => !prev);
   };
 
-  if (!Projects || Projects.length === 0) return;
+  if (!Projects || ProjectsLength === 0) return;
   return (
     <div id="Projects">
       <div
@@ -43,20 +49,48 @@ const ProjectsView = ({ Projects }: props) => {
             </span>
             <button
               className={`lg:block hidden scale-115 cursor-pointer hover:scale-120 transition-scale duration-200 ease-in-out`}
-              onClick={handleClick}
+              onClick={() => handleClick(Projects[MaxVisibleProjects - 1].Link)}
             >
-              {islist ? <MdGridView /> : <FaList />}
+              <AnimatePresence mode="wait">
+                {islist ? (
+                  <motion.span
+                    key={"grid-view"}
+                    initial={{ x: 2, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -32, opacity: 0 }}
+                    transition={{ ease: "backInOut", duration: 0.3 }}
+                  >
+                    <MdGridView />
+                  </motion.span>
+                ) : (
+                  <div className="flex-center gap-2 pr-2">
+                    <motion.span
+                      key={"list-view"}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -12, opacity: 0 }}
+                      transition={{ ease: "easeInOut", duration: 0.1 }}
+                      className="dark:bg-blue-700 text-white bg-blue-500 rounded-2xl px-3 py-1 text-xs inset-shadow-2xs shadow-inner dark:shadow-blue-900"
+                    >
+                      {ProjectsLength - MaxVisibleProjects}+ projects
+                    </motion.span>
+                    <FaList />
+                  </div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
         <section
           className={`project_section mt-4 gap-3 grid place-items-center h-full ${islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
         >
-          {Projects.sort((a, b) => a.orderIndex - b.orderIndex).map(
-            (item, i) => (
+          {Projects.sort((a, b) => a.orderIndex - b.orderIndex)
+            .slice(0, islist ? ProjectsLength : MaxVisibleProjects)
+            .map((item, i) => (
               <motion.div
                 className={`project_comp relative bg-white dark:bg-black min-h-55 max-h-65 w-full h-65  overflow-hidden rounded-xl`}
                 key={i}
+                id={item.Link}
                 layout
                 whileInView={{
                   y: [20, 0],
@@ -142,8 +176,7 @@ const ProjectsView = ({ Projects }: props) => {
                   </div>
                 </div>
               </motion.div>
-            ),
-          )}
+            ))}
         </section>
       </div>
     </div>
