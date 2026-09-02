@@ -38,15 +38,15 @@ export default function DedicatedPageView({ ProjectData }: props) {
           {ProjectData.title}
         </h1>
         {ProjectData.image && !ProjectData.DemoVideo && (
-          <div className="h-55 max-[482px]:h-35 w-full overflow-hidden rounded-2xl relative">
+          <div className="h-55 max-sm:h-25 w-full overflow-hidden rounded-2xl relative">
             <Image
               draggable={false}
               src={String(ProjectData.image)}
-              width={2000}
-              height={1000}
+              width={1920}
+              height={1080}
               loading="eager"
               alt="project cover Image"
-              className="object-cover absolute -top-20"
+              className="aspect-auto absolute xl:-top-20"
             />
           </div>
         )}
