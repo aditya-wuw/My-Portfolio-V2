@@ -38,7 +38,7 @@ export const SubmitAction = async (
       message: sentMessage,
     };
 
-    const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/contact_queries`;
+    const ProjectURL = `${process.env.SUPABASE_URL}/rest/v1/contact_queries`;
     const res = await fetch(ProjectURL, {
       method: "POST",
       headers: {

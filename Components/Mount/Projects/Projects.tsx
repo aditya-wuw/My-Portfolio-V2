@@ -2,7 +2,7 @@ import { ProjectCardsType } from "@/types/ProjectTypes";
 import ProjectsView from "./ProjectsView";
 
 const getProjects = async () => {
-  const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_projects?select=orderIndex,title,Link,started,ended,image,Description,AdditionalDescription,tags,links`;
+  const ProjectURL = `${process.env.SUPABASE_URL}/rest/v1/personal_projects?select=orderIndex,title,Link,started,ended,image,Description,AdditionalDescription,tags,links`;
   try {
     const res = await fetch(ProjectURL, {
       headers: {
