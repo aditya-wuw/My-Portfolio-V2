@@ -24,7 +24,7 @@ import {
   SiZod,
 } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
-import { DiDocker, DiLinux, DiPhotoshop } from "react-icons/di";
+import { DiLinux, DiPhotoshop } from "react-icons/di";
 import { IoLogoVercel } from "react-icons/io5";
 import type {
   ContactData,
@@ -35,6 +35,7 @@ import type {
   TextContentData,
 } from "./type";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { BlogPageData } from "@/types/BlogTypes";
 
 export const navLinks: Array<NavLink> = [
   { id: "skills", label: "Skills" },
@@ -214,4 +215,30 @@ export const TextContent: TextContentData = {
   title: "Thank you for Visiting",
   content: ":3",
   by: "Null faced dev",
+};
+
+export const TestDataBlogPage: BlogPageData = {
+  id: "dasdasdadssada",
+  title: "Testing Blog post page",
+  content: `The quick brown fox jumps over the lazy dog while background workers process incoming queue events asynchronously. In distributed systems, maintaining eventual consistency requires careful coordination between write-ahead logs and cache invalidation policies.\n### Key Milestones \n- **Phase 1:** Core infrastructure provisioning and VPC peering.- **Phase 2:** Database indexing optimizations and read-replica scaling.\n- **Phase 3:** Automated failover routines and end-to-end monitoring.> "Premature optimization is the root of all evil (or at least most of it) in programming."
+
+  > # "greatest human being that ever lived"
+  \`\`\`typescript
+  interface CacheConfig {
+    ttlSeconds: number;
+    maxEntries: number;
+    evictionPolicy: 'LRU' | 'FIFO';
+  }
+  \`\`\`
+  - **Phase 2:** Database indexing optimizations and read-replica scaling.
+  \`\`\`py
+  helloWorld = "Hi"
+  \`\`\`
+  - **Phase 2:** Database indexing optimizations and read-replica scaling.
+  \n\n
+  ![somethinger](/store/Board.png)
+  `,
+  banner: "/Assets/ow.png",
+  published: new Date("2026-08-30T08:35:50.000Z"),
+  // updated: new Date("2026-09-01T08:35:50.000Z"),
 };

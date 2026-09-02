@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BsClipboard } from "react-icons/bs";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -39,6 +40,21 @@ const MarkdownReader = ({ content }: { content: string }) => {
               {...props}
             />
           ),
+          img: ({ height, width, src, alt, ...props }) => {
+            if (!src || typeof src !== "string" || src.trim() === "") {
+              return null;
+            }
+            return (
+              <Image
+                src={src?.toString() as string}
+                width={1920}
+                height={1080}
+                alt={`${alt}+image${height ?? "smug"}x${width ?? "cat"}`}
+                className="w-full h-auto object-contain rounded-md"
+                {...props}
+              />
+            );
+          },
           code: ({ className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || "");
             const copyContent = async () => {

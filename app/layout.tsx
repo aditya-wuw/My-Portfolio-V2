@@ -5,6 +5,7 @@ import { ContextProviderWrap } from "@/Context/AppContext";
 import Nav from "@/Components/Nav";
 import { ThemeProvider } from "next-themes";
 import { MusicContextProvider } from "@/Context/MusicContext";
+import NewsView from "@/Components/News/NewsView";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ContextProviderWrap>
           <MusicContextProvider>
             <ThemeProvider attribute={"class"} defaultTheme="dark">
+              <NewsView />
               <div className="w-full min-h-screen  bg-white dark:bg-black grid-pattern transition duration-200 pop-in">
                 <div className="max-w-4xl mx-auto px-4 pb-4 ">
                   <Nav />

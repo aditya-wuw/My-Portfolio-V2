@@ -12,6 +12,7 @@ interface BlogProps {
 }
 
 export default function BlogPage({ Blog }: BlogProps) {
+  // console.log(Blog.updated);
   return (
     <div className="md:mt-5">
       <Link href="/">
@@ -45,17 +46,22 @@ export default function BlogPage({ Blog }: BlogProps) {
         <div className="inset-0 w-full">
           <MarkdownReader content={Blog.content} />
         </div>
-        <div className="my-2 flex flex-col gap-2">
+        <div className="my-2 flex flex-col items-end w-full gap-2">
           <div>
-            <span className="text-sm">Published • </span>
-            <span className="text-md">{`${getFormatedDate(new Date(Blog.published))}`}</span>
+            {Blog.updated ? (
+              <div>
+                <span className="text-sm">Last updated</span>
+                <span className="px-2">•</span>
+                <span className="text-md">{`${getFormatedDate(new Date(Blog.updated))}`}</span>
+              </div>
+            ) : (
+              <div>
+                <span className="text-sm">Published</span>
+                <span className="px-2">•</span>
+                <span className="text-md">{`${getFormatedDate(new Date(Blog.published))}`}</span>
+              </div>
+            )}
           </div>
-          {Blog.updated && (
-            <div>
-              <span className="text-sm">Last updated • </span>
-              <span className="text-md">{`${getFormatedDate(new Date(Blog.updated))}`}</span>
-            </div>
-          )}
         </div>
       </motion.div>
     </div>
