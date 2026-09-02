@@ -9,7 +9,7 @@ interface props {
 }
 
 const getProjectData = async (id: string) => {
-  const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_projects?Link=eq.${id}&select=*`;
+  const ProjectURL = `${process.env.SUPABASE_URL}/rest/v1/personal_projects?Link=eq.${id}&select=*`;
   try {
     const res = await fetch(ProjectURL, {
       headers: {

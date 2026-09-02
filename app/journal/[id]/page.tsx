@@ -33,7 +33,7 @@ interface props {
 // };
 
 const getBlogData = async (id: string) => {
-  const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_blogs?id=eq.${id}&select=id,title,content,banner,published,updated`;
+  const ProjectURL = `${process.env.SUPABASE_URL}/rest/v1/personal_blogs?id=eq.${id}&select=id,title,content,banner,published,updated`;
   const res = await fetch(ProjectURL, {
     cache: "no-store",
     headers: {

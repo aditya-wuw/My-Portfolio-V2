@@ -37,7 +37,7 @@ const ProjectsView = ({ Projects }: props) => {
           <div className="flex justify-between w-full mx-1 px-2">
             <span>
               <h1 className="font-bold text-xl">Featured</h1>
-              <p className="text-sm">
+              <p className="text-xs xl:text-md pt-2">
                 Click the Title or Description to expand or view Video demo
               </p>
             </span>

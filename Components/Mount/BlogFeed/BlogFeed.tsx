@@ -2,7 +2,7 @@ import { BlogFeedData } from "@/types/BlogTypes";
 import BlogFeedView from "./BlogFeedView";
 
 const getBlogFeeds = async () => {
-  const ProjectURL = `${process.env.SUPABASE_DATA_API_ENDPOINT}/personal_blogs?select=id,title,shortDescription,published`;
+  const ProjectURL = `${process.env.SUPABASE_URL}/rest/v1/personal_blogs?select=id,title,shortDescription,published`;
   try {
     const res = await fetch(ProjectURL, {
       headers: {
