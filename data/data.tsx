@@ -235,6 +235,8 @@ export const TestDataBlogPage: BlogPageData = {
   helloWorld = "Hi"
   \`\`\`
   - **Phase 2:** Database indexing optimizations and read-replica scaling.
+  \n\n
+  ![somethinger](/store/Board.png)
   `,
   banner: "/Assets/ow.png",
   published: new Date("2026-08-30T08:35:50.000Z"),
