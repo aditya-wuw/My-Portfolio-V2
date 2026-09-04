@@ -94,7 +94,7 @@ const ProjectsView = ({ Projects }: props) => {
           className={`project_section mt-4 gap-3 grid place-items-center h-full ${islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
         >
           {Projects.sort((a, b) => a.orderIndex - b.orderIndex)
-            .slice(0, islist && !isMobile ? MaxVisibleProjects : ProjectsLength)
+            .slice(0, !islist && !isMobile ? MaxVisibleProjects : ProjectsLength)
             .map((item, i) => (
               <motion.div
                 className={`project_comp relative bg-white dark:bg-black min-h-55 max-h-65 w-full h-65  overflow-hidden rounded-xl`}
