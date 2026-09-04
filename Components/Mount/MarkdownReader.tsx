@@ -16,7 +16,7 @@ const MarkdownReader = ({ content }: { content: string }) => {
             <h2 className="xl:text-2xl text-xl font-semibold my-3" {...props} />
           ),
           h3: ({ ...props }) => (
-            <h3 className="xl:text-xl text-md font-medium my-2" {...props} />
+            <h3 className="xl:text-xl text-md font-semibold my-2" {...props} />
           ),
           h4: ({ ...props }) => (
             <h4 className="text-lg font-medium my-1" {...props} />
@@ -25,7 +25,7 @@ const MarkdownReader = ({ content }: { content: string }) => {
             <p className="text-base leading-relaxed my-2" {...props} />
           ),
           ul: ({ ...props }) => (
-            <ul className="list-disc list-inside my-2" {...props} />
+            <ul className="list-disc list-inside my-2 px-4 opacity-90" {...props} />
           ),
           li: ({ ...props }) => <li className="text-base" {...props} />,
           em: ({ ...props }) => <em className="italic" {...props} />,
