@@ -24,7 +24,10 @@ const getLatUpdateDate = async () => {
 };
 
 const Footer = async () => {
-  const lastupdate = await getLatUpdateDate();
+  const date = await getLatUpdateDate();
+  const lasteUpdated = date
+    ? `Last updated ${getFormatedDate(new Date(date)) ?? "along time"}`
+    : "Last updated along time ago";
   return (
     <div className="flex flex-col-reverse xl:flex-row justify-stretch gap-2 w-full">
       <div
@@ -32,13 +35,7 @@ const Footer = async () => {
       >
         <h1 className="flex items-center justify-center gap-1 mb-1">
           <FaClock className={`text-black dark:text-white`} />{" "}
-          <span className="max-sm:text-xs text-sm pl-1">
-            Last updated{" "}
-            {(lastupdate &&
-              typeof lastupdate === "string" &&
-              getFormatedDate(new Date(lastupdate))) ??
-              ""}
-          </span>
+          <span className="max-sm:text-xs text-sm pl-1">{lasteUpdated}</span>
           <div className="flex gap-1 ml-2 mb-0.5">
             <a
               href={contactData.gh}
