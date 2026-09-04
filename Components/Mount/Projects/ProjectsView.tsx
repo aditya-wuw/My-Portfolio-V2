@@ -1,7 +1,7 @@
 "use client";
 import { MdGridView } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -24,6 +24,15 @@ const ProjectsView = ({ Projects }: props) => {
   const ProjectsLength = Projects.length;
   const [islist, setislist] = useState(false);
   const [duration, setduration] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // console.log(isMobile);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleClick = (key: string) => {
     setduration(0.13);
@@ -85,7 +94,7 @@ const ProjectsView = ({ Projects }: props) => {
           className={`project_section mt-4 gap-3 grid place-items-center h-full ${islist ? "grid-cols-1" : "xl:grid-cols-2"}`}
         >
           {Projects.sort((a, b) => a.orderIndex - b.orderIndex)
-            .slice(0, islist ? ProjectsLength : MaxVisibleProjects)
+            .slice(0, islist && !isMobile ? MaxVisibleProjects : ProjectsLength)
             .map((item, i) => (
               <motion.div
                 className={`project_comp relative bg-white dark:bg-black min-h-55 max-h-65 w-full h-65  overflow-hidden rounded-xl`}
