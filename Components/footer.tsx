@@ -1,10 +1,28 @@
 import { FaClock, FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { contactData } from "@/data/data";
+import { getFormatedDate } from "@/Utils/utils";
 
-const Footer = () => {
-  const lastupdated = "30th Aug 2026";
+const getLatUpdateDate = async () => {
+  const query = `${process.env.SUPABASE_URL}/rest/v1/update_logs?select=last_update&order=last_update.desc&limit=1`;
+  try {
+    const res = await fetch(query, {
+      headers: {
+        apikey: process.env.SUPABASE_ANONE_KEY || "",
+      },
+      cache: "no-store",
+    });
+    const date = await res.json();
+    const result = date[0].last_update as string;
+    // console.log(result);
+    return result;
+  } catch (e) {
+    console.error(`Failed fetch logs, Error ${e}`);
+  }
+};
 
+const Footer = async () => {
+  const lastupdate = await getLatUpdateDate();
   return (
     <div
       className={`p-3 rounded-2xl text-center bg-white text-black border border-black/20 dark:bg-black dark:text-white dark:border dark:border-white/15`}
@@ -12,7 +30,11 @@ const Footer = () => {
       <h1 className="flex items-center justify-center gap-1 mb-1">
         <FaClock className={`text-black dark:text-white`} />{" "}
         <span className="max-sm:text-xs text-sm pl-1">
-          Last updated on {lastupdated}
+          Last updated{" "}
+          {(lastupdate &&
+            typeof lastupdate === "string" &&
+            getFormatedDate(new Date(lastupdate))) ??
+            ""}
         </span>
         <div className="flex gap-1 ml-2 mb-0.5">
           <a
