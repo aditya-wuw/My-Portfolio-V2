@@ -8,13 +8,16 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { BiSolidNotepad } from "react-icons/bi";
-
+import { HouseIcon, HouseIconHandle } from "@animateicons/react/lucide";
+import { motion } from "motion/react";
+import { useRef } from "react";
 const Nav = () => {
   const { inView } = useAppContext();
 
   const pathname = usePathname();
-  const ShowNav: boolean = pathname == "/";
-
+  const onLogPage = pathname == "/logs";
+  const ShowNav: boolean = pathname == "/" || onLogPage;
+  const HomePageIconRef = useRef<HouseIconHandle | null>(null);
   const navlist = [
     { id: "About", logo: <IoPerson size={15} /> },
     { id: "Projects", logo: <GoProjectSymlink size={15} /> },
@@ -44,16 +47,33 @@ const Nav = () => {
           </Link>
         </h1>
         <div className={`text-black dark:text-white flex items-center gap-3`}>
-          {navlist.map((i, index) => (
-            <span
-              key={index}
-              onClick={() => scrollToSection(i.id)}
-              className="hover:scale-110 cursor-pointer relative group"
-              title={i.id}
-            >
-              {i.logo}
-            </span>
-          ))}
+          {onLogPage ? (
+            <motion.button>
+              <Link
+                href={"/"}
+                onClick={() => {
+                  HomePageIconRef.current?.startAnimation();
+                }}
+              >
+                <HouseIcon
+                  ref={HomePageIconRef}
+                  duration={1}
+                  className="scale-80 dark:fill-white fill-black opacity-80"
+                />
+              </Link>
+            </motion.button>
+          ) : (
+            navlist.map((i, index) => (
+              <span
+                key={index}
+                onClick={() => scrollToSection(i.id)}
+                className="hover:scale-110 cursor-pointer relative group"
+                title={i.id}
+              >
+                {i.logo}
+              </span>
+            ))
+          )}
           <button
             aria-label="L/D mode"
             onClick={handleTheme}

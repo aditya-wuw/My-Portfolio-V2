@@ -1,5 +1,5 @@
 // "use client";
-import Footer from "@/Components/footer";
+import Footer from "@/Components/Footer";
 import Header from "@/Components/Mount/Header";
 import Cover from "@/Components/Mount/Profile/Cover";
 import Details from "@/Components/Mount/Profile/Details";
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <section className="xl:w-1/2">
+      <section className="w-full">
         <Footer />
       </section>
     </div>

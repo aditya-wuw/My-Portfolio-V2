@@ -16,18 +16,15 @@ const MarkdownReader = ({ content }: { content: string }) => {
             <h2 className="xl:text-2xl text-xl font-semibold my-3" {...props} />
           ),
           h3: ({ ...props }) => (
-            <h3 className="xl:text-xl text-md font-semibold my-2" {...props} />
-          ),
-          h4: ({ ...props }) => (
-            <h4 className="text-lg font-medium my-1" {...props} />
+            <h3 className="xl:text-xl text-lg font-semibold my-2" {...props} />
           ),
           p: ({ ...props }) => (
-            <p className="text-base leading-relaxed my-2" {...props} />
+            <p className="xl:text-base text-sm leading-relaxed my-2" {...props} />
           ),
           ul: ({ ...props }) => (
             <ul className="list-disc list-inside my-2 px-4 opacity-90" {...props} />
           ),
-          li: ({ ...props }) => <li className="text-base" {...props} />,
+          li: ({ ...props }) => <li className="xl:text-base text-sm text-left list-inside space-y-2" {...props} />,
           em: ({ ...props }) => <em className="italic" {...props} />,
           strong: ({ ...props }) => <strong className="font-bold" {...props} />,
           a: ({ ...props }) => (
@@ -36,7 +33,7 @@ const MarkdownReader = ({ content }: { content: string }) => {
           mark: ({ ...props }) => <span className="bg-blue-500" {...props} />,
           blockquote: ({ ...props }) => (
             <blockquote
-              className="border-l-5 border-blue-500 px-2 italic"
+              className="border-l-5 border-blue-500 px-2"
               {...props}
             />
           ),

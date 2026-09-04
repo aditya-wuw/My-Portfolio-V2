@@ -28,6 +28,9 @@
 @utility flex-center {
   @apply flex justify-center items-center;
 }
+@utility text-soft-theme {
+  @apply dark:text-white/40 text-black/40;
+}
 
 @custom-variant dark (&:where(.dark, .dark *));
 

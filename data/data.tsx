@@ -67,7 +67,7 @@ export const contactData: ContactData = {
   title: "Contact Info",
   message:
     "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
-  email: "nullfaceddevbusiness@gmail.com",
+  email: "aditya@smgcat.site",
   gh: "https://github.com/aditya-wuw",
   linkedIN: "https://www.linkedin.com/in/aditya-mandal-a30347294",
 };

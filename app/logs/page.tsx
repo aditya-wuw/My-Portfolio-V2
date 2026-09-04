@@ -1,18 +1,64 @@
 import MarkdownReader from "@/Components/Mount/MarkdownReader";
-import Markdown from "react-markdown";
+import { UpdateLogs } from "@/types/LogTypes";
+import { getFormatedDate } from "@/Utils/utils";
+import { LuNotebookPen } from "react-icons/lu";
 
-export default function page() {
-  const content =
-    "## Platform Modernization and Feature Expansion\n\nA series of updates focusing on the Next.js migration, content rendering enhancements, core feature additions, and UI/UX refinements.\n\n### Features\n- Implemented core blog infrastructure including the main Blog page and dynamic feed.\n- Added a fully functional contact form with complete end-to-end support.\n- Introduced on-demand project viewing capabilities.\n- Added native image rendering support to the Markdown reader.\n\n### Improvements & Refactoring\n- Successfully migrated the application architecture to Next.js.\n- Enhanced security by obfuscating and hiding the Supabase project URL.\n- Cleaned up the codebase by removing deprecated components and strict build error ignores.\n\n### Fixes\n- Resolved styling bugs in the news component theme and mobile banner image positioning.\n- Fixed the music player invalid state alongside minor UI polish.\n- Corrected input field styling by removing the default autofill background color.\n- Standardized directory naming conventions for the utilities folder.";
+const getLogs = async () => {
+  const query = `${process.env.SUPABASE_URL}/rest/v1/update_logs?select=*`;
+  try {
+    const res = await fetch(query, {
+      headers: {
+        apikey: process.env.SUPABASE_ANONE_KEY || "",
+      },
+      cache: "no-cache",
+    });
+    const Logs = await res.json();
+    const result = Logs as UpdateLogs[];
+    return result;
+  } catch (e) {
+    console.error(`Failed fetch logs, Error ${e}`);
+  }
+};
+
+export default async function page() {
+  const Logs = await getLogs();
   return (
-    <div className="p-3 h-160 w-full dark:bg-black bg-white dark:text-white/80 text-black/80">
-      {" "}
-      logs ..
-      <div className="flex gap-2 h-full">
-        <div className="xl:w-1/8 h-full bg-red-500">dasdas</div>
-        <div className="text-xs w-6/8">
-          <MarkdownReader content={content} />
+    <div className="mt-3 h-full w-full dark:text-white/80 text-black/80">
+      <h1 className="pt-6 px-4 rounded-br-2xl font-bold text-2xl flex flex-col dark:bg-black bg-white rounded-bl-4xl border-4 border-dashed dark:border-white/5 border-black/10">
+        <div className="flex gap-3 items-center pb-5">
+          <LuNotebookPen className="dark:fill-white/20 fill-black/60" />
+          Update logs
         </div>
+      </h1>
+      <div className="w-full h-full border-t-3 border-dashed dark:border-b-white/20 border-b-black/20 mask-x-from-40%" />
+      <div className="flex flex-col h-full w-full">
+        {Logs && Logs.length > 0 ? (
+          Logs.sort(
+            (a, b) =>
+              new Date(b.last_update).getTime() -
+              new Date(a.last_update).getTime(),
+          ).map((i) => (
+            <div key={i.id}>
+              <div className="xl:px-10 xl:py-10 px-4 py-4 flex xl:flex-row flex-col items-stretch gap-2 rounded-4xl dark:bg-black bg-white border-4 border-dashed dark:border-white/5 border-black/10">
+                <div className="xl:w-2/8 flex flex-col justify-center xl:text-center px-2 py-4 font-mono">
+                  <h1 className="pb-3 xl:text-lg text-md">
+                    {getFormatedDate(new Date(i.last_update)) ?? ""}
+                  </h1>
+                  <div className="border-l-2 w-1 h-full dark:border-white/10 border-black/20 mx-10" />
+                </div>
+                <div className="xl:w-4/4 text-xs dark:bg-white/5 border dark:border-white/5 border-black/7 bg-black/5 rounded-2xl px-4 py-2 shadow-md">
+                  <MarkdownReader content={i.log} />
+                </div>
+              </div>
+              <div className="w-full  border-t-3 border-dashed dark:border-b-white border-b-black mask-x-from-40%" />
+            </div>
+          ))
+        ) : (
+          <div className="w-full dark:bg-black bg-white h-120 text-soft-theme flex-center ">
+            {" "}
+            no logs to show :({" "}
+          </div>
+        )}
       </div>
     </div>
   );
