@@ -1,4 +1,3 @@
-// "use client";
 import MarkdownReader from "@/Components/Mount/MarkdownReader";
 import { UpdateLogs } from "@/types/LogTypes";
 import { getFormatedDate } from "@/Utils/utils";
@@ -11,7 +10,7 @@ const getLogs = async () => {
       headers: {
         apikey: process.env.SUPABASE_ANONE_KEY || "",
       },
-      next: { revalidate: 60 },
+      cache: "no-cache",
     });
     const Logs = await res.json();
     const result = Logs as UpdateLogs[];
@@ -55,7 +54,10 @@ export default async function page() {
             </div>
           ))
         ) : (
-          <div className="w-full dark:bg-black bg-white h-120 text-soft-theme flex-center "> no logs to show :( </div>
+          <div className="w-full dark:bg-black bg-white h-120 text-soft-theme flex-center ">
+            {" "}
+            no logs to show :({" "}
+          </div>
         )}
       </div>
     </div>

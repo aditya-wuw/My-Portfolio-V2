@@ -68,7 +68,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <section className="xl:w-1/2">
+      <section className="w-full">
         <Footer />
       </section>
     </div>
