@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { NewsData } from "./newsData";
+import MarkdownReader from "../Mount/MarkdownReader";
 
 export default function News() {
   const [newsSeen, setnewsSeen] = useState(true);
@@ -57,15 +58,20 @@ export default function News() {
     <AnimatePresence mode="wait">
       {!newsSeen ? (
         <motion.div
-          className="absolute w-full h-full bg-black/60 backdrop-blur-lg z-100 flex-center select-none"
+          className="fixed inset-0 h-full w-full bg-black/60 backdrop-blur-lg z-100 flex-center select-none"
           key={"pop-up"}
-          initial={{ y: -1, opacity: 0 }}
+          initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 100 }}
           exit={{ y: 1, opacity: 0 }}
-          transition={{ ease: "circInOut", duration: 0.8, delay: 0.6 }}
+          transition={{ ease: "circInOut", duration: 0.8, delay: 0.3 }}
         >
           <div className="mx-2 px-2 border dark:border-white/5 border-black/10 bg-white dark:bg-black dark:text-white text-black drop-shadow-sm rounded-2xl overflow-hidden">
-            <div className="p-2 w-full h-100 xl:h-115 xl:w-140 flex flex-col gap-0 justify-between">
+            <motion.div
+              className="p-2 w-full h-100 xl:h-115 xl:w-140 flex flex-col gap-0 justify-between"
+              initial={{ y: -70, opacity: 0 }}
+              animate={{ y: 0, opacity: 100 }}
+              transition={{ ease: "circInOut", duration: 0.8, delay: 0.5 }}
+            >
               <div className="h-7/8 w-full">
                 <div className="flex items-center justify-between p-2 mb-2">
                   <motion.h1
@@ -85,7 +91,7 @@ export default function News() {
                   key={`content-${CurrentIndex}-${NewsData[CurrentIndex].order}`}
                   initial={{ y: -10, opacity: 0 }}
                   animate={{ y: 0, opacity: 100 }}
-                  transition={{ ease: "circInOut", duration: 0.8 }}
+                  transition={{ ease: "circInOut", delay: 0.9 }}
                 >
                   <Image
                     src={NewsData[CurrentIndex].banner}
@@ -107,9 +113,11 @@ export default function News() {
                   <h1 className="font-semibold xl:text-3xl text-xl">
                     {NewsData[CurrentIndex].title}
                   </h1>
-                  <p className="mt-4 xl:text-[16px] text-sm">
-                    {NewsData[CurrentIndex].description}
-                  </p>
+                  <div className="mt-4 xl:text-[16px] text-sm">
+                    <MarkdownReader
+                      content={NewsData[CurrentIndex].description}
+                    />
+                  </div>
                 </motion.section>
               </div>
               <section className="px-2 flex h-1/8 w-full justify-between">
@@ -170,7 +178,7 @@ export default function News() {
                   </AnimatePresence>
                 </div>
               </section>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       ) : (
