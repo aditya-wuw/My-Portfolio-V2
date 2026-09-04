@@ -1,6 +1,6 @@
 # Null V2 Portfolio
 
-update test 1.2
+update test 1.0
 Migrated React codebase to Next.js
 
 **Hellow welcome**!<br>( 0\_\_\_\_0 )<br>
