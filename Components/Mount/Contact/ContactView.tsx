@@ -24,6 +24,7 @@ const initialState: FormState = {
 
 export default function ContactView() {
   const [Reset, setReset] = useState(0);
+
   return (
     <ContactComponent
       key={Reset}
@@ -38,6 +39,8 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
     SubmitAction,
     initialState,
   );
+  const maxCharacter = 250;
+  const [CharacterCount, setCharacterCount] = useState(maxCharacter);
 
   //reset the form after 3 seconds
   useEffect(() => {
@@ -146,16 +149,30 @@ function ContactComponent({ onReset }: { onReset: () => void }) {
               className="outline-none dark:bg-white/10 bg-black/10 p-2 mt-2  rounded-md"
             />
           </label>
-          <label htmlFor="message" className="mt-2 flex flex-col gap-2">
+          <label
+            htmlFor="message"
+            className="mt-2 flex flex-col gap-2 relative"
+          >
             Message
             <textarea
               required
               id="message"
-              maxLength={200}
+              maxLength={maxCharacter}
               name="message"
-              placeholder="within 200 characters"
-              className="resize-none outline-none h-20 w-full p-2 dark:bg-white/10 bg-black/10 scrollbar-none rounded-md"
+              placeholder={`within ${CharacterCount} characters`}
+              onChange={(e) => {
+                const characters = e.currentTarget.textLength;
+                setCharacterCount(maxCharacter - characters);
+              }}
+              className={`resize-none outline-none h-20 w-full p-2 dark:bg-white/10 bg-black/10 scrollbar-none rounded-md`}
             />
+            {CharacterCount < maxCharacter && (
+              <span
+                className={`absolute bottom-2 right-2 opacity-80 ${CharacterCount === 0 && "opacity-70 text-red-500"} backdrop-blur-md bg-white/10 px-2 py-1 rounded-xl`}
+              >
+                {CharacterCount}
+              </span>
+            )}
           </label>
           <button
             type="submit"

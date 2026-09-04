@@ -26,7 +26,7 @@ const getLatUpdateDate = async () => {
 const Footer = async () => {
   const lastupdate = await getLatUpdateDate();
   return (
-    <div className="flex justify-stretch gap-2 w-full">
+    <div className="flex flex-col-reverse xl:flex-row justify-stretch gap-2 w-full">
       <div
         className={`p-3 xl:w-1/2 rounded-2xl text-center bg-white text-black border border-black/20 dark:bg-black dark:text-white dark:border dark:border-white/15`}
       >
