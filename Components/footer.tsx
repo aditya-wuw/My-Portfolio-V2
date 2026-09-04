@@ -4,9 +4,11 @@ import { contactData } from "@/data/data";
 import { getFormatedDate } from "@/Utils/utils";
 import { Terminal } from "@animateicons/react/lucide";
 import Link from "next/link";
+import { logs } from "@/types/LogTypes";
+import LocalNewsTracker from "./LocalNewsTracker";
 
 const getLatUpdateDate = async () => {
-  const query = `${process.env.SUPABASE_URL}/rest/v1/update_logs?select=last_update&order=last_update.desc&limit=1`;
+  const query = `${process.env.SUPABASE_URL}/rest/v1/update_logs?select=id,last_update&order=last_update.desc&limit=1`;
   try {
     const res = await fetch(query, {
       headers: {
@@ -15,7 +17,7 @@ const getLatUpdateDate = async () => {
       cache: "no-store",
     });
     const date = await res.json();
-    const result = date[0].last_update as string;
+    const result = date[0] as logs;
     // console.log(result);
     return result;
   } catch (e) {
@@ -24,12 +26,14 @@ const getLatUpdateDate = async () => {
 };
 
 const Footer = async () => {
-  const date = await getLatUpdateDate();
-  const lasteUpdated = date
-    ? `Last updated ${getFormatedDate(new Date(date)) ?? "along time"}`
+  const update = await getLatUpdateDate();
+  const lasteUpdated = update
+    ? `Last updated ${getFormatedDate(new Date(update.last_update)) ?? "along time"}`
     : "Last updated along time ago";
+
   return (
     <div className="flex flex-col-reverse xl:flex-row justify-stretch gap-2 w-full">
+      <LocalNewsTracker update={update} />
       <div
         className={`p-3 xl:w-1/2 rounded-2xl text-center bg-white text-black border border-black/20 dark:bg-black dark:text-white dark:border dark:border-white/15`}
       >

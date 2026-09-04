@@ -4,4 +4,4 @@ export interface UpdateLogs {
   log: string;
 }
 
-
+export type logs = Omit<UpdateLogs, "log">;
