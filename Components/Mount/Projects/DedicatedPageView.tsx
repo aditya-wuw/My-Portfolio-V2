@@ -1,12 +1,11 @@
 "use client";
 import { motion } from "motion/react";
 import { useEffect } from "react";
-import { MdArrowBackIos } from "react-icons/md";
 import { useAppContext } from "@/Context/AppContext";
-import Link from "next/link";
 import Image from "next/image";
 import MarkdownReader from "@/Components/Mount/MarkdownReader";
 import { ProjectData } from "@/types/ProjectTypes";
+import GoHomeBtn from "@/Components/GoHomeBtn";
 
 interface props {
   ProjectData: ProjectData;
@@ -21,13 +20,7 @@ export default function DedicatedPageView({ ProjectData }: props) {
 
   return (
     <div className="md:mt-5">
-      <Link href="/">
-        <button
-          className={`sticky top-2 z-10 drop-shadow-md drop-shadow-black/50 dark:bg-linear-to-r dark:from-white dark:to-white/70 dark:text-black bg-black/30 text-white  backdrop-blur-2xl p-1 px-2 text-xl font-light rounded-xl mb-3 cursor-pointer`}
-        >
-          <MdArrowBackIos className="pl-1" />
-        </button>
-      </Link>
+      <GoHomeBtn />
       <motion.div
         className={`bg-white text-black dark:bg-black dark:text-white flex gap-5 flex-col rounded-2xl px-4 py-2`}
         initial={{ opacity: 0, y: 20 }}
