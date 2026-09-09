@@ -14,7 +14,7 @@ export const NewsData: NewsItems[] = [
     banner:
       "https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Markdown support",
-    description: `After ages I finally decided to add Markdown support, to easily upload or edit my journals and project details \n > "*why need markdown when you can spend 60 hours writing HTML*" \n\n     -famous last words`,
+    description: `After ages I finally decided to add Markdown support, to easily upload or edit my journals and project details`,
   },
   {
     order: 3,

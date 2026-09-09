@@ -101,6 +101,7 @@ export default function News() {
                     className="object-cover w-full h-9/8 outline-none rounded-2xl shadow-xl mask-x-from-60% mask-y-from-50%"
                     draggable={false}
                     loading="eager"
+                    unoptimized={true}
                   />
                 </motion.section>
                 <motion.section

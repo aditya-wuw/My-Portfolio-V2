@@ -46,7 +46,7 @@ export default function DedicatedPageView({ ProjectData }: props) {
               height={1080}
               loading="eager"
               alt="project cover Image"
-              className="aspect-auto absolute xl:-top-20"
+              className="aspect-auto absolute xl:-top-8"
             />
           </div>
         )}
