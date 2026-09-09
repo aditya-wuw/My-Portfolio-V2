@@ -1,6 +1,13 @@
 import { NewsItems } from "@/types/NewsTypes";
+import { version } from "@/package.json";
 
 export const NewsData: NewsItems[] = [
+  {
+    order: 0,
+    banner: "https://media1.tenor.com/m/E7HT0L0wlAgAAAAC/update-beat.gif",
+    title: `v${version}`,
+    description: "Some new changes were made to the website. Check out what was changed with more details on **Logs** page",
+  },
   {
     order: 1,
     banner:
