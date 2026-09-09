@@ -1,3 +1,4 @@
+import GoHomeBtn from "@/Components/GoHomeBtn";
 import MarkdownReader from "@/Components/Mount/MarkdownReader";
 import { UpdateLogs } from "@/types/LogTypes";
 import { getFormatedDate } from "@/Utils/utils";
@@ -24,13 +25,13 @@ export default async function page() {
   const Logs = await getLogs();
   return (
     <div className="mt-3 h-full w-full dark:text-white/80 text-black/80">
+      <GoHomeBtn />
       <h1 className="pt-6 px-4 rounded-br-2xl font-bold text-2xl flex flex-col dark:bg-black bg-white rounded-bl-4xl border-4 border-dashed dark:border-white/5 border-black/10">
         <div className="flex gap-3 items-center pb-5">
           <LuNotebookPen className="dark:fill-white/20 fill-black/60" />
           Update logs
         </div>
       </h1>
-      <div className="w-full h-full border-t-3 border-dashed dark:border-b-white/20 border-b-black/20 mask-x-from-40%" />
       <div className="flex flex-col h-full w-full">
         {Logs && Logs.length > 0 ? (
           Logs.sort(
@@ -39,6 +40,7 @@ export default async function page() {
               new Date(a.last_update).getTime(),
           ).map((i) => (
             <div key={i.id}>
+              <div className="w-full  border-t-3 border-dashed dark:border-b-white border-b-black mask-x-from-40%" />
               <div className="xl:px-10 xl:py-10 px-4 py-4 flex xl:flex-row flex-col items-stretch gap-2 rounded-4xl dark:bg-black bg-white border-4 border-dashed dark:border-white/5 border-black/10">
                 <div className="xl:w-2/8 flex flex-col justify-center xl:text-center px-2 py-4 font-mono">
                   <h1 className="pb-3 xl:text-lg text-md">
@@ -50,7 +52,6 @@ export default async function page() {
                   <MarkdownReader content={i.log} />
                 </div>
               </div>
-              <div className="w-full  border-t-3 border-dashed dark:border-b-white border-b-black mask-x-from-40%" />
             </div>
           ))
         ) : (

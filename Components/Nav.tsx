@@ -16,7 +16,7 @@ const Nav = () => {
 
   const pathname = usePathname();
   const onLogPage = pathname == "/logs";
-  const ShowNav: boolean = pathname == "/" || onLogPage;
+  const ShowNav: boolean = pathname == "/" ;
   const HomePageIconRef = useRef<HouseIconHandle | null>(null);
   const navlist = [
     { id: "About", logo: <IoPerson size={15} /> },

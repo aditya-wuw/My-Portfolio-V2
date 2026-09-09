@@ -141,7 +141,7 @@ export default function News() {
                         />
                       </motion.div>
                     ) : (
-                      <div className="w-5" />
+                      <div className="w-6" />
                     )}
                   </AnimatePresence>
                   <div className="flex gap-1.5">
