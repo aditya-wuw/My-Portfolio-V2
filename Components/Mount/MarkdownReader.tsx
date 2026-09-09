@@ -13,13 +13,13 @@ const MarkdownReader = ({ content }: { content: string }) => {
             <h1 className="xl:text-3xl text-2xl font-bold my-4" {...props} />
           ),
           h2: ({ ...props }) => (
-            <h2 className="xl:text-2xl text-xl font-semibold my-3" {...props} />
+            <h2 className="xl:text-2xl text-xl font-semibold my-2" {...props} />
           ),
           h3: ({ ...props }) => (
-            <h3 className="xl:text-xl text-lg font-semibold my-2" {...props} />
+            <h3 className="xl:text-xl text-lg font-semibold my-5" {...props} />
           ),
           p: ({ ...props }) => (
-            <p className="xl:text-base text-sm leading-relaxed my-2" {...props} />
+            <p className="xl:text-base text-sm leading-relaxed opacity-75" {...props} />
           ),
           ul: ({ ...props }) => (
             <ul className="list-disc list-inside my-2 px-4 opacity-90" {...props} />
