@@ -3,7 +3,7 @@
 
 Migrated React codebase to Next.js 
 
-**Hellow welcome**!<br>( 0\_\_\_\_0 ) <br>
+**Hellow welcome**!<br>( 0\_\_\_\_0 )<br>
 
 This project is a modern and customizable portfolio designed to showcase my work, skills, and contact information effectively.
 
