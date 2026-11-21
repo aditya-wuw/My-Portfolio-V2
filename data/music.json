@@ -1,7 +1,15 @@
 [
   {
+    "id": "music0",
+    "Title": "Hate & Loathing - Adi Ta",
+    "music_src": "https://nxfmouxeuaawwsbfbtut.supabase.co/storage/v1/object/public/assets/Music/Hate%20&%20Loathing/hate%20and%20loathing.mp3",
+    "banner": "https://nxfmouxeuaawwsbfbtut.supabase.co/storage/v1/object/public/assets/Music/Hate%20&%20Loathing/Cover.png",
+    "isplaying": false,
+    "bg": "black"
+  },
+  {
     "id": "music1",
-    "Title": "Outer layer of Space - Adi",
+    "Title": "Outer layer of Space - Adi Ta",
     "music_src": "https://ik.imagekit.io/3sfckuehxk/music%20/Outer%20Space.mp3",
     "banner": "https://ik.imagekit.io/3sfckuehxk/music%20/felix-mittermeier-milky-way-2695569.jpg",
     "isplaying": false,
@@ -9,7 +17,7 @@
   },
   {
     "id": "music2",
-    "Title": "Try Again - Adi",
+    "Title": "Try Again - Adi Ta",
     "music_src": "Musics/Try Again - Original.wav",
     "banner": "/Images_Optimized/Cover/02.jpg",
     "isplaying": false,

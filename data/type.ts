@@ -80,3 +80,11 @@ export interface ProjectLink {
   label: string | JSX.Element;
   url: string;
 }
+
+export interface VideoDemos {
+  GroupTitle: string;
+  content: {
+    url: string;
+    Published?: string;
+  }[];
+}

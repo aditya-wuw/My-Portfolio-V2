@@ -163,7 +163,7 @@ const MusicPlayer = () => {
 
   const Progress = (Timeline / duration) * 100;
   const SeekBar: React.CSSProperties = {
-    background: `linear-gradient(to right, skyblue ${Progress + 1}%,#C9C9C9 5%)`,
+    background: `linear-gradient(to right, white ${Progress + 1}%,#C9C9C9 5%)`,
   };
 
   const PlayerControlStyle =
@@ -322,7 +322,7 @@ const MusicPlayer = () => {
                   onInput={() => setDraging(true)}
                   onMouseUp={() => setDraging(false)}
                   onTouchEnd={() => setDraging(false)}
-                  className={`Seek_help w-[90%] appearance-none cursor-pointer accent-blue-300 hover:accent-cyan-300 rounded-full ${isDraging ? "h-2" : "h-0.75"} pop-in`}
+                  className={`drop-shadow-xs drop-blue-red-500 Seek_help w-[90%] appearance-none cursor-pointer accent-white hover:accent-white/60 rounded-full ${isDraging ? "h-2" : "h-0.75"} pop-in`}
                   style={SeekBar}
                 />
               </label>

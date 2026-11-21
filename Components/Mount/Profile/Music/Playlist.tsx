@@ -37,10 +37,10 @@ const Playlist = () => {
           />
         </h1>
       </div>
-      <div className="lg:p-1 lg:pb-3 lg:px-3 p-4 scroll_bar_ scroll_bar_thumb group cursor-pointer">
+      <div className="lg:p-1 lg:pb-3 lg:px-2 px-2 scroll_bar_ scroll_bar_thumb group cursor-pointer">
         {TrackPlayList.map((track, index) => (
           <motion.section
-            className={`opacity-70 flex gap-3 items-center relative z-20 group rounded-xl ${track.isplaying && "opacity-100 dark:bg-white/10 bg-gray-400/20"} hover:bg-gray-800/20 dark:hover:bg-white/20 py-3 xl:px-5 px-1 justify-between fade-in-all`}
+            className={`mt-2 px-3 opacity-70 flex gap-3 items-center relative z-20 group rounded-xl ${track.isplaying && "opacity-100 dark:bg-white/10 bg-gray-400/20"} hover:bg-gray-800/50 dark:hover:bg-white/10 py-3 xl:px-5 px-1 justify-between fade-in-all`}
             key={track.id}
             whileInView={{ y: [-20, 0] }}
             transition={{ duration: (1 + index) / 16 }}

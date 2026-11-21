@@ -1,16 +1,18 @@
-// "use client";
 import Footer from "@/Components/Footer";
 import Header from "@/Components/Mount/Header";
 import Cover from "@/Components/Mount/Profile/Cover";
 import Details from "@/Components/Mount/Profile/Details";
 import MusicPlayer from "@/Components/Mount/Profile/Music/MusicPlayer";
 import Playlist from "@/Components/Mount/Profile/Music/Playlist";
-import Projects from "@/Components/Mount/Projects/Projects";
+// import Projects from "@/Components/Mount/Projects/Projects";
 import Skills from "@/Components/Mount/Profile/Skills";
 import { Suspense } from "react";
 import Loader from "@/Components/Loader";
 import BlogFeed from "@/Components/Mount/BlogFeed/BlogFeed";
 import ContactView from "@/Components/Mount/Contact/ContactView";
+import TogglePortfolios from "@/Components/Mount/ToggleProjects";
+import DevPortfoliosWrapper from "@/Components/Mount/Projects/DevPortfoliosWrapper";
+import VideoPortfolio from "@/Components/Mount/Projects/VideoPortfolio";
 
 export default function Home() {
   return (
@@ -41,15 +43,10 @@ export default function Home() {
           </div>
         </section>
         <section className="rounded-2xl w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-60 flex justify-center items-center dark:bg-black bg-white rounded-2xl">
-                <Loader />
-              </div>
-            }
-          >
-            <Projects />
-          </Suspense>
+          <TogglePortfolios
+            DevPortfolio={<DevPortfoliosWrapper />}
+            VideoPortfolio={<VideoPortfolio />}
+          />
         </section>
         <section className="flex max-md:flex-col w-full max-md:h-fit h-117 gap-2 p-2">
           <div className="md:w-4/6 h-full">

@@ -1,19 +1,13 @@
-import {
-  FaDocker,
-  FaFigma,
-  FaNodeJs,
-  FaPython,
-  FaReact,
-  FaRust,
-} from "react-icons/fa";
+import { FaDocker, FaNodeJs, FaPython, FaReact, FaRust } from "react-icons/fa";
 import {
   RiNextjsFill,
   RiReactjsFill,
   RiSupabaseFill,
   RiTailwindCssFill,
-  RiVideoOnAiFill,
 } from "react-icons/ri";
 import {
+  SiBlender,
+  SiDavinciresolve,
   SiExpress,
   SiMongodb,
   SiRadixui,
@@ -34,7 +28,7 @@ import type {
   SkillsData,
   TextContentData,
 } from "./type";
-import { BiLogoPostgresql } from "react-icons/bi";
+import { BiLogoPostgresql, BiMusic } from "react-icons/bi";
 import { BlogPageData } from "@/types/BlogTypes";
 
 export const navLinks: Array<NavLink> = [
@@ -54,13 +48,13 @@ export const heroData: HeroData = {
   ),
   about_ln2: (
     <span>
-      building functional web apps/websites with TypeScript, React, Next and
-      Supabase. Hosting using Vercel, Render and maintaining CI/CD using Vercel
-      CLI tools and Git
+      Building desktop, web apps and websites with TypeScript, Next.JS, Tauri
+      and Supabase. Hosting using Vercel, Render and managing deployments via
+      Vercel CLI tools and Git
     </span>
   ),
   about_ln3:
-    "I also have strong video editing and social media skills to help build individuals online presence",
+    "I also have strong video editing, social media skills and understanding of 3D softwares to help build individuals online presence. Currently exploring music production in my spare time",
 };
 
 export const contactData: ContactData = {
@@ -93,7 +87,7 @@ export const details: DetailsData = {
 
 // const icon_size = "w-5 h-5 md:w-7 md:h-7";
 const icon_size =
-  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-7 md:[#skills_&]:h-7 text-lg";
+  "[#skills_&]:w-5 [#skills_&]:h-5 md:[#skills_&]:w-6.5 md:[#skills_&]:h-6.5 text-lg";
 
 export const skillsData: SkillsData = {
   title: "Skills",
@@ -173,16 +167,7 @@ export const skillsData: SkillsData = {
       Comp: <FaPython className={icon_size} />,
       color: "group-hover:text-sky-700",
     },
-    figma: {
-      label: "Figma",
-      Comp: <FaFigma className={icon_size} />,
-      color: "",
-    },
-    affinity: {
-      label: "Affinity",
-      Comp: <DiPhotoshop className={icon_size} />,
-      color: "group-hover:text-blue-800",
-    },
+
     linux: {
       label: "Linux",
       Comp: <DiLinux className={icon_size} />,
@@ -204,9 +189,24 @@ export const skillsData: SkillsData = {
       color: "group-hover:text-yellow-800",
     },
     "video editing": {
-      label: "Video Editing",
-      Comp: <RiVideoOnAiFill className={icon_size} />,
+      label: "Davinchi resolve",
+      Comp: <SiDavinciresolve className={icon_size} />,
       color: "",
+    },
+    affinity: {
+      label: "Affinity",
+      Comp: <DiPhotoshop className={icon_size} />,
+      color: "group-hover:text-blue-800",
+    },
+    blender: {
+      label: "Blender",
+      Comp: <SiBlender className={icon_size} />,
+      color: "group-hover:text-orange-600",
+    },
+    music: {
+      label: "FL Studio",
+      Comp: <BiMusic className={icon_size} />,
+      color: "group-hover:text-green-600",
     },
   },
 };
