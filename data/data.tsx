@@ -54,7 +54,7 @@ export const heroData: HeroData = {
     </span>
   ),
   about_ln3:
-    "I also have strong video editing, social media skills and understanding of 3D softwares to help build individuals online presence. Currently exploring music production in my spare time",
+    "I also have strong video editing, social media skills and understanding of 3D software to help build individuals online presence. Currently exploring music production in my spare time",
 };
 
 export const contactData: ContactData = {
