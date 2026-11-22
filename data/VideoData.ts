@@ -11,7 +11,7 @@ export const VideoData: VideoDemos[] = [
     ],
   },
   {
-    GroupTitle: "Others edits",
+    GroupTitle: "Other edits",
     content: [
       {
         url: "https://drive.google.com/file/d/1Ue79G9CZ6-XVt5OoDRrnczKgKCk-t09B/preview",
