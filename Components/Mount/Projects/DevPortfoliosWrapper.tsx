@@ -5,7 +5,7 @@
 import { Loader } from "@animateicons/react/lucide";
 import { Suspense } from "react";
 import Projects from "./Projects";
-
+   
 export default function DevPortfoliosWrapper() {
   return (
     <div>

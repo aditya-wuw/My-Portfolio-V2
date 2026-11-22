@@ -28,4 +28,4 @@ const getProjects = async () => {
 export default async function Projects() {
   const Projects = await getProjects();
   return <ProjectsView Projects={Projects} />;
-}
+}  

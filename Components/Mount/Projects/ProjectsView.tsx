@@ -123,7 +123,7 @@ const ProjectsView = ({ Projects }: props) => {
                         width={500}
                         height={500}
                         loading="eager"
-                        quality={90}
+                        quality={80}
                         className="object-cover object-center cursor-pointer hover:scale-105 scale-100 transition duration-300 ease-in-out w-full h-full"
                       />
                     )}
